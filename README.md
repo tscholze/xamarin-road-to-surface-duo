@@ -26,6 +26,7 @@ Feel free to improve the quality of the code. It would be great to learn more fr
 Just me, [Tobi]([https://tscholze.github.io).
 
 ## Links
+- [Dr. Windows](https://www.drwindows.de) German Microsoft blog
 - [Xamarin](https://dotnet.microsoft.com/apps/xamarin) Homepage
 
 

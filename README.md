@@ -9,9 +9,10 @@
 - Installed Xamarin Visual Studio plugins
 
 ## Features
-- Lists articles of Dr.Windows
-- Good looking (in my opinion)
+- Lists articles of [Dr. Windows](https://www.drwindows.de) 
+- Good looking, hopefully (in my opinion)
 - Utilizes Surface Duo features
+- Utilizes App Center features
 
 ## How it looks
 Nothing to see, yet. We will see.

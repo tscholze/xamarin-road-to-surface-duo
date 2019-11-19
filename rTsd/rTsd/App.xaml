@@ -6,6 +6,44 @@
              mc:Ignorable="d"
              x:Class="rTsd.App">
     <Application.Resources>
-        
+        <ResourceDictionary>
+            <!-- Colors -->
+            <Color x:Key="OnPrimary">#FAFAFA</Color>
+            <Color x:Key="Primary">#333333</Color>
+            <Color x:Key="Accent">#ff0000</Color>
+
+            <!-- Texts -->
+            <Style TargetType="Label" x:Key="PrimaryLargeLabelStyle">
+                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            
+            <Style TargetType="Label" x:Key="PrimaryBodyLabelStyle">
+                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                <Setter Property="FontSize" Value="Body" />
+            </Style>
+
+                <!-- Controls -->
+            <Style TargetType="Button" x:Key="PrimaryButtonStyle">
+                <Setter Property="BackgroundColor" Value="{StaticResource OnPrimary}" />
+                <Setter Property="BorderColor" Value="{StaticResource Primary}" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+            </Style>
+            
+            <!-- Shell -->
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.ForegroundColor" Value="{StaticResource OnPrimary}" />
+                <Setter Property="Shell.TitleColor" Value="{StaticResource OnPrimary}"/>
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource OnPrimary}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource OnPrimary}"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

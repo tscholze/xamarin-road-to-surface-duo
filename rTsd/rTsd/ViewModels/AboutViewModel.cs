@@ -9,11 +9,16 @@ namespace rTsd.ViewModels
     {
         public AboutViewModel()
         {
+            // Set title
             Title = "About";
 
-            OpenWebCommand = new Command(() => Device.OpenUri(new Uri("https://xamarin.com/platform")));
+            // Opens the GitHub website
+            OpenGitHubWebCommand = new Command(() => Device.OpenUri(new Uri("https://github.com/tscholze/xamarin-road-to-surface-duo")));
         }
 
-        public ICommand OpenWebCommand { get; }
+        /// <summary>
+        /// Command to open the web browser
+        /// </summary>
+        public ICommand OpenGitHubWebCommand { get; }
     }
 }

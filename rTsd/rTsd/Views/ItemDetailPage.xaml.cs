@@ -1,9 +1,5 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-using rTsd.Models;
 using rTsd.ViewModels;
 
 namespace rTsd.Views
@@ -20,20 +16,6 @@ namespace rTsd.Views
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
-        }
-
-        public ItemDetailPage()
-        {
-            InitializeComponent();
-
-            var item = new Item
-            {
-                Text = "Item 1",
-                Description = "This is an item description."
-            };
-
-            viewModel = new ItemDetailViewModel(item);
-            BindingContext = viewModel;
         }
     }
 }

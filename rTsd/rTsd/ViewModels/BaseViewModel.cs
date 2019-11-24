@@ -12,7 +12,9 @@ namespace rTsd.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        #region Public member
+
+        public IFeedService<Feed> FeedService => DependencyService.Get<IFeedService<Feed>>();
 
         bool isBusy = false;
         public bool IsBusy
@@ -28,6 +30,10 @@ namespace rTsd.ViewModels
             set { SetProperty(ref title, value); }
         }
 
+        #endregion
+
+        #region Protected member
+
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName]string propertyName = "",
             Action onChanged = null)
@@ -41,7 +47,10 @@ namespace rTsd.ViewModels
             return true;
         }
 
+        #endregion
+
         #region INotifyPropertyChanged
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -51,6 +60,7 @@ namespace rTsd.ViewModels
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         #endregion
     }
 }

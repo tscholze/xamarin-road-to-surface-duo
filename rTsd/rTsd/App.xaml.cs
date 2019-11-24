@@ -1,8 +1,5 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 using rTsd.Services;
-using rTsd.Views;
 
 namespace rTsd
 {
@@ -13,7 +10,7 @@ namespace rTsd
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<MockedFeedService>();
             MainPage = new AppShell();
         }
 

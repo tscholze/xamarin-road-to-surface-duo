@@ -35,7 +35,7 @@ I'm not a skilled user interface designer nor I have an eye for beauty, but the 
 </div>
 
 <div style="float:clear; height: 350px">
-    &nbsp; &nbsp;&nbsp; &nbsp;<img src="docs/app-detail.png" title="Prototypish ui of article detail" alt="Prototypish ui of article detail">
+    <img src="docs/app-detail.png" title="Prototypish ui of article detail" alt="Prototypish ui of article detail">
 </div>
 
 I used the free, but required an Adobe ID, application [Adobe XD](https://www.adobe.com/de/products/xd.html) to create the protoyp views.

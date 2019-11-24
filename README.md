@@ -14,14 +14,31 @@
 - [Visual Studio 2019](https://visualstudio.microsoft.com/) (for Mac)
 - Installed Xamarin Visual Studio plugins
 
+## Other programms I used
+- Microsoft [OneNote](https://www.onenote.com/) as information storage around the idea of the app
+- Microsoft [Teams](https://products.office.com/en-US/microsoft-teams/group-chat-software) to clarify open question with the Dr. Windows team
+- [Visual Studio Code](https://code.visualstudio.com/) for all, except source code editing, writings like mark down files
+- [Git Bash](https://git-scm.com/downloads) for Git operations outside of Visual Studio
+- [Adobe XD](https://www.adobe.com/de/products/xd.html) to protoyp the UI
+
 ## Features
 - Lists articles of [Dr. Windows](https://www.drwindows.de) 
 - Good looking, hopefully (in my opinion)
 - Utilizes Surface Duo features
 - Utilizes App Center features
 
-## How it looks
-Nothing to see, yet. We will see.
+## UI concepts
+I'm not a skilled user interface designer nor I have an eye for beauty, but the app should look mostly like the following concepts.
+
+<div style="float:left; padding-right: 20px; height: 400px">
+    <img src="docs/app-list.png" title="Prototypish ui of article list" alt="Prototypish ui of article list">
+</div>
+
+<div style="float:clear; height: 400px">
+    <img src="docs/app-detail.png" title="Prototypish ui of article detail" alt="Prototypish ui of article detail">
+</div>
+
+I used the free, but required an Adobe ID, application [Adobe XD](https://www.adobe.com/de/products/xd.html) to create the protoyp views.
 
 ## Keep in mind
 This app is purely build for having fun! All features have room for improvements or could be done more elegant.

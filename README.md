@@ -30,12 +30,12 @@
 ## UI concepts
 I'm not a skilled user interface designer nor I have an eye for beauty, but the app should look mostly like the following concepts.
 
-<div style="float:left; padding-right: 20px; height: 400px">
+<div style="float:left; height: 350px">
     <img src="docs/app-list.png" title="Prototypish ui of article list" alt="Prototypish ui of article list">
 </div>
 
-<div style="float:clear; height: 400px">
-    <img src="docs/app-detail.png" title="Prototypish ui of article detail" alt="Prototypish ui of article detail">
+<div style="float:clear; height: 350px">
+    &nbsp; &nbsp;&nbsp; &nbsp;<img src="docs/app-detail.png" title="Prototypish ui of article detail" alt="Prototypish ui of article detail">
 </div>
 
 I used the free, but required an Adobe ID, application [Adobe XD](https://www.adobe.com/de/products/xd.html) to create the protoyp views.

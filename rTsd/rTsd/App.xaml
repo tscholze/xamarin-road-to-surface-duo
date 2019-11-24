@@ -9,8 +9,9 @@
         <ResourceDictionary>
             <!-- Colors -->
             <Color x:Key="OnPrimary">#FAFAFA</Color>
-            <Color x:Key="Primary">#333333</Color>
-            <Color x:Key="Accent">#ff0000</Color>
+            <Color x:Key="Primary">#213868</Color>
+            <Color x:Key="Accent">#8992A4</Color>
+            <Color x:Key="AccentDark">#1C2E53</Color>
 
             <!-- Texts -->
             <Style TargetType="Label" x:Key="PrimaryLargeLabelStyle">
@@ -43,7 +44,6 @@
                 <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
                 <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource OnPrimary}"/>
             </Style>
-            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

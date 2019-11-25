@@ -1,4 +1,4 @@
-![#rTsd Logo](docs/logo-small.jpg)
+![#rTsd Logo](docs/logo-small.png)
 
 # Road to Surface Duo Xamarin App (#rTsd)
 > This ia a work in progress [Xamarin.Forms](https://dotnet.microsoft.com/apps/xamarin) Android project which is intended to feature most of the new features that makes the upcoming [Microsoft Surface Duo](https://www.microsoft.com/en-us/surface/devices/surface-duo) phone unique.

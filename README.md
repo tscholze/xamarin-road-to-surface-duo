@@ -1,7 +1,14 @@
 ![#rTsd Logo](docs/logo-small.png)
 
 # Road to Surface Duo Xamarin App (#rTsd)
-> This ia a work in progress [Xamarin.Forms](https://dotnet.microsoft.com/apps/xamarin) Android project which is intended to feature most of the new features that makes the upcoming [Microsoft Surface Duo](https://www.microsoft.com/en-us/surface/devices/surface-duo) phone unique.
+> This is a work in progress [Xamarin.Forms](https://dotnet.microsoft.com/apps/xamarin) Android project which is intended to feature most of the new features that makes the upcoming [Microsoft Surface Duo](https://www.microsoft.com/en-us/surface/devices/surface-duo) phone unique. It will use the awesome German [Dr. Windows](https://www.drwindows.de)  as data source for its articles.
+
+## tl;dr
+This is neither an offical [Dr. Windows](https://www.drwindows.de) app nor anything other than a highly motivated playground to dive deep into the Xamarin.Forms ecosystem with a dedicated usecase in mind.
+
+It will target only Android devices and it's meant to include all other aspecs of Xamarin development such as a configurared continuous integration and analytics powerd by the [Azure App Center](https://azure.microsoft.com/en-us/services/app-center/).
+
+This project is written and owned by a beginner and meant for beginners. It would be perfect if experts could mentor the project - but this is just a mind in the clouds.
 
 ## Build status
 
@@ -13,6 +20,10 @@
 - Windows 10 / macOS 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/) (for Mac)
 - Installed Xamarin Visual Studio plugins
+
+## Assumption
+
+- The Surface Duo will usw two navigation pages, master on the left screen and detail on the right, as the main indicator how to display an app on two screens
 
 ## Other programms I used
 - Microsoft [OneNote](https://www.onenote.com/) as information storage around the idea of the app

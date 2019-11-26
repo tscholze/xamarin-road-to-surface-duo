@@ -20,6 +20,7 @@ This project is written and owned by a beginner and meant for beginners. It woul
 
 - [x] Finding a usecase
 - [x] Write down a motivation (e.g. Readme)
+- [x] Write an email to `dualscreendev@microsoft.com` to get soon(tm) more information
 - [x] Concept roughly an user interface
 - [x] Get the project (template) up and running
 - [ ] Getting into important Xamarin / C# pattern

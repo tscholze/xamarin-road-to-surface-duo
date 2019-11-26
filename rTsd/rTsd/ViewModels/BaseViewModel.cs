@@ -10,11 +10,14 @@ using rTsd.Services;
 
 namespace rTsd.ViewModels
 {
+    /// <summary>
+    /// Based on Visual Studio 2019 Xamarin Forms template BaseViewModel class.
+    /// </summary>
     public class BaseViewModel : INotifyPropertyChanged
     {
         #region Public member
 
-        public IFeedService<Feed> FeedService => DependencyService.Get<IFeedService<Feed>>();
+        public IElementService<Post> FeedService => DependencyService.Get<IElementService<Post>>();
 
         bool isBusy = false;
         public bool IsBusy
@@ -34,16 +37,17 @@ namespace rTsd.ViewModels
 
         #region Protected member
 
-        protected bool SetProperty<T>(ref T backingStore, T value,
-            [CallerMemberName]string propertyName = "",
-            Action onChanged = null)
+        protected bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName]string propertyName = "", Action onChanged = null)
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
+            {
                 return false;
+            }
 
             backingStore = value;
             onChanged?.Invoke();
             OnPropertyChanged(propertyName);
+
             return true;
         }
 
@@ -56,7 +60,9 @@ namespace rTsd.ViewModels
         {
             var changed = PropertyChanged;
             if (changed == null)
+            {
                 return;
+            }
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

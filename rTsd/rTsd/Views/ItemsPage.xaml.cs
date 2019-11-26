@@ -16,6 +16,8 @@ namespace rTsd.Views
             InitializeComponent();
 
             BindingContext = viewModel = new ItemsViewModel();
+
+            viewModel.LoadItemsCommand.Execute(null);
         }
     }
 }

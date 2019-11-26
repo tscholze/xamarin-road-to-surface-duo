@@ -39,7 +39,13 @@
         </StackLayout>
 
         <!-- Content -->
-        <Label Grid.Row="1" Text="List" Margin="0, 20, 0, 0" />
+        <ListView Grid.Row="1" ItemsSource="{Binding Items}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Title}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </Grid>
 

@@ -1,5 +1,5 @@
 ﻿using rTsd.Models;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -11,11 +11,17 @@ namespace rTsd.ViewModels
     public class ItemsViewModel : BaseViewModel
     {
         #region Public properties 
-        
+
+        private List<Post> items;
+
         /// <summary>
         /// Feed items to display.
         /// </summary>
-        public ObservableCollection<Post> Items { get; set; }
+        public List<Post> Items
+        {
+            get { return items; }
+            private set { SetProperty(ref items, value); }
+        }
 
         /// <summary>
         /// Will trigger an item (re-) load.
@@ -34,7 +40,7 @@ namespace rTsd.ViewModels
         public ItemsViewModel()
         {
             // Setup default values.
-            Items = new ObservableCollection<Post>();
+            Items = new List<Post>();
 
             // Setup commands.
             LoadItemsCommand = new Command(() => LoadArticlesAsync());
@@ -49,17 +55,8 @@ namespace rTsd.ViewModels
         /// </summary>
         private async void LoadArticlesAsync()
         {
-            // Clear existing items.
-            Items.Clear();
-
-            // Get items from the service.
-            var items = await FeedService.GetAllAsync().ConfigureAwait(true);
-
-            // Add each item to the binded property.
-            foreach (var item in items)
-            {
-                Items.Add(item);
-            }
+            // Update bindined Items member with service-based items.
+            Items = await FeedService.GetAllAsync().ConfigureAwait(true);
         }
 
         #endregion

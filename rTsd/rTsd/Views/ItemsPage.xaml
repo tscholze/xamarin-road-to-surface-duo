@@ -4,13 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:effects="clr-namespace:Xamarin.Toolkit.Effects;assembly=Xamarin.Toolkit.Effects"
              mc:Ignorable="d"
              x:Class="rTsd.Views.ItemsPage"
              Title="{Binding Title}"
              Shell.NavBarIsVisible="false">
-
-
 
     <!-- TODO: Star pancake view!-->
     <yummy:PancakeView>
@@ -72,8 +69,7 @@
                                 
                                 <!-- Background image -->
                                 <Image Source="logo1.jpg" 
-                                       Aspect="Fill" 
-                                       effects:ViewBlur.BlurAmount="100" />
+                                       Aspect="Fill" />
 
                                 <!-- Bottom blur and title view -->
                                 <yummy:PancakeView BackgroundColor="#333333" Opacity="0.75"

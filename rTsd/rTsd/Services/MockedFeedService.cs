@@ -22,12 +22,18 @@ namespace rTsd.Services
 
         #region IElementService implementation
 
-        public async Task<List<Post>> GetAllAsync()
+        public async Task<List<Post>> GetAllAsync(bool forceReload = false)
         {
             var task = Task.Run(() => {
                 // TODO: Check if linked list or array list fits better.
                 // TODO: May want to use linq.
                 var posts = new List<Post>();
+
+                // Mock non forced reload with empty list.
+                if(forceReload == false)
+                {
+                    return posts;
+                }
 
                 for (int i = 0; i < MAX_MOCKED_ENTRIES_COUNT; i++)
                 {

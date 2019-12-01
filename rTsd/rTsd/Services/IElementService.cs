@@ -13,7 +13,7 @@ namespace rTsd.Services
         /// Gets all elements async.
         /// </summary>
         /// <returns>Get all feed items</returns>
-        Task<List<T>> GetAllAsync();
+        Task<List<T>> GetAllAsync(bool forceReload = false);
 
         /// <summary>
         /// Gets a single element found by it's id.

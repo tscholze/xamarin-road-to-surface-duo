@@ -10,8 +10,9 @@
              Title="{Binding Title}"
              Shell.NavBarIsVisible="false">
 
-    <!-- TODO: Star pancake view!-->
+    <!-- Background gradient view -->
     <yummy:PancakeView>
+        
         <!-- Configurate PancakeView -->
         <yummy:PancakeView.BackgroundGradientStops>
             <yummy:GradientStopCollection>
@@ -23,6 +24,7 @@
 
         <!-- Content -->
         <Grid>
+            <!-- Row definitions -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -34,21 +36,21 @@
 
                 <!-- Title -->
                 <Label TextColor="{StaticResource Accent}" 
-                   Margin="0, 10, 0, 3"
-                   FontSize="10"
-                   Text="#rTsd - Road to Surface Duo Xamarin Sample - A community project"
-                   HorizontalOptions="Center"
-                   HorizontalTextAlignment="Center" />
+                       Margin="0, 10, 0, 3"
+                       FontSize="10"
+                       Text="#rTsd - Road to Surface Duo Xamarin Sample - A community project"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center" />
 
                 <!-- Logo -->
                 <Image Source="drwindows_logo.png"
-                   HeightRequest="70" 
-                   HorizontalOptions="Center"
-                   Margin="0, 0, 0, 10"/>
+                       HeightRequest="70" 
+                       HorizontalOptions="Center"
+                       Margin="0, 0, 0, 10"/>
 
                 <!-- Bottom border-->
                 <BoxView HeightRequest="1" 
-                     BackgroundColor="{StaticResource AccentDark}" />
+                         BackgroundColor="{StaticResource AccentDark}" />
             </StackLayout>
 
             <!-- Content -->
@@ -86,7 +88,7 @@
                                 <yummy:PancakeView RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
                                                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=1,Constant=0}"
                                                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}">
-                                    
+
                                     <RelativeLayout>
                                         <!-- Todo: Add working blurred background. Android does not support blur -->
                                         <!-- Blurring background image -->

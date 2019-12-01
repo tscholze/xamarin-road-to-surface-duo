@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Cache;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace rTsd.Services
 {
-    class FeedService : IElementService<Post>
+    public class FeedService : IElementService<Post>
     {
         /// <summary>
         /// Article feed endpoint.
@@ -27,12 +26,37 @@ namespace rTsd.Services
 
         #endregion
 
-        // TODO: Check if real async would be better.
-        // TODO: Learn it!
-        public async Task<List<Post>> GetAllAsync()
+        #region Constructor
+
+        /// <summary>
+        /// Constructor
+        /// 
+        /// ! Caution !
+        ///     - Only for testing purpose.
+        ///     - For production, use `DependencyService
+        /// </summary>
+        /// <param name="cachedPosts">`List of already cached posts.</param>
+        public FeedService(List<Post> cachedPosts)
         {
+            this.cachedPosts = cachedPosts;
+        }
+
+        #endregion
+
+        public async Task<List<Post>> GetAllAsync(bool forceReload = false)
+        {
+            // TODO: Check if real async would be better.
+            // TODO: Learn it!
             var task = Task.Run(() =>
             {
+                // If no reload is forced and cached posts are available,
+                // return cached posts.
+                // Else load posts from web service
+                if (forceReload == false && cachedPosts.Count > 0)
+                {
+                    return cachedPosts;
+                }
+
                 // Setup web client.
                 WebClient client = new WebClient
                 {

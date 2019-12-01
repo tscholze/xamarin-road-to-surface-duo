@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace rTsd.ViewModels
@@ -13,7 +13,7 @@ namespace rTsd.ViewModels
             Title = "About";
 
             // Opens the GitHub website
-            OpenGitHubWebCommand = new Command(() => Device.OpenUri(new Uri("https://github.com/tscholze/xamarin-road-to-surface-duo")));
+            OpenGitHubWebCommand = new Command(() => Launcher.TryOpenAsync(new Uri("https://github.com/tscholze/xamarin-road-to-surface-duo")));
         }
 
         /// <summary>

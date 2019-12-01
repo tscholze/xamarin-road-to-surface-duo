@@ -60,13 +60,6 @@ namespace rTsd.Services
                     ImageSource = Regex.Match(item.Element("description").Value, "<img.+?src=[\"'](.+?)[\"'].*?>", RegexOptions.IgnoreCase).Groups[1].Value
                 }).ToList();
 
-
-                foreach (var item in posts)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Image: {item.ImageSource}");
-                }
-
-
                 // Dispose web client.
                 client.Dispose();
 

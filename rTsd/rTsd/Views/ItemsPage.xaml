@@ -27,11 +27,11 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            
+
             <!-- Header -->
             <StackLayout Grid.Row="0" 
                      BackgroundColor="{StaticResource Primary}">
-                
+
                 <!-- Title -->
                 <Label TextColor="{StaticResource Accent}" 
                    Margin="0, 10, 0, 3"
@@ -55,10 +55,10 @@
             <CollectionView Grid.Row="1"
                             ItemsSource="{Binding Items}"
                             Margin="20, 10">
-                
+
                 <!-- Configurate item layout -->
                 <CollectionView.ItemsLayout>
-                    <ListItemsLayout Orientation="Vertical" 
+                    <LinearItemsLayout Orientation="Vertical" 
                                      ItemSpacing="20"/>
                 </CollectionView.ItemsLayout>
 
@@ -76,12 +76,17 @@
 
                                 <!-- Background image -->
                                 <Image Source="{Binding ImageSource}" 
-                                       Aspect="Fill" />
+                                       Aspect="AspectFill"
+                                       VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="FillAndExpand"
+                                       RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+                                       RelativeLayout.HeightConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}" />
 
                                 <!-- Bottom blur and title view -->
-                                <yummy:PancakeView RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height,  Factor=0.5}" 
-                                                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                                <yummy:PancakeView RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
+                                                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=1,Constant=0}"
                                                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}">
+                                    
                                     <RelativeLayout>
                                         <!-- Todo: Add working blurred background. Android does not support blur -->
                                         <!-- Blurring background image -->

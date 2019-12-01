@@ -10,12 +10,25 @@ using System.Xml.Linq;
 
 namespace rTsd.Services
 {
+    /// <summary>
+    /// A <see cref="IElementService{T}"/> that reads and aprses feed 
+    /// information from the web.
+    /// </summary>
     public class FeedService : IElementService<Post>
     {
+        #region Private constants 
+
         /// <summary>
-        /// Article feed endpoint.
+        /// Feed endpoint.
         /// </summary>
         private const string FEED_ENDPOINT = "https://www.drwindows.de/news/feed";
+
+        /// <summary>
+        /// Fallback for the image source of a post.
+        /// </summary>
+        private const string IMAGESOURCE_FALLBACK = "https://www.drwindows.de/news/wp-content/themes/drwindows_theme/img/DrWindows-Windows-News.png";
+
+        #endregion
 
         #region Private member
 
@@ -33,12 +46,21 @@ namespace rTsd.Services
         /// 
         /// ! Caution !
         ///     - Only for testing purpose.
-        ///     - For production, use `DependencyService
+        ///     - For production, use `DependencyService`.
         /// </summary>
         /// <param name="cachedPosts">`List of already cached posts.</param>
         public FeedService(List<Post> cachedPosts)
         {
             this.cachedPosts = cachedPosts;
+        }
+
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public FeedService()
+        {
+            // Required by CDI.
+            // See `App.cs`.
         }
 
         #endregion
@@ -60,6 +82,8 @@ namespace rTsd.Services
                 // Setup web client.
                 WebClient client = new WebClient
                 {
+                    // Ignore chaching.
+                    // Always load data from the server instead from the cache.
                     CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore)
                 };
 
@@ -68,20 +92,36 @@ namespace rTsd.Services
 
                 // Setup xml document parser.
                 XDocument doc = XDocument.Parse(rssString);
-                XNamespace purl = "http://purl.org/rss/1.0/";
                 XNamespace content = "http://purl.org/rss/1.0/modules/content/";
-                XNamespace dc = "http://purl.org/dc/elements/1.1/";
 
-                // Parse list of posts.
+                // Example data structure
+                //
+                //<xml>
+                //  <channel>
+                //      <item>
+                //          <title>Entry #1</title>
+                //      </item>
+                //      <item>
+                //          n times ...
+                //      </item>
+                //  </channel>
+
+                // Get channels from the document.
                 var channel = doc.Root.Element("channel");
+
+                // Get all `item` entries from the channel.
                 var items = channel.Elements("item");
+
+                // Convert found item xml entries into post objects.
+                // By mapping element tags to object members.
+                // E.g. item.guid -> object.id
                 var posts = items.Select(item => new Post
                 {
                     Id = item.Element("guid").Value,
                     Title = item.Element("title").Value,
                     LinkSource = item.Element("link").Value,
                     Content = item.Element(content + "encoded").Value,
-                    ImageSource = Regex.Match(item.Element("description").Value, "<img.+?src=[\"'](.+?)[\"'].*?>", RegexOptions.IgnoreCase).Groups[1].Value
+                    ImageSource = GetImageSourceOutOfContent(item.Element("description").Value)
                 }).ToList();
 
                 // Dispose web client.
@@ -94,6 +134,7 @@ namespace rTsd.Services
                 return posts;
             });
 
+            // Return async task.
             return await task.ConfigureAwait(false);
         }
 
@@ -101,5 +142,24 @@ namespace rTsd.Services
         {
             throw new NotImplementedException();
         }
+
+        #region Private helper 
+
+        /// <summary>
+        /// Gets the image source out of a content string.
+        /// </summary>
+        /// <param name="content">Content string of a post.</param>
+        /// <returns>Found or fallback image source.</returns>
+        private string GetImageSourceOutOfContent(string content)
+        {
+            // Try to extract the first `<img src=".." /> out of the content string 
+            // to use as image source.
+            var source = Regex.Match(content, "<img.+?src=[\"'](.+?)[\"'].*?>", RegexOptions.IgnoreCase).Groups[1].Value;
+
+            // If no image found in content, use fallback.
+            return source ?? IMAGESOURCE_FALLBACK;
+        }
+
+        #endregion
     }
 }

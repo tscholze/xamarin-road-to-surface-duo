@@ -32,7 +32,19 @@ namespace rTsd.Models
         /// </summary>
         public string Title { get; set; }
 
-        /// Short abstract of the post.
-        public string Abstract { get; set; }
+        /// <summary>
+        /// Link source to the post itself.
+        /// </summary>
+        public string LinkSource { get; set; }
+
+        /// <summary>
+        /// First image (hopefully the article image) of the post.
+        /// </summary>
+        public string ImageSource { get; set; }
+
+        /// <summary>
+        /// Content of the post.
+        /// </summary>
+        public string Content { get; set; }
     }
 }

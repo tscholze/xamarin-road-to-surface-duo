@@ -4,20 +4,42 @@ using rTsd.ViewModels;
 
 namespace rTsd.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
+    /// <summary>
+    /// ItemsPage is responsible for rendering a list of 
+    /// items.
+    /// 
+    /// A tap on an item will lead to a detail page navigation.
+    /// </summary>
     [DesignTimeVisible(false)]
     public partial class ItemsPage : ContentPage
     {
+        #region Private member
+
+        /// <summary>
+        /// Underlying view model
+        /// </summary>
         ItemsViewModel viewModel;
 
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// Will set and load required information.
+        /// </summary>
         public ItemsPage()
         {
+            // Initialize ui.
             InitializeComponent();
 
+            // Set binding context to the created view model.
             BindingContext = viewModel = new ItemsViewModel();
 
+            // Inital items loading.
             viewModel.LoadItemsCommand.Execute(null);
         }
+
+        #endregion
     }
 }

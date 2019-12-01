@@ -35,7 +35,7 @@ namespace rTsd.Services
                     {
                         Id = $"{i}",
                         Title = $"Title #{i}",
-                        Abstract = "Lorem ipsum nupssie das ist ein toller Abstract Text. Bitte liest ihn alle!"
+                        Content = "Lorem ipsum nupssie das ist ein toller Abstract Text. Bitte liest ihn alle!"
                     });
                 }
 

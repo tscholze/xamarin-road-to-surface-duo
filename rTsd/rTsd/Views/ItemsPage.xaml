@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:effects="clr-namespace:rTsd.Effects"
              mc:Ignorable="d"
              x:Class="rTsd.Views.ItemsPage"
              Title="{Binding Title}"
@@ -19,16 +20,18 @@
                 <yummy:GradientStop Color="#8A93A5" Offset="1" />
             </yummy:GradientStopCollection>
         </yummy:PancakeView.BackgroundGradientStops>
-        
+
         <!-- Content -->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            
             <!-- Header -->
             <StackLayout Grid.Row="0" 
                      BackgroundColor="{StaticResource Primary}">
+                
                 <!-- Title -->
                 <Label TextColor="{StaticResource Accent}" 
                    Margin="0, 10, 0, 3"
@@ -49,51 +52,69 @@
             </StackLayout>
 
             <!-- Content -->
-            <CollectionView Grid.Row="1" ItemsSource="{Binding Items}" Margin="20, 10">
+            <CollectionView Grid.Row="1"
+                            ItemsSource="{Binding Items}"
+                            Margin="20, 10">
+                
                 <!-- Configurate item layout -->
                 <CollectionView.ItemsLayout>
                     <ListItemsLayout Orientation="Vertical" 
                                      ItemSpacing="20"/>
                 </CollectionView.ItemsLayout>
-                
+
                 <!-- Configurate item template -->
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
+                        <!-- Tear view -->
                         <yummy:PancakeView HeightRequest="120"
                                            CornerRadius="20, 0, 0, 20"
                                            BorderColor="#213868" 
-                                           BorderThickness="1"
-                                           BackgroundColor="Accent">
+                                           BorderThickness="1">
 
-                            <RelativeLayout BackgroundColor="Yellow">
-                                
+                            <!-- Inner Layout -->
+                            <RelativeLayout>
+
                                 <!-- Background image -->
-                                <Image Source="logo1.jpg" 
+                                <Image Source="{Binding ImageSource}" 
                                        Aspect="Fill" />
 
                                 <!-- Bottom blur and title view -->
-                                <yummy:PancakeView BackgroundColor="#333333" Opacity="0.75"
-                                                   RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height,  Factor=0.5}" 
+                                <yummy:PancakeView RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height,  Factor=0.5}" 
                                                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
                                                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}">
-                                    <!-- Title -->
-                                    <Label Text="{Binding Title}" 
-                                           VerticalOptions="EndAndExpand" 
-                                           Margin="10" 
-                                           FontSize="19" 
-                                           TextColor="White"/>
+                                    <RelativeLayout>
+                                        <!-- Todo: Add working blurred background. Android does not support blur -->
+                                        <!-- Blurring background image -->
+                                        <Image Source="blur_background"  
+                                               Aspect="Fill"
+                                               Opacity="0.5"
+                                               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" 
+                                               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}" />
+
+                                        <!-- Title  with Shadow-->
+                                        <Label Text="{Binding Title}" 
+                                               VerticalOptions="EndAndExpand" 
+                                               LineBreakMode="TailTruncation"
+                                               MaxLines="2"
+                                               Margin="10, 5, 10, 5" 
+                                               FontSize="19" 
+                                               TextColor="White" 
+                                               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" 
+                                               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                                            <Label.Effects>
+                                                <effects:ShadowEffect Radius="10"
+                                                                      DistanceX="2" 
+                                                                      DistanceY="2" 
+                                                                      Color="Black" />
+                                            </Label.Effects>
+                                        </Label>
+                                    </RelativeLayout>
                                 </yummy:PancakeView>
-
                             </RelativeLayout>
-                            
-
                         </yummy:PancakeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-
         </Grid>
     </yummy:PancakeView>
-
 </ContentPage>

@@ -10,7 +10,10 @@ namespace rTsd
         {
             InitializeComponent();
 
-            DependencyService.Register<MockedFeedService>();
+            // Setup CDIs
+            DependencyService.Register<FeedService>();
+
+            // Setup entry ui point.
             MainPage = new AppShell();
         }
 

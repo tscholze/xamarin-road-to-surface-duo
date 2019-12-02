@@ -28,6 +28,10 @@ This project is written and owned by a beginner and meant for beginners. It woul
 - [ ] Write tests
 - [ ] Leverage CI with tests and test deployment
 
+## Publications
+
+- [Dr. Windows: #rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 1](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-1)
+
 ## Prerequirements
 - Windows 10 / macOS 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/) (for Mac)

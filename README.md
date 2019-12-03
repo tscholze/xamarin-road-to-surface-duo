@@ -16,6 +16,14 @@ This project is written and owned by a beginner and meant for beginners. It woul
 |-------|------|
 |AppCenter|![Badge](https://build.appcenter.ms/v0.1/apps/b0ad7c4c-b7c3-4fa3-b969-c840e9affc22/branches/master/badge)
 
+## Structure
+
+**rTsd**
+Xamarin.Forms container that includes all shared functionality and features.
+
+**rTsd.Android**
+Android wrapper and platform-specifc implementations like custom rendereres, effects or assets.
+
 ## Phases
 
 - [x] Finding a usecase

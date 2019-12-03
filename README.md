@@ -19,9 +19,11 @@ This project is written and owned by a beginner and meant for beginners. It woul
 ## Structure
 
 **rTsd**
+
 Xamarin.Forms container that includes all shared functionality and features.
 
 **rTsd.Android**
+
 Android wrapper and platform-specifc implementations like custom rendereres, effects or assets.
 
 ## Phases

@@ -76,6 +76,14 @@ This app is purely build for having fun! All features have room for improvements
 
 ## Contributing
 Feel free to improve the quality of the code. It would be great to learn more from experienced C#, Xamarin and Azure developers.
+Please use the "default" workflow of contributing to this project.
+1. Open an issue and describing your idea or bug finding
+1. Fork repository
+1. Fix bug / add enhancement in well named feature branch with issue number (e.g. `user.name/2-added-app-icon`)
+1. Add the issue number to your commit message (e.g. `#2 Added new app icon`)
+1. Create pull request (PR) from your feature branch to this `master` branch 
+1. Please keep in touch with your PR to answer upcoming questions
+1. If your PR got merged, check if you are listed in the "Authors" section of the readme
 
 ## Authors
 Just me, [Tobi]([https://tscholze.github.io).

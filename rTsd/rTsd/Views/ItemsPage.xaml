@@ -44,9 +44,8 @@
 
                 <!-- Logo -->
                 <Image Source="drwindows_logo.png"
-                       HeightRequest="70" 
-                       HorizontalOptions="Center"
-                       Margin="0, 0, 0, 10"/>
+                       HeightRequest="60" 
+                       HorizontalOptions="Center"/>
 
                 <!-- Bottom border-->
                 <BoxView HeightRequest="1" 

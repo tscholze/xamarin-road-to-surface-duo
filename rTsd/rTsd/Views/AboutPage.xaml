@@ -19,35 +19,25 @@
         </Grid.RowDefinitions>
         
         <!-- Hero area (Image)-->
-        <StackLayout VerticalOptions="FillAndExpand" 
-                     HorizontalOptions="Fill"
-                     BackgroundColor="#F7F7F7">
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="Center" 
-                         VerticalOptions="Center">
-                <ContentView Padding="0,20,0,20" 
-                             VerticalOptions="FillAndExpand">
-                    <Image Source="logo1.jpg" 
-                           VerticalOptions="Center" 
-                           HeightRequest="100" />
-                </ContentView>
-            </StackLayout>
-        </StackLayout>
-        
+        <Image Source="logo1.jpg" 
+               Aspect="AspectFit"
+               HeightRequest="180"/>
+
         <!-- Scrollable text area -->
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" 
                          Padding="20" 
                          Spacing="5" >
                 <Label Style="{StaticResource PrimaryLargeLabelStyle}" 
-                    Text="#rTsd"  />
+                       Text="#rTsd"  />
                 <Label Text="Road to Surface Duo with Xamarin.Forms." 
                        FontSize="Caption" />
+                
                 <Label Style="{StaticResource PrimaryBodyLabelStyle}"
                        Text="This ia a work in progress Xamarin.Forms Android project which is intended to feature most of the new features that makes the upcoming Microsoft Surface Duo phone unique." />
 
                 <Button Style="{StaticResource PrimaryButtonStyle}"
-                    Margin="0,10,0,0" 
+                        Margin="0,10,0,0" 
                         Text="Go to GitHub"
                         Command="{Binding OpenWebCommand}" />
             </StackLayout>

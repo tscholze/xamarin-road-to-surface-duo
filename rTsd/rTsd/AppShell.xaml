@@ -8,15 +8,45 @@
        Title="rTsd"
        x:Class="rTsd.AppShell">
 
-    <!-- 
-        Single tab TabBar 
-    -->
-    <TabBar>
-        <Tab>
-            <ShellContent>
-                <views:ItemsPage />
-            </ShellContent>
-        </Tab>
-    </TabBar>
-    
+    <!-- #region Shell header -->
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <StackLayout Orientation="Vertical" BackgroundColor="White">
+                <!-- Logo -->
+                <Image Aspect="AspectFill"
+                       Source="logo1.jpg"/>
+
+                <StackLayout Orientation="Vertical" 
+                             Padding="20" 
+                             Spacing="5" >
+                    <Label Style="{StaticResource PrimaryLargeLabelStyle}" 
+                           Text="#rTsd"  />
+                    
+                    <Label Text="Road to Surface Duo with Xamarin.Forms." 
+                           FontSize="Caption" />
+
+                    <Label Style="{StaticResource PrimaryBodyLabelStyle}"
+                           Text="This ia a work in progress Xamarin.Forms Android project which is intended to feature most of the new features that makes the upcoming Microsoft Surface Duo phone unique." />
+                </StackLayout>
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <!--#endregion-->
+
+    <!-- #region Shell navigation items -->
+
+    <ShellContent Title="News article"
+                  Icon="icon_blog.png">
+        <views:ItemsPage />
+    </ShellContent>
+
+    <ShellContent Title="About"
+                  Icon="icon_about.png">
+        <views:AboutPage />
+    </ShellContent>
+
+    <!-- #endregion -->
+
 </Shell>

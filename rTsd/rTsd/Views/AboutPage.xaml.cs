@@ -1,18 +1,22 @@
-﻿using System;
+﻿using rTsd.ViewModels;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace rTsd.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
+    /// <summary>
+    /// AboutPage is responsible for rendering a information
+    /// about the app.
+    /// </summary>
     [DesignTimeVisible(false)]
     public partial class AboutPage : ContentPage
     {
         public AboutPage()
         {
             InitializeComponent();
+
+            // Set binding context to the created view model.
+            //BindingContext = new AboutViewModel();
         }
     }
 }

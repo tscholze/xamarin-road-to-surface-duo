@@ -3,18 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:rTsd.ViewModels"
              mc:Ignorable="d"
              x:Class="rTsd.Views.AboutPage"
-             xmlns:vm="clr-namespace:rTsd.ViewModels"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             Shell.NavBarIsVisible="false"
+             ControlTemplate="{StaticResource BasePageControlTemplate}">
 
+    <!--
+        The binding context is also set able via XAML.
+        To see the C#-based setting of the binding context
+        have a look at ItemsPage.xaml.cs
+    -->
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
 
+    <!-- Content -->
     <Grid>
         <Grid.RowDefinitions>
+            <!-- Hero -->
             <RowDefinition Height="Auto" />
+            <!-- Text & buttons -->
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
@@ -24,22 +34,38 @@
                HeightRequest="180"/>
 
         <!-- Scrollable text area -->
-        <ScrollView Grid.Row="1">
+        <ScrollView Grid.Row="1" 
+                    BackgroundColor="{StaticResource OnPrimary}">
             <StackLayout Orientation="Vertical" 
                          Padding="20" 
                          Spacing="5" >
+                
+                <!-- Headline -->
                 <Label Style="{StaticResource PrimaryLargeLabelStyle}" 
                        Text="#rTsd"  />
+                
                 <Label Text="Road to Surface Duo with Xamarin.Forms." 
                        FontSize="Caption" />
-                
-                <Label Style="{StaticResource PrimaryBodyLabelStyle}"
-                       Text="This ia a work in progress Xamarin.Forms Android project which is intended to feature most of the new features that makes the upcoming Microsoft Surface Duo phone unique." />
 
+                <!--
+                    Note:
+                    &#x0a; is the control code for a line break.
+                    \n or \n\r does only work if setting the text member by
+                    C#-code.
+                -->
+                <Label Style="{StaticResource PrimaryBodyLabelStyle}"
+                       Text="This ia a work in progress Xamarin.Forms Android project which is intended to feature most of the new features that makes the upcoming Microsoft Surface Duo phone unique.&#x0a;&#x0a;Besides this usecase, this app also functions as an entry point for beginners. The #rTsd is the foundation of an article series on the German Microsoft Portal drwindows.de which is targeted for beginners in context of mobile software development." />
+
+                <!-- Buttons -->
+                <Button Style="{StaticResource PrimaryButtonStyle}"
+                        Margin="0,10,0,0" 
+                        Text="Go to Dr. Windows"
+                        Command="{Binding OpenDrWindowsWebCommand}" />
+                
                 <Button Style="{StaticResource PrimaryButtonStyle}"
                         Margin="0,10,0,0" 
                         Text="Go to GitHub"
-                        Command="{Binding OpenWebCommand}" />
+                        Command="{Binding OpenGitHubWebCommand}" />
             </StackLayout>
         </ScrollView>
     </Grid>

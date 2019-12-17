@@ -20,54 +20,43 @@
     </ContentPage.BindingContext>
 
     <!-- Content -->
-    <Grid>
-        <Grid.RowDefinitions>
-            <!-- Hero -->
-            <RowDefinition Height="Auto" />
-            <!-- Text & buttons -->
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        
-        <!-- Hero area (Image)-->
-        <Image Source="logo1.jpg" 
-               Aspect="AspectFit"
-               HeightRequest="180"/>
+    <ScrollView BackgroundColor="{StaticResource OnPrimary}">
+        <StackLayout Orientation="Vertical" 
+                     Padding="20" 
+                     Spacing="5" >
+            <!-- Hero area (Image)-->
+            <Image Source="logo1.jpg" 
+                   Aspect="AspectFit"
+                   HeightRequest="180"/>
 
-        <!-- Scrollable text area -->
-        <ScrollView Grid.Row="1" 
-                    BackgroundColor="{StaticResource OnPrimary}">
-            <StackLayout Orientation="Vertical" 
-                         Padding="20" 
-                         Spacing="5" >
-                
-                <!-- Headline -->
-                <Label Style="{StaticResource PrimaryLargeLabelStyle}" 
-                       Text="#rTsd"  />
-                
-                <Label Text="Road to Surface Duo with Xamarin.Forms." 
-                       FontSize="Caption" />
 
-                <!--
-                    Note:
-                    &#x0a; is the control code for a line break.
-                    \n or \n\r does only work if setting the text member by
-                    C#-code.
+            <!-- Headline -->
+            <Label Style="{StaticResource PrimaryLargeLabelStyle}" 
+                   Text="#rTsd"  />
+
+            <Label Text="Road to Surface Duo with Xamarin.Forms." 
+                   FontSize="Caption" />
+
+            <!--
+                Note:
+                &#x0a; is the control code for a line break.
+                \n or \n\r does only work if setting the text member by
+                C#-code.
                 -->
-                <Label Style="{StaticResource PrimaryBodyLabelStyle}"
-                       Text="This ia a work in progress Xamarin.Forms Android project which is intended to feature most of the new features that makes the upcoming Microsoft Surface Duo phone unique.&#x0a;&#x0a;Besides this usecase, this app also functions as an entry point for beginners. The #rTsd is the foundation of an article series on the German Microsoft Portal drwindows.de which is targeted for beginners in context of mobile software development." />
+            <Label Style="{StaticResource PrimaryBodyLabelStyle}"
+                   Text="This ia a work in progress Xamarin.Forms Android project which is intended to feature most of the new features that makes the upcoming Microsoft Surface Duo phone unique.&#x0a;&#x0a;Besides this usecase, this app also functions as an entry point for beginners. The #rTsd is the foundation of an article series on the German Microsoft Portal drwindows.de which is targeted for beginners in context of mobile software development." />
 
-                <!-- Buttons -->
-                <Button Style="{StaticResource PrimaryButtonStyle}"
-                        Margin="0,10,0,0" 
-                        Text="Go to Dr. Windows"
-                        Command="{Binding OpenDrWindowsWebCommand}" />
-                
-                <Button Style="{StaticResource PrimaryButtonStyle}"
-                        Margin="0,10,0,0" 
-                        Text="Go to GitHub"
-                        Command="{Binding OpenGitHubWebCommand}" />
-            </StackLayout>
-        </ScrollView>
-    </Grid>
+            <!-- Buttons -->
+            <Button Style="{StaticResource PrimaryButtonStyle}"
+                    Margin="0,10,0,0" 
+                    Text="Go to Dr. Windows"
+                    Command="{Binding OpenDrWindowsWebCommand}" />
+
+            <Button Style="{StaticResource PrimaryButtonStyle}"
+                    Margin="0,10,0,0" 
+                    Text="Go to GitHub"
+                    Command="{Binding OpenGitHubWebCommand}" />
+        </StackLayout>
+    </ScrollView>
 
 </ContentPage>

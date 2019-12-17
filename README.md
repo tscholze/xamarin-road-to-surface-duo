@@ -74,6 +74,9 @@ I'm not a skilled user interface designer nor I have an eye for beauty, but the 
 
 I used the free, but required an Adobe ID, application [Adobe XD](https://www.adobe.com/de/products/xd.html) to create the protoyp views.
 
+## Decisions made 
+- Using the `Page.Navigation(...)` feature instead of the new url-based `Shell.GoToAsync(...)`
+
 ## Keep in mind
 This app is purely build for having fun! All features have room for improvements or could be done more elegant.
 

@@ -13,6 +13,8 @@ namespace rTsd.Services
     /// <summary>
     /// A <see cref="IElementService{T}"/> that reads and aprses feed 
     /// information from the web.
+    /// 
+    /// Interface methods are comment in the interface itself.
     /// </summary>
     public class FeedService : IElementService<Post>
     {
@@ -117,7 +119,7 @@ namespace rTsd.Services
                 // E.g. item.guid -> object.id
                 var posts = items.Select(item => new Post
                 {
-                    Id = item.Element("guid").Value,
+                    Id = item.Element("guid").Value.Replace("https://www.drwindows.de/news/?p=", string.Empty),
                     Title = item.Element("title").Value,
                     LinkSource = item.Element("link").Value,
                     Content = item.Element(content + "encoded").Value,

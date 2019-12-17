@@ -7,6 +7,6 @@
              x:Class="rTsd.Views.ItemDetailPage"
              Title="{Binding Title}">
 
-    <Label Text="Detail" />
+    <Label Text="{Binding Post.Title}" />
 
 </ContentPage>

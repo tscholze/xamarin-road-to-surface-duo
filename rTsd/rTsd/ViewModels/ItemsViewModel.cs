@@ -1,4 +1,5 @@
 ﻿using rTsd.Models;
+using rTsd.Views;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -22,6 +23,22 @@ namespace rTsd.ViewModels
             get { return items; }
             private set { SetProperty(ref items, value); }
         }
+
+        private Post selectedPost;
+
+        /// <summary>
+        /// Selected post in list view.
+        /// </summary>
+        public Post SelectedPost
+        {
+            get { return selectedPost; }
+            set { SetProperty(ref selectedPost, value); }
+        }
+
+        /// <summary>
+        /// Will trigger a navigation push to the detail page if list's item.
+        /// </summary>
+        public ICommand NavigateToDetailPageCommand { get; private set; }
 
         /// <summary>
         /// Will trigger the shell's flyout to be presented or hidden.
@@ -48,6 +65,7 @@ namespace rTsd.ViewModels
             Items = new List<Post>();
 
             // Setup commands.
+            NavigateToDetailPageCommand = new Command<Post>((post) => NavigateToDetailPage(post));
             LoadItemsCommand = new Command(() => LoadArticlesAsync());
             ShowShellFlyoutCommand = new Command(() => ShowShellFlyout());
         }
@@ -57,7 +75,21 @@ namespace rTsd.ViewModels
         #region Private helper methods
 
         /// <summary>
-        /// Will toggle the state of shell's `FlyoutIsPresented` member.
+        /// Will navigate to the detail page for given post.
+        /// </summary>
+        /// <param name="post">Post to show in detail.</param>
+        private async void NavigateToDetailPage(Post post)
+        {
+            if (post == null) return;
+
+            var page = new ItemDetailPage(new ItemDetailViewModel(post));
+            await Application.Current.MainPage.Navigation.PushAsync(page).ConfigureAwait(false);
+
+            SelectedPost = null;
+        }
+
+        /// <summary>
+        /// Will show or hide the Flyout.
         /// </summary>
         private void ShowShellFlyout()
         {

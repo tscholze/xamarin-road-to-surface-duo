@@ -24,10 +24,15 @@
         </yummy:PancakeView.BackgroundGradientStops>
 
         <!-- Content -->
-        <CollectionView ItemsSource="{Binding Items}"
-                        Margin="20, 10">
+        <CollectionView x:Name="MyCollectionView"
+                        ItemsSource="{Binding Items}"
+                        Margin="20, 10"
+                        SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+                        SelectionMode="Single"
+                        SelectionChangedCommand="{Binding NavigateToDetailPageCommand}"
+                        SelectionChangedCommandParameter="{Binding Source={x:Reference MyCollectionView}, Path=SelectedItem}">
 
-            <!-- Configurate item layout -->
+        <!-- Configurate item layout -->
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" 
                                    ItemSpacing="20"/>

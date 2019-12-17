@@ -6,7 +6,7 @@ using Xamarin.Forms;
 namespace rTsd.ViewModels
 {
     /// <summary>
-    /// ViewModel of the ItemViewPage.
+    /// ViewModel of the AboutPage.
     /// </summary>
     public class AboutViewModel : BaseViewModel
     {

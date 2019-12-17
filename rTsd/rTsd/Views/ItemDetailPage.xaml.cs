@@ -4,18 +4,28 @@ using rTsd.ViewModels;
 
 namespace rTsd.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
+    /// <summary>
+    /// ItemDetailPage is responsible for rendering a detail
+    /// view of given post.
+    /// </summary>
     [DesignTimeVisible(false)]
     public partial class ItemDetailPage : ContentPage
     {
-        ItemDetailViewModel viewModel;
+        #region Constructor
 
+        /// <summary>
+        /// Constructor.
+        /// Will set and load required information.
+        /// </summary>
+        /// 
         public ItemDetailPage(ItemDetailViewModel viewModel)
         {
+            // In this scenario, we set the given view model before we
+            // init the UI.
+            BindingContext = viewModel;
             InitializeComponent();
-
-            BindingContext = this.viewModel = viewModel;
         }
+
+        #endregion
     }
 }

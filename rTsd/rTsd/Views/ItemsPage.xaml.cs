@@ -18,7 +18,7 @@ namespace rTsd.Views
         /// <summary>
         /// Underlying view model
         /// </summary>
-        ItemsViewModel viewModel;
+        readonly ItemsViewModel viewModel;
 
         #endregion
 

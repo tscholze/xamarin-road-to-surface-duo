@@ -39,16 +39,5 @@ namespace rTsd.ViewModels
         }
 
         #endregion
-
-        /// <summary>
-        /// Opens link in system's browser.
-        /// </summary>
-        /// <param name="uri">Uri as string that should be opened.</param>
-        private async void OpenBrowserToUrl(string uri)
-        {
-            // This would be the place to validate the url or to check if this is an
-            // in app link, etc. pp.
-            await Browser.OpenAsync(new Uri(uri)).ConfigureAwait(false);
-        }
     }
 }

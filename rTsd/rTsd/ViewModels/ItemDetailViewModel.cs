@@ -1,4 +1,9 @@
 ﻿using rTsd.Models;
+using System.IO;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace rTsd.ViewModels
 {
@@ -20,6 +25,30 @@ namespace rTsd.ViewModels
             private set { SetProperty(ref post, value); }
         }
 
+        private HtmlWebViewSource webViewSource;
+
+        /// <summary>
+        /// Rendered html content of the underlying post.
+        /// 
+        /// The content will be enriched to include some
+        /// styling attributes and other html'ish paramter.
+        /// </summary>
+        public HtmlWebViewSource WebViewSource
+        {
+            get { return webViewSource; }
+            set { SetProperty(ref webViewSource, value); }
+        }
+
+        /// <summary>
+        /// Command to the post in system's browser.
+        /// </summary>
+        public ICommand OpenPostWebCommand { get; }
+
+        /// <summary>
+        /// Command to open the system's share sheet.
+        /// </summary>
+        public ICommand ShareCommand { get; }
+
         #endregion
 
         #region
@@ -30,7 +59,48 @@ namespace rTsd.ViewModels
         /// <param name="post">Underlying post.</param>
         public ItemDetailViewModel(Post post)
         {
+            // Ensure required information is set.
+            if (post == null) return;
+
+            // Set UI properties.
             Post = post;
+
+            WebViewSource = new HtmlWebViewSource
+            {
+                Html = PreparedContentForWebView(post.Content)
+            };
+
+            // Setup commands
+            OpenPostWebCommand = new Command(() => OpenBrowserToUrl(post.LinkSource));
+            ShareCommand = new Command(() => System.Diagnostics.Debug.WriteLine("Share tapped!"));
+        }
+
+        #endregion
+
+        #region Private helper
+
+        private string PreparedContentForWebView(string content)
+        {
+            // Read prefix container from file.
+            var assembly = typeof(ItemDetailViewModel).GetTypeInfo().Assembly;
+            Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.Resources.container.html");
+
+            // Ennsure a file and stream has been found.
+            if (stream == null) return string.Empty;
+
+            // Prefill result with prefix.
+            StreamReader reader = new StreamReader(stream);
+            var result = reader.ReadToEnd();
+
+            // Cleanup reader.
+            reader.Dispose();
+
+            // Strip the embedded article image form the content
+            content = Regex.Replace(content, @"<div*>(.+?)</div>", string.Empty, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+
+            // Combine prefix and actual content.
+            result += content;
+            return result;
         }
 
         #endregion

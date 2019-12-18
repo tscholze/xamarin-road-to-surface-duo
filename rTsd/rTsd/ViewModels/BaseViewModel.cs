@@ -7,6 +7,7 @@ using Xamarin.Forms;
 
 using rTsd.Models;
 using rTsd.Services;
+using Xamarin.Essentials;
 
 namespace rTsd.ViewModels
 {
@@ -49,6 +50,17 @@ namespace rTsd.ViewModels
         #endregion
 
         #region Protected member
+
+        /// <summary>
+        /// Opens link in system's browser.
+        /// </summary>
+        /// <param name="uri">Uri as string that should be opened.</param>
+        protected async void OpenBrowserToUrl(string uri)
+        {
+            // This would be the place to validate the url or to check if this is an
+            // in app link, etc. pp.
+            await Browser.OpenAsync(new Uri(uri)).ConfigureAwait(false);
+        }
 
         /// <summary>
         /// Helper method to set a vakue and update the related field.

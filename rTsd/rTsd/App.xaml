@@ -10,6 +10,7 @@
             <!-- Colors -->
             <Color x:Key="OnPrimary">#FAFAFA</Color>
             <Color x:Key="Primary">#213868</Color>
+            <Color x:Key="PrimaryReduced">#627294</Color>
             <Color x:Key="Accent">#8992A4</Color>
             <Color x:Key="AccentDark">#1C2E53</Color>
 

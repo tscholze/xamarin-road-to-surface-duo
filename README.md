@@ -43,6 +43,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - Personal Blog: [[Projekt] #rTsd – Road to Surface Duo](https://tscholze.uber.space/2019/11/30/projekt-rtsd-road-to-surface-duo/)
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 1](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-1)
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 2](https://www.drwindows.de/news/road-to-surface-duo-das-entwicklertagebuch-teil-2)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 3](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-3)
 
 ## Prerequirements
 - Windows 10 / macOS 
@@ -72,6 +73,9 @@ I'm not a skilled user interface designer nor I have an eye for beauty, but the 
 <center><img src="docs/ui-protoypes.png" height="300" /></center>
 
 I used the free, but required an Adobe ID, application [Adobe XD](https://www.adobe.com/de/products/xd.html) to create the protoyp views.
+
+## Decisions made 
+- Using the `Page.Navigation(...)` feature instead of the new url-based `Shell.GoToAsync(...)`
 
 ## Keep in mind
 This app is purely build for having fun! All features have room for improvements or could be done more elegant.

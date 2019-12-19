@@ -34,8 +34,9 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - [x] Write an email to `dualscreendev@microsoft.com` to get soon(tm) more information
 - [x] Concept roughly an user interface
 - [x] Get the project (template) up and running
-- [ ] Getting into important Xamarin / C# pattern
-- [ ] Write first MVP code
+- [x] Getting into important Xamarin / C# pattern
+- [x] Write first MVP code
+- [ ] Improve feature set
 - [ ] Write tests
 - [ ] Leverage CI with tests and test deployment
 
@@ -63,15 +64,22 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - [Adobe XD](https://www.adobe.com/de/products/xd.html) to protoyp the UI
 
 ## Features
-- Lists articles of [Dr. Windows](https://www.drwindows.de) 
 - Good looking, hopefully (in my opinion)
 - Utilizes Surface Duo features
 - Utilizes App Center features
+- Lists articles of [Dr. Windows](https://www.drwindows.de) 
+- Detail article view
+- Share functionality
 
 ## UI concepts
 I'm not a skilled user interface designer nor I have an eye for beauty, but the app should look mostly like the following concepts.
 
 <center><img src="docs/ui-protoypes.png" height="300" /></center>
+
+## App screenshots
+All shown screenshots are taken with version 20191217.
+
+<center><img src="docs/ui-app.png" height="300" /></center>
 
 I used the free, but required an Adobe ID, application [Adobe XD](https://www.adobe.com/de/products/xd.html) to create the protoyp views.
 

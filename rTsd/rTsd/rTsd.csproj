@@ -22,4 +22,10 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />  
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.3.6" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Controls\PostHeroView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

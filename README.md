@@ -36,7 +36,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - [x] Get the project (template) up and running
 - [x] Getting into important Xamarin / C# pattern
 - [x] Write first MVP code
-- [ ] Improve feature set
+- [ ] Improve feature se
 - [ ] Write tests
 - [ ] Leverage CI with tests and test deployment
 

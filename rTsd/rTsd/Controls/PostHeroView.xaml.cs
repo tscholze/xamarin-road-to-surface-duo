@@ -29,6 +29,9 @@ namespace rTsd.Controls
 
         #region Constructor
 
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
         public PostHeroView()
         {
             InitializeComponent();

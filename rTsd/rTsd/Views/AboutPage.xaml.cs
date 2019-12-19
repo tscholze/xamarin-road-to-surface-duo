@@ -1,5 +1,4 @@
-﻿using rTsd.ViewModels;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace rTsd.Views
@@ -16,6 +15,8 @@ namespace rTsd.Views
             InitializeComponent();
 
             // Set binding context to the created view model.
+            // In this scenario, the bindable context is set 
+            // by the *.xaml file.
             //BindingContext = new AboutViewModel();
         }
     }

@@ -11,9 +11,38 @@
              Shell.NavBarIsVisible="false"
              ControlTemplate="{StaticResource BasePageControlTemplate}">
 
-    <!-- Background gradient view -->
-    <yummy:PancakeView>
+    <!-- #region Resources -->
+    <ContentPage.Resources>
+        <!-- TearPacakeViewStyle -->
+        <Style TargetType="yummy:PancakeView" x:Key="TearPacakeViewStyle">
+            <Setter Property="HeightRequest" Value="120" />
+            <Setter Property="CornerRadius" Value="20, 0, 0, 20" />
+            <Setter Property="Margin" Value="20, 10, 20, 10" />
+            <Setter Property="BorderColor" Value="{StaticResource Primary}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
 
+        <!-- ItemTemplateContainerGridStyle -->
+        <Style TargetType="Grid" x:Key="ItemTemplateContainerGridStyle">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="{StaticResource Accent}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    <!-- #endregion -->
+
+    <!-- #region Content -->
+    <yummy:PancakeView>
         <!-- Configurate PancakeView -->
         <yummy:PancakeView.BackgroundGradientStops>
             <yummy:GradientStopCollection>
@@ -25,31 +54,23 @@
 
         <!-- CollectionView -->
         <CollectionView x:Name="ItemsCollectionView"
-                        Margin="20, 10"
+                        Margin="0, 10"
                         ItemsSource="{Binding Items}"
                         SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
                         SelectionMode="Single"
                         SelectionChangedCommand="{Binding NavigateToDetailPageCommand}"
                         SelectionChangedCommandParameter="{Binding Source={x:Reference ItemsCollectionView}, Path=SelectedItem}">
 
-            <!-- Configurate item layout -->
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" 
-                                   ItemSpacing="20"/>
-            </CollectionView.ItemsLayout>
-
             <!-- Configurate item template -->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    
-                    <!-- Tear view -->
-                    <yummy:PancakeView HeightRequest="120"
-                                       CornerRadius="20, 0, 0, 20"
-                                       BorderColor="{StaticResource Primary}" 
-                                       BorderThickness="1">
+                    <!-- Using grid as a container to apply a custom background color on selection -->
+                    <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
+                        <!-- Tear view -->
+                        <yummy:PancakeView  Style="{StaticResource TearPacakeViewStyle}">
                         
-                        <!-- Content of the item template -->
-                        <Grid>
+                            <!-- Content of the item template -->
+                            <Grid>
                             <!-- Background image -->
                             <Image Source="{Binding ImageSource}" 
                                    Aspect="AspectFill"/>
@@ -85,9 +106,12 @@
                                 </Grid>
                             </yummy:PancakeView>
                         </Grid>
-                    </yummy:PancakeView>
+                        </yummy:PancakeView>
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
     </yummy:PancakeView>
+    <!-- #endregion -->
+
 </ContentPage>

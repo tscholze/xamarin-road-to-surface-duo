@@ -34,7 +34,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            ´<!-- Browser button -->
+            <!-- Browser button -->
             <Button Grid.Column="0"
                     ImageSource="earth.png"
                     Command="{Binding OpenPostWebCommand}"/>

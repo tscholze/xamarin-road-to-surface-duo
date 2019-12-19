@@ -63,6 +63,23 @@ namespace rTsd.ViewModels
         }
 
         /// <summary>
+        /// Opens link in system's share sheet.
+        /// </summary>
+        /// <param name="uri">Uri as string that should be shared.</param>
+        protected async void OpenShareSheetToUrl(string linkSource)
+        {
+            // Ensure required information is set.
+            if (linkSource == null) return;
+
+            // Request system's share sheet.
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Uri = linkSource,
+                Title = "Share link"
+            }).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Helper method to set a vakue and update the related field.
         /// 
         /// Usage:

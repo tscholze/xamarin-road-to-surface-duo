@@ -72,13 +72,19 @@ namespace rTsd.ViewModels
 
             // Setup commands
             OpenPostWebCommand = new Command(() => OpenBrowserToUrl(post.LinkSource));
-            ShareCommand = new Command(() => System.Diagnostics.Debug.WriteLine("Share tapped!"));
+            ShareCommand = new Command(() => OpenShareSheetToUrl(post.LinkSource));
         }
 
         #endregion
 
         #region Private helper
 
+        /// <summary>
+        /// Prepares the feed's post's content to be
+        /// presented in the embedded webview.
+        /// </summary>
+        /// <param name="content">Underlying content.</param>
+        /// <returns>Prepared html string for webview.</returns>
         private string PreparedContentForWebView(string content)
         {
             // Read prefix container from file.

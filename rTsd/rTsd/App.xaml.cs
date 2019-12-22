@@ -24,9 +24,9 @@ namespace rTsd
             // For tutorial purpose, this functionality is not
             // set active during the current implementation phase.
 //#if DEBUG
-            DependencyService.Register<MockedFeedService>();
+            // DependencyService.Register<MockedFeedService>();
 //#else
-            // DependencyService.Register<FeedService>();
+            DependencyService.Register<FeedService>();
 //#endif
 
             // Setup entry ui point.

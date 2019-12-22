@@ -61,7 +61,7 @@ namespace rTsd.Services
         /// </summary>
         public FeedService()
         {
-            // Required by CDI.
+            // Required by depdency register.
             // See `App.cs`.
         }
 

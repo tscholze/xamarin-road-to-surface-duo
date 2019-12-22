@@ -80,11 +80,16 @@ namespace rTsd.ViewModels
         /// <param name="post">Post to show in detail.</param>
         private async void NavigateToDetailPage(Post post)
         {
+            // Ensure required post is set.
             if (post == null) return;
 
+            // Get detail page with required view model set.
             var page = new ItemDetailPage(new ItemDetailViewModel(post));
+
+            // Navigate to the detail page.
             await Application.Current.MainPage.Navigation.PushAsync(page).ConfigureAwait(false);
 
+            // Deselect selected post.
             SelectedPost = null;
         }
 

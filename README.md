@@ -16,6 +16,8 @@ This project is written and owned by a beginner and meant for beginners. It woul
 |-------|------|
 |AppCenter|![Badge](https://build.appcenter.ms/v0.1/apps/b0ad7c4c-b7c3-4fa3-b969-c840e9affc22/branches/master/badge)
 |Azure DevOps|[![Build Status](https://dev.azure.com/tscholze/RoadToSurfaceDuo%20Android/_apis/build/status/tscholze.xamarin-road-to-surface-duo?branchName=master)](https://dev.azure.com/tscholze/RoadToSurfaceDuo%20Android/_build/latest?definitionId=9&branchName=master)
+|Sonar Cloud|[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=tscholze_xamarin-road-to-surface-duo&metric=alert_status)](https://sonarcloud.io/dashboard?id=tscholze_xamarin-road-to-surface-duo)|
+
 
 ## Structure
 

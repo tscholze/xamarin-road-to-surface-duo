@@ -7,10 +7,24 @@
 
   <ItemGroup>
     <None Remove="container.html" />
+    <None Remove="Resources\Images\blur_background.png" />
+    <None Remove="Resources\Images\drwindows_logo.png" />
+    <None Remove="Resources\Images\earth.png" />
+    <None Remove="Resources\Images\icon_about.png" />
+    <None Remove="Resources\Images\icon_blog.png" />
+    <None Remove="Resources\Images\logo.jpg" />
+    <None Remove="Resources\Images\share.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\container.html" />
+    <EmbeddedResource Include="Resources\Images\blur_background.png" />
+    <EmbeddedResource Include="Resources\Images\drwindows_logo.png" />
+    <EmbeddedResource Include="Resources\Images\earth.png" />
+    <EmbeddedResource Include="Resources\Images\icon_about.png" />
+    <EmbeddedResource Include="Resources\Images\icon_blog.png" />
+    <EmbeddedResource Include="Resources\Images\logo.jpg" />
+    <EmbeddedResource Include="Resources\Images\share.png" />
   </ItemGroup>
 
   <ItemGroup>

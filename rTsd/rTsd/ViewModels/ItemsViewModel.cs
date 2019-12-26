@@ -41,11 +41,6 @@ namespace rTsd.ViewModels
         public ICommand NavigateToDetailPageCommand { get; private set; }
 
         /// <summary>
-        /// Will trigger the shell's flyout to be presented or hidden.
-        /// </summary>
-        public ICommand ShowShellFlyoutCommand { get; private set; }
-
-        /// <summary>
         /// Will trigger an item (re-) load.
         /// </summary>
         public ICommand LoadItemsCommand { get; private set; }
@@ -67,7 +62,6 @@ namespace rTsd.ViewModels
             // Setup commands.
             NavigateToDetailPageCommand = new Command<Post>((post) => NavigateToDetailPage(post));
             LoadItemsCommand = new Command(() => LoadArticlesAsync());
-            ShowShellFlyoutCommand = new Command(() => ShowShellFlyout());
         }
 
         #endregion
@@ -91,14 +85,6 @@ namespace rTsd.ViewModels
 
             // Deselect selected post.
             SelectedPost = null;
-        }
-
-        /// <summary>
-        /// Will show or hide the Flyout.
-        /// </summary>
-        private void ShowShellFlyout()
-        {
-            Shell.Current.FlyoutIsPresented = !Shell.Current.FlyoutIsPresented;
         }
 
         /// <summary>

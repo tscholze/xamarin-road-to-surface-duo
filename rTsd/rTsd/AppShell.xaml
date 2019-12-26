@@ -3,6 +3,7 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:local="clr-namespace:rTsd.Extensions"
        mc:Ignorable="d"
        xmlns:views="clr-namespace:rTsd.Views"
        Title="rTsd"
@@ -12,13 +13,15 @@
 
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <StackLayout Orientation="Vertical" BackgroundColor="White">
+            <StackLayout Orientation="Vertical" 
+                         BackgroundColor="White">
                 <!-- Logo -->
                 <Image Aspect="AspectFill"
-                       Source="logo1.jpg"/>
+                       HeightRequest="150"
+                       Source="{local:ImageResource rTsd.Resources.Images.logo.jpg }" VerticalOptions="Start"/>
 
                 <StackLayout Orientation="Vertical" 
-                             Padding="20" 
+                             Padding="20, 10, 20, 20" 
                              Spacing="5" >
                     <Label Style="{StaticResource PrimaryLargeLabelStyle}" 
                            Text="#rTsd"  />

@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:effects="clr-namespace:rTsd.Effects"
+             xmlns:local="clr-namespace:rTsd.Extensions"
              mc:Ignorable="d"
              x:Class="rTsd.Controls.PostHeroView">
     <ContentView.Content>
@@ -15,30 +16,30 @@
 
             <!-- Bottom blur and title view -->
             <yummy:PancakeView HeightRequest="60" 
-                                               VerticalOptions="EndAndExpand">
+                               VerticalOptions="EndAndExpand">
                 <Grid>
 
                     <!-- Todo: Add working blurred background. Android does not support blur -->
                     <!-- Blurring background image -->
-                    <Image Source="blur_background"  
-                                           Aspect="Fill"
-                                           Opacity="0.5"/>
+                    <Image Source="{local:ImageResource rTsd.Resources.Images.blur_background.png}" 
+                           Aspect="Fill"
+                           Opacity="0.5"/>
 
                     <!-- Title -->
                     <Label x:Name="TitleLabel"
-                                           VerticalOptions="EndAndExpand" 
-                                           LineBreakMode="TailTruncation"
-                                           MaxLines="2"
-                                           Margin="10, 5, 10, 5" 
-                                           FontSize="19" 
-                                           TextColor="{StaticResource OnPrimary}">
+                           VerticalOptions="EndAndExpand" 
+                           LineBreakMode="TailTruncation"
+                           MaxLines="2"
+                           Margin="10, 5, 10, 5" 
+                           FontSize="19" 
+                           TextColor="{StaticResource OnPrimary}">
 
                         <!-- Add shadoe effect -->
                         <Label.Effects>
                             <effects:ShadowEffect Radius="10"
-                                                                  DistanceX="2" 
-                                                                  DistanceY="2" 
-                                                                  Color="Black" />
+                                                  DistanceX="2" 
+                                                  DistanceY="2" 
+                                                  Color="Black" />
                         </Label.Effects>
                     </Label>
                 </Grid>

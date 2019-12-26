@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:rTsd.ViewModels"
+             xmlns:local="clr-namespace:rTsd.Extensions"
+             xmlns:vm="clr-namespace:rTsd.ViewModels" 
              mc:Ignorable="d"
              x:Class="rTsd.Views.AboutPage"
              Title="{Binding Title}"
@@ -25,7 +26,7 @@
                      Padding="20" 
                      Spacing="5" >
             <!-- Hero area (Image)-->
-            <Image Source="logo1.jpg" 
+            <Image Source="{local:ImageResource rTsd.Resources.Images.drwindows_logo.png}" 
                    Aspect="AspectFit"
                    HeightRequest="180"/>
 

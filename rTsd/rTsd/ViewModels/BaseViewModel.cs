@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using rTsd.Models;
 using rTsd.Services;
 using Xamarin.Essentials;
+using System.Windows.Input;
 
 namespace rTsd.ViewModels
 {
@@ -45,6 +46,37 @@ namespace rTsd.ViewModels
         {
             get { return title; }
             set { SetProperty(ref title, value); }
+        }
+
+        /// <summary>
+        /// Will trigger the shell's flyout to be presented or hidden.
+        /// </summary>
+        public ICommand ShowShellFlyoutCommand { get; private set; }
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// Will set and load required information.
+        /// </summary>
+        /// 
+        public BaseViewModel()
+        {
+            ShowShellFlyoutCommand = new Command(() => ShowShellFlyout());
+        }
+
+        #endregion
+
+        #region Private helper
+
+        /// <summary>
+        /// Will show or hide the Flyout.
+        /// </summary>
+        private void ShowShellFlyout()
+        {
+            Shell.Current.FlyoutIsPresented = !Shell.Current.FlyoutIsPresented;
         }
 
         #endregion

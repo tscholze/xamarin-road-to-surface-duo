@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:rTsd.Extensions"
              mc:Ignorable="d"
              x:Class="rTsd.App">
     <Application.Resources>
@@ -67,9 +68,11 @@
                                HorizontalTextAlignment="Center" />
 
                         <!-- Logo -->
-                        <Image Source="drwindows_logo.png"
-                               HeightRequest="60" 
-                               HorizontalOptions="Center"/>
+                        <Image Source="{local:ImageResource rTsd.Resources.Images.drwindows_logo.png}"
+                               Aspect="AspectFill"
+                               HeightRequest="60"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand"/>
 
                         <!-- Bottom border-->
                         <BoxView HeightRequest="1" 

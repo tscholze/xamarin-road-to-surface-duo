@@ -55,6 +55,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 ## Assumption
 
 - The Surface Duo will usw two navigation pages, master on the left screen and detail on the right, as the main indicator how to display an app on two screens
+- Using the native asset management instead of the embedded images one. The not successful feature implementation can be found via: `deadend/embedded-images`
 
 ## Other programms I used
 - Microsoft [OneNote](https://www.onenote.com/) as information storage around the idea of the app

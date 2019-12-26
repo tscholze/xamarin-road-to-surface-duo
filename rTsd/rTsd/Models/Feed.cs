@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace rTsd.Models
 {
     /// <summary>
-    /// Data model of a feed.
+    /// Container data model of a feed for posts.
     /// </summary>
     public class Feed
     {

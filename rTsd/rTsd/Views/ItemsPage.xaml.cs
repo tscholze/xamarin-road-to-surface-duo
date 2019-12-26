@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
 using rTsd.ViewModels;
+using System;
 
 namespace rTsd.Views
 {
@@ -38,6 +39,24 @@ namespace rTsd.Views
 
             // Inital items loading.
             viewModel.LoadItemsCommand.Execute(null);
+            viewModel.LoadTweetsCommand.Execute(null);
+
+            // Setup timer.
+            Device.StartTimer(TimeSpan.FromSeconds(3), TweetsCollectionViewUpdateScrollPosition);
+        }
+
+        #endregion
+
+        #region Private helper
+
+        /// <summary>
+        /// Increments, in a loop, the scroll position.
+        /// </summary>
+        /// <returns></returns>
+        private bool TweetsCollectionViewUpdateScrollPosition()
+        {
+            // TODO: Implement feature.
+            return true;
         }
 
         #endregion

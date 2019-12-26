@@ -11,10 +11,12 @@ using System.Xml.Linq;
 namespace rTsd.Services
 {
     /// <summary>
-    /// A <see cref="IElementService{T}"/> that reads and aprses feed 
+    /// A <see cref="IElementService{T}"/> that reads and parses feed 
     /// information from the web.
     /// 
-    /// Interface methods are comment in the interface itself.
+    /// Note:
+    ///     - The services is intended to be consumed by a `DependencyService`.
+    ///     - Interface methods are comment in the interface itself.
     /// </summary>
     public class FeedService : IElementService<Post>
     {
@@ -66,6 +68,8 @@ namespace rTsd.Services
         }
 
         #endregion
+
+        #region IElementService
 
         public async Task<List<Post>> GetAllAsync(bool forceReload = false)
         {
@@ -144,6 +148,8 @@ namespace rTsd.Services
         {
             throw new NotImplementedException();
         }
+
+        #endregion
 
         #region Private helper 
 

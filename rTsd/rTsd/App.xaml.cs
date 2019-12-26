@@ -27,7 +27,8 @@ namespace rTsd
             // DependencyService.Register<MockedFeedService>();
 //#else
             DependencyService.Register<FeedService>();
-//#endif
+            //#endif
+            DependencyService.Register<TwitRssService>();
 
             // Setup entry ui point.
             MainPage = new AppShell();

@@ -18,14 +18,6 @@ namespace rTsd.ViewModels
     {
         #region Public member
 
-        /// <summary>
-        /// Feed service.
-        /// 
-        /// Injected by the `DependencyService`.
-        /// See `App.cs` for the setup process.
-        /// </summary>
-        public IElementService<Post> FeedService => DependencyService.Get<IElementService<Post>>();
-
         bool isBusy = false;
         /// <summary>
         /// Determines if the view model does something.
@@ -54,27 +46,30 @@ namespace rTsd.ViewModels
         /// <summary>
         /// Opens link in system's browser.
         /// </summary>
-        /// <param name="uri">Uri as string that should be opened.</param>
-        protected async void OpenBrowserToUrl(string uri)
+        /// <param name="source">Uri as string that should be opened.</param>
+        protected async void OpenBrowserToUrl(string source)
         {
+            // Ensure required information is set.
+            if (source == null) return;
+
             // This would be the place to validate the url or to check if this is an
             // in app link, etc. pp.
-            await Browser.OpenAsync(new Uri(uri)).ConfigureAwait(false);
+            await Browser.OpenAsync(new Uri(source)).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Opens link in system's share sheet.
         /// </summary>
-        /// <param name="uri">Uri as string that should be shared.</param>
-        protected async void OpenShareSheetToUrl(string linkSource)
+        /// <param name="source">Uri as string that should be shared.</param>
+        protected async void OpenShareSheetToUrl(string source)
         {
             // Ensure required information is set.
-            if (linkSource == null) return;
+            if (source == null) return;
 
             // Request system's share sheet.
             await Share.RequestAsync(new ShareTextRequest
             {
-                Uri = linkSource,
+                Uri = source,
                 Title = "Share link"
             }).ConfigureAwait(false);
         }

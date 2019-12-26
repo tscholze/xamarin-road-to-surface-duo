@@ -4,7 +4,6 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:effects="clr-namespace:rTsd.Effects"
              xmlns:controls="clr-namespace:rTsd.Controls"
              mc:Ignorable="d"
              x:Class="rTsd.Views.ItemsPage"
@@ -52,29 +51,60 @@
                 <yummy:GradientStop Color="{StaticResource Accent}" Offset="1" />
             </yummy:GradientStopCollection>
         </yummy:PancakeView.BackgroundGradientStops>
+        
+        <StackLayout VerticalOptions="Start">
+            <!-- Twitter Feed -->
+            <CollectionView x:Name="TweetsCollectionView"
+                            ItemsSource="{Binding Tweets}" 
+                            HeightRequest="16"
+                            SelectedItem="{Binding SelectedTweet, Mode=TwoWay}"
+                            SelectionMode="Single"
+                            SelectionChangedCommand="{Binding OpenTwitterWebCommand}"
+                            SelectionChangedCommandParameter="{Binding Source={x:Reference TweetsCollectionView}, Path=SelectedItem}">
+                <!-- Setup layout -->
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" 
+                                       ItemSpacing="20"/>
+                </CollectionView.ItemsLayout>
 
-        <!-- CollectionView -->
-        <CollectionView x:Name="ItemsCollectionView"
-                        Margin="0, 10"
-                        ItemsSource="{Binding Items}"
-                        SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
-                        SelectionMode="Single"
-                        SelectionChangedCommand="{Binding NavigateToDetailPageCommand}"
-                        SelectionChangedCommandParameter="{Binding Source={x:Reference ItemsCollectionView}, Path=SelectedItem}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="twitter.png" 
+                                   HeightRequest="16" 
+                                   Margin="20, 0, 5, 0" />
+                            <Label Text="{Binding Title}" 
+                                   TextColor="{StaticResource Accent}" 
+                                   VerticalOptions="Center" 
+                                   LineBreakMode="NoWrap"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-            <!-- Configurate item template -->
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <!-- Using grid as a container to apply a custom background color on selection -->
-                    <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
-                        <!-- Actual content -->
-                        <yummy:PancakeView  Style="{StaticResource TearPacakeViewStyle}">
-                            <controls:PostHeroView Post="{Binding .}" />
-                        </yummy:PancakeView>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            <!-- CollectionView -->
+            <CollectionView x:Name="ItemsCollectionView" VerticalOptions="FillAndExpand"
+                            ItemsSource="{Binding Items}"
+                            SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+                            SelectionMode="Single"
+                            SelectionChangedCommand="{Binding NavigateToDetailPageCommand}"
+                            SelectionChangedCommandParameter="{Binding Source={x:Reference ItemsCollectionView}, Path=SelectedItem}">
+
+                <!-- Configurate item template -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <!-- Using grid as a container to apply a custom background color on selection -->
+                        <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
+                            <!-- Actual content -->
+                            <yummy:PancakeView  Style="{StaticResource TearPacakeViewStyle}">
+                                <controls:PostHeroView Post="{Binding .}" />
+                            </yummy:PancakeView>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
     </yummy:PancakeView>
     <!-- #endregion -->
 

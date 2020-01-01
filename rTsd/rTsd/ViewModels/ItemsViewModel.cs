@@ -52,17 +52,25 @@ namespace rTsd.ViewModels
         }
 
         private List<Tweet> tweets;
+
+        /// <summary>
+        /// Twitter items to display.
+        /// </summary>
         public List<Tweet> Tweets
         {
             get { return tweets; }
-            set { SetProperty(ref tweets, value); }
+            private set { SetProperty(ref tweets, value); }
         }
 
-        private Tweet selectedTweet;
-        public Tweet SelectedTweet
+        private Tweet currentTweet;
+
+        /// <summary>
+        /// Selected post in list view.
+        /// </summary>
+        public Tweet CurrentTweet
         {
-            get { return selectedTweet; }
-            set { SetProperty(ref selectedTweet, value); }
+            get { return currentTweet; }
+            set { SetProperty(ref currentTweet, value); }
         }
 
 
@@ -91,6 +99,18 @@ namespace rTsd.ViewModels
         /// </summary>
         public ICommand OpenTwitterWebCommand { get; }
 
+        /// <summary>
+        /// Delegate for OnTweetsUpdateScrollPostionRequested event.
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event args.</param>
+        public delegate void TweetsUpdateScrollPostionRequestedEventHandler(object sender, TweetsUpdateScrollPostionRequestedEventArgs e);
+
+        /// <summary>
+        /// Event which will be raised if a tweets scrollposition is requested by the view model.
+        /// </summary>
+        public event TweetsUpdateScrollPostionRequestedEventHandler OnTweetsUpdateScrollPostionRequested;
+
         #endregion
 
         #region Constructor
@@ -110,8 +130,11 @@ namespace rTsd.ViewModels
             LoadTweetsCommand = new Command(() => LoadTweetsAsync());
 
             NavigateToDetailPageCommand = new Command<Post>((post) => NavigateToDetailPage(post));
-            OpenTwitterWebCommand = new Command<Tweet>((tweet) => OpenTweetInBrowser(tweet));
+            OpenTwitterWebCommand = new Command(() => OpenTweetInBrowser(currentTweet));
             ShowShellFlyoutCommand = new Command(() => ShowShellFlyout());
+
+            // Setup timer.
+            Device.StartTimer(TimeSpan.FromSeconds(3), OnTweetScrollTimerTicked);
         }
 
         #endregion
@@ -152,9 +175,6 @@ namespace rTsd.ViewModels
 
             // Open tweet's link in browser.
             OpenBrowserToUrl(tweet.LinkSource);
-
-            // Deselect selected tweet.
-            SelectedTweet = null;
         }
 
         /// <summary>
@@ -173,6 +193,32 @@ namespace rTsd.ViewModels
         {
             // Update binded Tweets member with service-based tweets.
             Tweets = await TwitterService.GetAllAsync().ConfigureAwait(true);
+        }
+
+        /// <summary>
+        /// Raised on every tweet scroll timer tick.
+        /// </summary>
+        /// <returns>If timer should be cancled.</returns>
+        private bool OnTweetScrollTimerTicked()
+        {
+            // Ensure all required information are set.
+            if (OnTweetsUpdateScrollPostionRequested == null || tweets == null || tweets.Count == 0) return true;
+
+            // Handle initial case and select the first one.
+            if (currentTweet == null)
+            {
+                OnTweetsUpdateScrollPostionRequested(this, new TweetsUpdateScrollPostionRequestedEventArgs(tweets[0]));
+                return true;
+            }
+
+            // Get next tweet in ever-repeating row.
+            var index = ((tweets.IndexOf(currentTweet) + 1) % (tweets.Count - 1));
+            var toTweet = tweets[index];
+
+            // Call event (thats linked in the page.cs)
+            OnTweetsUpdateScrollPostionRequested(this, new TweetsUpdateScrollPostionRequestedEventArgs(toTweet));
+
+            return true;
         }
 
         #endregion

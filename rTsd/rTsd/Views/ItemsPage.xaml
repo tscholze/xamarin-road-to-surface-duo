@@ -9,7 +9,8 @@
              x:Class="rTsd.Views.ItemsPage"
              Title="{Binding Title}"
              Shell.NavBarIsVisible="false"
-             ControlTemplate="{StaticResource BasePageControlTemplate}">
+             ControlTemplate="{StaticResource BasePageControlTemplate}"
+             x:Name="Container">
 
     <!-- #region Resources -->
     <ContentPage.Resources>
@@ -41,9 +42,10 @@
     </ContentPage.Resources>
     <!-- #endregion -->
 
-    <!-- #region Content -->
+    <!-- #region Body -->
     <yummy:PancakeView>
-        <!-- Configurate PancakeView -->
+        
+        <!-- #region Configurate PancakeView -->
         <yummy:PancakeView.BackgroundGradientStops>
             <yummy:GradientStopCollection>
                 <yummy:GradientStop Color="{StaticResource Primary}" Offset="0" />
@@ -51,38 +53,46 @@
                 <yummy:GradientStop Color="{StaticResource Accent}" Offset="1" />
             </yummy:GradientStopCollection>
         </yummy:PancakeView.BackgroundGradientStops>
-        
+        <!-- endregion -->
+
+        <!-- #region Content -->
         <StackLayout VerticalOptions="Start">
-            <!-- Twitter Feed -->
-            <CollectionView x:Name="TweetsCollectionView"
-                            ItemsSource="{Binding Tweets}" 
-                            HeightRequest="16"
-                            SelectedItem="{Binding SelectedTweet, Mode=TwoWay}"
-                            SelectionMode="Single"
-                            SelectionChangedCommand="{Binding OpenTwitterWebCommand}"
-                            SelectionChangedCommandParameter="{Binding Source={x:Reference TweetsCollectionView}, Path=SelectedItem}">
+            
+            <!-- #region Twitter Feed -->
+            <CarouselView x:Name="TweetsCarouselView"
+                          ItemsSource="{Binding Tweets}" 
+                          CurrentItem="{Binding CurrentTweet}"
+                          HeightRequest="20"
+                          VerticalScrollBarVisibility="Never">
                 <!-- Setup layout -->
-                <CollectionView.ItemsLayout>
+                <CarouselView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal" 
                                        ItemSpacing="20"/>
-                </CollectionView.ItemsLayout>
+                </CarouselView.ItemsLayout>
 
-                <CollectionView.ItemTemplate>
+                <!-- Template -->
+                <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Orientation="Horizontal">
+                            
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.OpenTwitterWebCommand, Source={x:Reference Container} }" />
+                            </StackLayout.GestureRecognizers>
+                            
                             <Image Source="twitter.png" 
-                                   HeightRequest="16" 
-                                   Margin="20, 0, 5, 0" />
+                                   HeightRequest="20" 
+                                   Margin="0, 0, 5, 0" />
                             <Label Text="{Binding Title}" 
                                    TextColor="{StaticResource Accent}" 
                                    VerticalOptions="Center" 
                                    LineBreakMode="NoWrap"/>
                         </StackLayout>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <!-- endregion -->
 
-            <!-- CollectionView -->
+            <!-- #region Post collection view -->
             <CollectionView x:Name="ItemsCollectionView" VerticalOptions="FillAndExpand"
                             ItemsSource="{Binding Items}"
                             SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
@@ -103,8 +113,11 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
+            <!-- endregion -->
+            
         </StackLayout>
+        <!-- endregion -->
+        
     </yummy:PancakeView>
     <!-- #endregion -->
 

@@ -34,6 +34,11 @@ namespace rTsd.Services
         /// </summary>
         private const string URI_REGEX_PATTERN = @"((\w+:\/\/)[-a-zA-Z0-9:@;?&=\/%\+\.\*!'\(\),\$_\{\}\^~\[\]`#|]+)";
 
+        /// <summary>
+        /// Maximum number of tweets that should be returned.
+        /// </summary>
+        private const int MAX_NUMBER_OF_TWEETS = 5;
+
         #endregion
 
         #region Private member
@@ -79,7 +84,6 @@ namespace rTsd.Services
             {
                 if (forceReload == false && chachedTweets.Count > 0) return chachedTweets;
 
-                // Setup web client.
                 WebClient client = new WebClient { CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore) };
 
                 var tweets = XDocument
@@ -90,9 +94,11 @@ namespace rTsd.Services
                                 .Select(item => new Tweet
                                 {
                                     Id = item.Element("guid").Value.Replace("https://twitter.com/DrWindows_de/status/", string.Empty),
-                                    Title = Regex.Replace(item.Element("title").Value, URI_REGEX_PATTERN, string.Empty),
+                                    Title = SanitazeTitle(item.Element("title").Value),
                                     LinkSource = item.Element("link").Value
-                                }).ToList();
+                                })
+                                .ToList()
+                                .GetRange(0, MAX_NUMBER_OF_TWEETS);
 
                 client.Dispose();
 
@@ -106,6 +112,31 @@ namespace rTsd.Services
         Tweet IElementService<Tweet>.GetById(string id)
         {
             throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Private helper
+
+        /// <summary>
+        /// Sanitizes the title from a given parsed input value.
+        /// </summary>
+        /// <param name="input">Input string to sanitized.</param>
+        /// <returns>Sanitized input.</returns>
+        private string SanitazeTitle(string input)
+        {
+            // Remove trailing links.
+            var title = Regex.Replace(input, URI_REGEX_PATTERN, string.Empty).Trim();
+
+            // Replace trailing "- " occurrence.
+            // This could be also done via the regexp of above's line of source.
+            if (title.EndsWith(" -", StringComparison.InvariantCultureIgnoreCase))
+            {
+                title = title.Substring(0, input.Length - 2);
+            }
+
+            // Returned sanitized title.
+            return title;
         }
 
         #endregion

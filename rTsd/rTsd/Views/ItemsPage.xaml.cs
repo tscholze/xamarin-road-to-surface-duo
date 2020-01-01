@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
 using rTsd.ViewModels;
-using System;
 
 namespace rTsd.Views
 {
@@ -37,12 +36,12 @@ namespace rTsd.Views
             // Set binding context to the created view model.
             BindingContext = viewModel = new ItemsViewModel();
 
+            // Setup events.
+            viewModel.OnTweetsUpdateScrollPostionRequested += ViewModel_OnTweetsUpdateScrollPostionRequested;
+
             // Inital items loading.
             viewModel.LoadItemsCommand.Execute(null);
             viewModel.LoadTweetsCommand.Execute(null);
-
-            // Setup timer.
-            Device.StartTimer(TimeSpan.FromSeconds(3), TweetsCollectionViewUpdateScrollPosition);
         }
 
         #endregion
@@ -50,13 +49,13 @@ namespace rTsd.Views
         #region Private helper
 
         /// <summary>
-        /// Increments, in a loop, the scroll position.
+        /// Will be raised by the view model if a position update of the tweet ticker view is requested.
         /// </summary>
-        /// <returns></returns>
-        private bool TweetsCollectionViewUpdateScrollPosition()
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Event args.</param>
+        private void ViewModel_OnTweetsUpdateScrollPostionRequested(object sender, TweetsUpdateScrollPostionRequestedEventArgs e)
         {
-            // TODO: Implement feature.
-            return true;
+            TweetsCarouselView.ScrollTo(e.ToTweet);
         }
 
         #endregion

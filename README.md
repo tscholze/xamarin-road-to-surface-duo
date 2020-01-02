@@ -38,7 +38,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - [x] Get the project (template) up and running
 - [x] Getting into important Xamarin / C# pattern
 - [x] Write first MVP code
-- [ ] Improve feature se
+- [ ] Improve feature and code quality
 - [ ] Write tests
 - [ ] Leverage CI with tests and test deployment
 
@@ -70,6 +70,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - Good looking, hopefully (in my opinion)
 - Utilizes Surface Duo features
 - Utilizes App Center features
+- Ticker with latest tweets of [@drwindows_de](https://twitter.com/drwindows_de)
 - Lists articles of [Dr. Windows](https://www.drwindows.de) 
 - Detail article view
 - Share functionality

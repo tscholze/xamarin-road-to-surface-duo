@@ -5,11 +5,11 @@ using rTsd.ViewModels;
 namespace rTsd.Views
 {
     /// <summary>
-    /// ItemDetailPage is responsible for rendering a detail
+    /// ItemPage is responsible for rendering a detail
     /// view of given post.
     /// </summary>
     [DesignTimeVisible(false)]
-    public partial class ItemDetailPage : ContentPage
+    public partial class ItemPage : ContentPage
     {
         #region Constructor
 
@@ -18,7 +18,7 @@ namespace rTsd.Views
         /// Will set and load required information.
         /// </summary>
         /// 
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public ItemPage(ItemViewModel viewModel)
         {
             // In this scenario, we set the given view model before we
             // init the UI.

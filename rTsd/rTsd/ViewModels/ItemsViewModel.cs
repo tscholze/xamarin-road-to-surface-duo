@@ -153,7 +153,7 @@ namespace rTsd.ViewModels
             if (post == null) return;
 
             // Get detail page with required view model set.
-            var page = new ItemDetailPage(new ItemDetailViewModel(post));
+            var page = new ItemPage(new ItemViewModel(post));
 
             // Navigate to the detail page.
             await Application.Current.MainPage.Navigation.PushAsync(page).ConfigureAwait(false);

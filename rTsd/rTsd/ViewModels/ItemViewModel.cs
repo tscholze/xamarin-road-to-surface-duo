@@ -8,9 +8,9 @@ using Xamarin.Forms;
 namespace rTsd.ViewModels
 {
     /// <summary>
-    /// ViewModel of the ItemDetailPage.
+    /// ViewModel of the ItemPage.
     /// </summary>
-    public class ItemDetailViewModel : BaseViewModel
+    public class ItemViewModel : BaseViewModel
     {
         #region Public member
 
@@ -57,7 +57,7 @@ namespace rTsd.ViewModels
         /// Constructor.
         /// </summary>
         /// <param name="post">Underlying post.</param>
-        public ItemDetailViewModel(Post post)
+        public ItemViewModel(Post post)
         {
             // Ensure required information is set.
             if (post == null) return;
@@ -88,7 +88,7 @@ namespace rTsd.ViewModels
         private string PreparedContentForWebView(string content)
         {
             // Read prefix container from file.
-            var assembly = typeof(ItemDetailViewModel).GetTypeInfo().Assembly;
+            var assembly = typeof(ItemViewModel).GetTypeInfo().Assembly;
             Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.Resources.container.html");
 
             // Ennsure a file and stream has been found.

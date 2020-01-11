@@ -33,6 +33,7 @@
                                          ItemsSource="{Binding Tweets}" />
 
             <controls:PostsCollectionView x:Name="ItemsCollectionView"
+                                          SelectionMode="Single"
                                           ItemsSource="{Binding Items}"
                                           SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
                                           SelectionChangedCommand="{Binding NavigateToDetailPageCommand}"

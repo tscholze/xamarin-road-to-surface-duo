@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:rTsd.Controls"
              mc:Ignorable="d"
-             x:Class="rTsd.Views.ItemDetailPage"
+             x:Class="rTsd.Views.ItemPage"
              Title="{Binding Title}"
              Shell.NavBarIsVisible="False">
 

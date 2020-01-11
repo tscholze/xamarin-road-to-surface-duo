@@ -51,7 +51,7 @@ namespace rTsd.ViewModels
 
         #endregion
 
-        #region
+        #region Constructor
 
         /// <summary>
         /// Constructor.

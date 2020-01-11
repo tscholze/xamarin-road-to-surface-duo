@@ -12,36 +12,6 @@
              ControlTemplate="{StaticResource BasePageControlTemplate}"
              x:Name="Container">
 
-    <!-- #region Resources -->
-    <ContentPage.Resources>
-        <!-- TearPacakeViewStyle -->
-        <Style TargetType="yummy:PancakeView" x:Key="TearPacakeViewStyle">
-            <Setter Property="HeightRequest" Value="120" />
-            <Setter Property="CornerRadius" Value="20, 0, 0, 20" />
-            <Setter Property="Margin" Value="20, 10, 20, 10" />
-            <Setter Property="BorderColor" Value="{StaticResource Primary}" />
-            <Setter Property="BorderThickness" Value="1" />
-        </Style>
-
-        <!-- ItemTemplateContainerGridStyle -->
-        <Style TargetType="Grid" x:Key="ItemTemplateContainerGridStyle">
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal" />
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor"
-                                        Value="{StaticResource Accent}" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
-    </ContentPage.Resources>
-    <!-- #endregion -->
-
     <!-- #region Body -->
     <yummy:PancakeView>
         
@@ -58,63 +28,15 @@
         <!-- #region Content -->
         <StackLayout VerticalOptions="Start">
             
-            <!-- #region Twitter Feed -->
-            <CarouselView x:Name="TweetsCarouselView"
-                          ItemsSource="{Binding Tweets}" 
-                          CurrentItem="{Binding CurrentTweet}"
-                          HeightRequest="20"
-                          VerticalScrollBarVisibility="Never">
-                <!-- Setup layout -->
-                <CarouselView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal" 
-                                       ItemSpacing="20"/>
-                </CarouselView.ItemsLayout>
+            <controls:TweetsCarouselView x:Name="TweetsCarouselView"
+                                         NumberOfTweets="{Binding NumberOfTweets}"
+                                         ItemsSource="{Binding Tweets}" />
 
-                <!-- Template -->
-                <CarouselView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Orientation="Horizontal">
-                            
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BindingContext.OpenTwitterWebCommand, Source={x:Reference Container} }" />
-                            </StackLayout.GestureRecognizers>
-                            
-                            <Image Source="twitter.png" 
-                                   HeightRequest="20" 
-                                   Margin="0, 0, 5, 0" />
-                            <Label Text="{Binding Title}" 
-                                   TextColor="{StaticResource Accent}" 
-                                   VerticalOptions="Center" 
-                                   LineBreakMode="NoWrap"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>
-            <!-- endregion -->
-
-            <!-- #region Post collection view -->
-            <CollectionView x:Name="ItemsCollectionView" VerticalOptions="FillAndExpand"
+            <controls:PostsCollectionView x:Name="ItemsCollectionView"
                             ItemsSource="{Binding Items}"
                             SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
-                            SelectionMode="Single"
                             SelectionChangedCommand="{Binding NavigateToDetailPageCommand}"
-                            SelectionChangedCommandParameter="{Binding Source={x:Reference ItemsCollectionView}, Path=SelectedItem}">
-
-                <!-- Configurate item template -->
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <!-- Using grid as a container to apply a custom background color on selection -->
-                        <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
-                            <!-- Actual content -->
-                            <yummy:PancakeView  Style="{StaticResource TearPacakeViewStyle}">
-                                <controls:PostHeroView Post="{Binding .}" />
-                            </yummy:PancakeView>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <!-- endregion -->
-            
+                            SelectionChangedCommandParameter="{Binding Source={x:Reference ItemsCollectionView}, Path=SelectedItem}" />
         </StackLayout>
         <!-- endregion -->
         

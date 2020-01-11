@@ -1,7 +1,6 @@
 ﻿using rTsd.Models;
 using rTsd.Services;
 using rTsd.Views;
-using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -55,11 +54,18 @@ namespace rTsd.ViewModels
 
         /// <summary>
         /// Twitter items to display.
+        /// 
+        /// On set, it will be also update the bindable 
+        /// `NumberOfTweets` property.
         /// </summary>
         public List<Tweet> Tweets
         {
             get { return tweets; }
-            private set { SetProperty(ref tweets, value); }
+            private set 
+            { 
+                SetProperty(ref tweets, value);
+                NumberOfTweets = tweets.Count;
+            }
         }
 
         private Tweet currentTweet;
@@ -71,6 +77,18 @@ namespace rTsd.ViewModels
         {
             get { return currentTweet; }
             set { SetProperty(ref currentTweet, value); }
+        }
+
+        private int numberOfTweets;
+
+        /// <summary>
+        /// Number of tweets.
+        /// Required due to the data transformation for carousel view.
+        /// </summary>
+        public int NumberOfTweets
+        {
+            get { return numberOfTweets; }
+            set { SetProperty(ref numberOfTweets, value); }
         }
 
 
@@ -99,18 +117,6 @@ namespace rTsd.ViewModels
         /// </summary>
         public ICommand OpenTwitterWebCommand { get; }
 
-        /// <summary>
-        /// Delegate for OnTweetsUpdateScrollPostionRequested event.
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Event args.</param>
-        public delegate void TweetsUpdateScrollPostionRequestedEventHandler(object sender, TweetsUpdateScrollPostionRequestedEventArgs e);
-
-        /// <summary>
-        /// Event which will be raised if a tweets scrollposition is requested by the view model.
-        /// </summary>
-        public event TweetsUpdateScrollPostionRequestedEventHandler OnTweetsUpdateScrollPostionRequested;
-
         #endregion
 
         #region Constructor
@@ -130,11 +136,7 @@ namespace rTsd.ViewModels
             LoadTweetsCommand = new Command(() => LoadTweetsAsync());
 
             NavigateToDetailPageCommand = new Command<Post>((post) => NavigateToDetailPage(post));
-            OpenTwitterWebCommand = new Command(() => OpenTweetInBrowser(currentTweet));
             ShowShellFlyoutCommand = new Command(() => ShowShellFlyout());
-
-            // Setup timer.
-            Device.StartTimer(TimeSpan.FromSeconds(3), OnTweetScrollTimerTicked);
         }
 
         #endregion
@@ -168,15 +170,6 @@ namespace rTsd.ViewModels
             Shell.Current.FlyoutIsPresented = !Shell.Current.FlyoutIsPresented;
         }
 
-        private void OpenTweetInBrowser(Tweet tweet)
-        {
-            // Ensure required post is set.
-            if (tweet == null) return;
-
-            // Open tweet's link in browser.
-            OpenBrowserToUrl(tweet.LinkSource);
-        }
-
         /// <summary>
         /// Loads items from the service and updates th UI.
         /// </summary>
@@ -193,32 +186,6 @@ namespace rTsd.ViewModels
         {
             // Update binded Tweets member with service-based tweets.
             Tweets = await TwitterService.GetAllAsync().ConfigureAwait(true);
-        }
-
-        /// <summary>
-        /// Raised on every tweet scroll timer tick.
-        /// </summary>
-        /// <returns>If timer should be cancled.</returns>
-        private bool OnTweetScrollTimerTicked()
-        {
-            // Ensure all required information are set.
-            if (OnTweetsUpdateScrollPostionRequested == null || tweets == null || tweets.Count == 0) return true;
-
-            // Handle initial case and select the first one.
-            if (currentTweet == null)
-            {
-                OnTweetsUpdateScrollPostionRequested(this, new TweetsUpdateScrollPostionRequestedEventArgs(tweets[0]));
-                return true;
-            }
-
-            // Get next tweet in ever-repeating row.
-            var index = ((tweets.IndexOf(currentTweet) + 1) % (tweets.Count - 1));
-            var toTweet = tweets[index];
-
-            // Call event (thats linked in the page.cs)
-            OnTweetsUpdateScrollPostionRequested(this, new TweetsUpdateScrollPostionRequestedEventArgs(toTweet));
-
-            return true;
         }
 
         #endregion

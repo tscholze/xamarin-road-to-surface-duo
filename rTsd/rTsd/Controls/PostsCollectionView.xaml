@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CollectionView xmlns="http://xamarin.com/schemas/2014/forms" 
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                xmlns:controls="clr-namespace:rTsd.Controls"
+                mc:Ignorable="d"
+                x:Class="rTsd.Controls.PostsCollectionView"
+                SelectionMode="Single"
+                VerticalOptions="FillAndExpand">
+
+    <!--#region Resources -->
+    <CollectionView.Resources>
+        <Style TargetType="yummy:PancakeView" x:Key="TearPacakeViewStyle">
+            <Setter Property="HeightRequest" Value="120" />
+            <Setter Property="CornerRadius" Value="20, 0, 0, 20" />
+            <Setter Property="Margin" Value="20, 10, 20, 10" />
+            <Setter Property="BorderColor" Value="{StaticResource Primary}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <!-- ItemTemplateContainerGridStyle -->
+        <Style TargetType="Grid" x:Key="ItemTemplateContainerGridStyle">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="{StaticResource Accent}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </CollectionView.Resources>
+    <!--#endregion-->
+
+    <!--#region Item Template -->
+    <CollectionView.ItemTemplate>
+        <DataTemplate>
+
+            <!-- Using grid as a container to apply a custom background color on selection -->
+            <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
+                <!-- Actual content -->
+                <yummy:PancakeView Style="{StaticResource TearPacakeViewStyle}">
+                    <controls:PostHeroView Post="{Binding .}" />
+                </yummy:PancakeView>
+            </Grid>
+        </DataTemplate>
+    </CollectionView.ItemTemplate>
+</CollectionView>

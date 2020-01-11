@@ -36,26 +36,9 @@ namespace rTsd.Views
             // Set binding context to the created view model.
             BindingContext = viewModel = new ItemsViewModel();
 
-            // Setup events.
-            viewModel.OnTweetsUpdateScrollPostionRequested += ViewModel_OnTweetsUpdateScrollPostionRequested;
-
             // Inital items loading.
             viewModel.LoadItemsCommand.Execute(null);
             viewModel.LoadTweetsCommand.Execute(null);
-        }
-
-        #endregion
-
-        #region Private helper
-
-        /// <summary>
-        /// Will be raised by the view model if a position update of the tweet ticker view is requested.
-        /// </summary>
-        /// <param name="sender">Sender.</param>
-        /// <param name="e">Event args.</param>
-        private void ViewModel_OnTweetsUpdateScrollPostionRequested(object sender, TweetsUpdateScrollPostionRequestedEventArgs e)
-        {
-            TweetsCarouselView.ScrollTo(e.ToTweet);
         }
 
         #endregion

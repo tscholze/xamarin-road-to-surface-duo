@@ -33,10 +33,10 @@
                                          ItemsSource="{Binding Tweets}" />
 
             <controls:PostsCollectionView x:Name="ItemsCollectionView"
-                            ItemsSource="{Binding Items}"
-                            SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
-                            SelectionChangedCommand="{Binding NavigateToDetailPageCommand}"
-                            SelectionChangedCommandParameter="{Binding Source={x:Reference ItemsCollectionView}, Path=SelectedItem}" />
+                                          ItemsSource="{Binding Items}"
+                                          SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+                                          SelectionChangedCommand="{Binding NavigateToDetailPageCommand}"
+                                          SelectionChangedCommandParameter="{Binding Source={x:Reference ItemsCollectionView}, Path=SelectedItem}" />
         </StackLayout>
         <!-- endregion -->
         

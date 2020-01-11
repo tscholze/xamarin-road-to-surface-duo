@@ -5,10 +5,9 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                 xmlns:controls="clr-namespace:rTsd.Controls"
+                xmlns:utils="clr-namespace:rTsd.Utils"
                 mc:Ignorable="d"
-                x:Class="rTsd.Controls.PostsCollectionView"
-                SelectionMode="Single"
-                VerticalOptions="FillAndExpand">
+                x:Class="rTsd.Controls.PostsCollectionView">
 
     <!--#region Resources -->
     <CollectionView.Resources>
@@ -36,20 +35,29 @@
                 </VisualStateGroupList>
             </Setter>
         </Style>
-    </CollectionView.Resources>
-    <!--#endregion-->
 
-    <!--#region Item Template -->
-    <CollectionView.ItemTemplate>
-        <DataTemplate>
-
-            <!-- Using grid as a container to apply a custom background color on selection -->
+        <DataTemplate x:Key="EventDataTemplate">
             <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
-                <!-- Actual content -->
-                <yummy:PancakeView Style="{StaticResource TearPacakeViewStyle}">
+                <yummy:PancakeView Style="{StaticResource TearPacakeViewStyle}"
+                                   CornerRadius="20, 0, 0, 20">
                     <controls:PostHeroView Post="{Binding .}" />
                 </yummy:PancakeView>
             </Grid>
         </DataTemplate>
+
+        <DataTemplate x:Key="UneventDataTemplate">
+            <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
+                <yummy:PancakeView Style="{StaticResource TearPacakeViewStyle}"
+                                   CornerRadius="0, 20, 20, 0">
+                    <controls:PostHeroView Post="{Binding .}" />
+                </yummy:PancakeView>
+            </Grid>
+        </DataTemplate>
+    </CollectionView.Resources>
+
+    <!-- Template -->
+    <CollectionView.ItemTemplate>
+        <utils:AlternateCollectionViewDataTemplateSelector EvenTemplate="{StaticResource EventDataTemplate}"
+                                                           UnevenTemplate="{StaticResource UneventDataTemplate}" />
     </CollectionView.ItemTemplate>
 </CollectionView>

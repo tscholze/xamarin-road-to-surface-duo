@@ -14,6 +14,8 @@ namespace rTsd.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            HingeService.MainActivity = this;
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

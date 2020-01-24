@@ -15,7 +15,7 @@ namespace rTsd.Droid
 	public class HingeService : IHingeService, IDisposable
 	{
 		static ScreenHelper helper;
-		bool isDuo = false;
+		public bool isDuo = false;
 		HingeSensor hingeSensor;
 		int _hingeAngle;
 		Rectangle _hingeLocation;
@@ -100,5 +100,12 @@ namespace rTsd.Droid
 
 		public event EventHandler<HingeEventArgs> OnHingeUpdated;
 		public event PropertyChangedEventHandler PropertyChanged;
+
+
+		#region Custom changes
+
+		public bool IsDuo => isDuo;
+
+		#endregion
 	}
 }

@@ -15,6 +15,12 @@ namespace rTsd.Utils.MicrosoftDuoLibrary
 		bool IsLandscape { get; }
 
 		Rectangle GetHinge();
+
+		#region Custom changes
+
+		bool IsDuo { get; }
+
+		#endregion
 	}
 
 	public class HingeEventArgs : EventArgs

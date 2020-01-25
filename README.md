@@ -38,6 +38,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - [x] Get the project (template) up and running
 - [x] Getting into important Xamarin / C# pattern
 - [x] Write first MVP code
+- [x] Implement first Surface Duo related features or layouts
 - [ ] Improve feature and code quality
 - [ ] Write tests
 - [ ] Leverage CI with tests and test deployment
@@ -49,7 +50,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 2](https://www.drwindows.de/news/road-to-surface-duo-das-entwicklertagebuch-teil-2)
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 3](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-3)
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 4](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-4)
-- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 4](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-5)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 5](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-5)
 
 ## Prerequirements
 - Windows 10 / macOS 
@@ -58,7 +59,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 
 ## Assumption
 
-- The Surface Duo will usw two navigation pages, master on the left screen and detail on the right, as the main indicator how to display an app on two screens
+- The Surface Duo will usw two navigation pages, master on the left screen and detail on the right, as the main indicator how to display an app on two screens -> Nope it works a little bit diffrent
 
 ## Other programms I used
 - Microsoft [OneNote](https://www.onenote.com/) as information storage around the idea of the app
@@ -73,6 +74,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - Utilizes App Center features
 - Ticker with latest tweets of [@drwindows_de](https://twitter.com/drwindows_de)
 - Lists articles of [Dr. Windows](https://www.drwindows.de) 
+- Lists videos of [Dr. Windows Youtube Channel](https://www.youtube.com/user/DrWindowsTV)
 - Detail article view
 - Share functionality
 
@@ -82,9 +84,9 @@ I'm not a skilled user interface designer nor I have an eye for beauty, but the 
 <center><img src="docs/ui-protoypes.png" height="300" /></center>
 
 ## App screenshots
-All shown screenshots are taken with version 20191217.
+All shown screenshots are taken with version 20200125.
 
-<center><img src="docs/ui-app.png" height="300" /></center>
+<center><img src="docs/ui-app.png" height="500" /></center>
 
 I used the free, but required an Adobe ID, application [Adobe XD](https://www.adobe.com/de/products/xd.html) to create the protoyp views.
 
@@ -111,6 +113,7 @@ Just me, [Tobi]([https://tscholze.github.io).
 
 ## Links
 - [Dr. Windows](https://www.drwindows.de) German Microsoft blog
+- [Microsoft Docs](https://docs.microsoft.com/en-us/dual-screen/android/get-duo-sdk?tabs=java) for dual screen devices
 - [Xamarin](https://dotnet.microsoft.com/apps/xamarin) Homepage
 
 

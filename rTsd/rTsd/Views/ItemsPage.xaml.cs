@@ -37,8 +37,9 @@ namespace rTsd.Views
             BindingContext = viewModel = new ItemsViewModel();
 
             // Inital items loading.
-            viewModel.LoadItemsCommand.Execute(null);
             viewModel.LoadTweetsCommand.Execute(null);
+            viewModel.LoadItemsCommand.Execute(null);
+            viewModel.LoadVideosCommand.Execute(null);
         }
 
         #endregion

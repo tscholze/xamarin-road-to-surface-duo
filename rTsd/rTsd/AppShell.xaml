@@ -6,6 +6,7 @@
        mc:Ignorable="d"
        xmlns:views="clr-namespace:rTsd.Views"
        Title="rTsd"
+       x:Name="RootShell"
        x:Class="rTsd.AppShell">
 
     <!-- #region Shell header -->
@@ -34,19 +35,5 @@
     </Shell.FlyoutHeaderTemplate>
 
     <!--#endregion-->
-
-    <!-- #region Shell navigation items -->
-
-    <ShellContent Title="News article"
-                  Icon="icon_blog.png">
-        <views:ItemsPage />
-    </ShellContent>
-
-    <ShellContent Title="About"
-                  Icon="icon_about.png">
-        <views:AboutPage />
-    </ShellContent>
-
-    <!-- #endregion -->
 
 </Shell>

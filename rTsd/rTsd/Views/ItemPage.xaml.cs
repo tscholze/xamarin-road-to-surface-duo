@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
 using rTsd.ViewModels;
+using System;
 
 namespace rTsd.Views
 {
     /// <summary>
     /// ItemPage is responsible for rendering a detail
-    /// view of given post.
+    /// view of given item.
     /// </summary>
     [DesignTimeVisible(false)]
     public partial class ItemPage : ContentPage
@@ -16,16 +17,31 @@ namespace rTsd.Views
         /// <summary>
         /// Constructor.
         /// Will set and load required information.
-        /// </summary>
         /// 
-        public ItemPage(ItemViewModel viewModel)
+        /// Accepted view model types:
+        ///     - ItemsViewModel
+        ///     - VideoViewModel
+        ///     
+        /// Elsewise:
+        ///     - An expection will be thrown.
+        /// </summary>
+        public ItemPage(object viewModel)
         {
-            // In this scenario, we set the given view model before we
-            // init the UI.
-            BindingContext = viewModel;
-            InitializeComponent();
+            if(viewModel is ItemViewModel itemViewModel)
+            {
+                BindingContext = itemViewModel;
+                InitializeComponent();
+            }
+            else if (viewModel is VideoViewModel videoViewModel)
+            {
+                BindingContext = videoViewModel;
+                InitializeComponent();
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
-
         #endregion
     }
 }

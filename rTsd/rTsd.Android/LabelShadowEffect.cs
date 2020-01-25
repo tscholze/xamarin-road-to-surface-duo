@@ -1,6 +1,5 @@
 ﻿using rTsd.Droid;
 using rTsd.Effects;
-using System;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -19,22 +18,15 @@ namespace rTsd.Droid
     {
         protected override void OnAttached()
         {
-            try
-            {
-                // Get the underlying control and
-                var control = Control as Android.Widget.TextView;
-                var effect = (ShadowEffect)Element.Effects.FirstOrDefault(e => e is ShadowEffect);
+            // Get the underlying control and
+            var control = Control as Android.Widget.TextView;
+            var effect = (ShadowEffect)Element.Effects.FirstOrDefault(e => e is ShadowEffect);
 
-                // Check if effect is available.
-                if (effect == null) return;
+            // Check if effect is available.
+            if (effect == null) return;
 
-                // Elsewise, appy the shadow layer with given properties.
-                control.SetShadowLayer(effect.Radius, effect.DistanceX, effect.DistanceY, effect.Color.ToAndroid());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Cannot set property on attached control. Error: ", ex.Message);
-            }
+            // Elsewise, apply the shadow layer with given properties.
+            control.SetShadowLayer(effect.Radius, effect.DistanceX, effect.DistanceY, effect.Color.ToAndroid());
         }
 
         protected override void OnDetached()

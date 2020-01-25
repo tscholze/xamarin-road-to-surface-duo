@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="rTsd.Views.DuoMaster"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:controls="clr-namespace:rTsd.Controls"
+             Shell.NavBarIsVisible="false"
+             ControlTemplate="{StaticResource BasePageControlTemplate}"
+             x:Name="Container">
+
+    <yummy:PancakeView>
+
+        <!-- #region Configurate PancakeView -->
+        <yummy:PancakeView.BackgroundGradientStops>
+            <yummy:GradientStopCollection>
+                <yummy:GradientStop Color="{StaticResource Primary}" Offset="0" />
+                <yummy:GradientStop Color="{StaticResource PrimaryReduced}" Offset="0.75" />
+                <yummy:GradientStop Color="{StaticResource Accent}" Offset="1" />
+            </yummy:GradientStopCollection>
+        </yummy:PancakeView.BackgroundGradientStops>
+        <!-- endregion -->
+
+        <StackLayout VerticalOptions="FillAndExpand">
+
+            <!-- #region Twitter -->
+            <controls:TweetsCarouselView x:Name="TweetsCarouselView"
+                                         NumberOfTweets="{Binding NumberOfTweets}"
+                                         ItemsSource="{Binding Tweets}" />
+            <!-- #endregion -->
+
+            <!-- #region Content columns -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- #region Feed content -->
+
+                <StackLayout Grid.Column="0">
+                    <Label Text="Latest news" 
+                           Style="{StaticResource ColumnTitleLabelStyle}"/>
+
+                    <controls:PostsCollectionView x:Name="FeedCollectionView"
+                                                  SelectionMode="Single"
+                                                  ItemsSource="{Binding Items}"
+                                                  SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+                                                  SelectionChangedCommand="{Binding ItemSelectedCommand}"
+                                                  SelectionChangedCommandParameter="{Binding Source={x:Reference FeedCollectionView}, Path=SelectedItem}" />
+                </StackLayout>
+                <!-- endregion -->
+
+                <!-- #region YT content -->
+
+                <StackLayout Grid.Column="1">
+                    <Label Text="What's new on Youtube?" Style="{StaticResource ColumnTitleLabelStyle}"/>
+
+                    <controls:VideosCollectionView x:Name="VideosCollectionView"
+                                                   SelectionMode="Single"
+                                                   ItemsSource="{Binding Videos}"
+                                                   SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+                                                   SelectionChangedCommand="{Binding ItemSelectedCommand}"
+                                                   SelectionChangedCommandParameter="{Binding Source={x:Reference VideosCollectionView}, Path=SelectedItem}" />
+                </StackLayout>
+                <!-- endregion -->
+
+            </Grid>
+            <!--#endregion-->
+
+        </StackLayout>
+    </yummy:PancakeView>
+</ContentView>

@@ -29,6 +29,7 @@ namespace rTsd
             DependencyService.Register<FeedService>();
             //#endif
             DependencyService.Register<TwitRssService>();
+            DependencyService.Register<YouTubeService>();
 
             // Setup entry ui point.
             MainPage = new AppShell();

@@ -11,34 +11,34 @@
         <Grid>
             <!-- Background image -->
             <Image x:Name="BackgroundImage"
-                   Aspect="AspectFill"/>
+                   Aspect="AspectFill" Margin="0"/>
 
             <!-- Bottom blur and title view -->
             <yummy:PancakeView HeightRequest="60" 
-                                               VerticalOptions="EndAndExpand">
+                               VerticalOptions="EndAndExpand">
                 <Grid>
 
                     <!-- Todo: Add working blurred background. Android does not support blur -->
                     <!-- Blurring background image -->
                     <Image Source="blur_background"  
-                                           Aspect="Fill"
-                                           Opacity="0.5"/>
+                           Aspect="Fill"
+                           Opacity="0.5"/>
 
                     <!-- Title -->
                     <Label x:Name="TitleLabel"
-                                           VerticalOptions="EndAndExpand" 
-                                           LineBreakMode="TailTruncation"
-                                           MaxLines="2"
-                                           Margin="10, 5, 10, 5" 
-                                           FontSize="19" 
-                                           TextColor="{StaticResource OnPrimary}">
+                           VerticalOptions="EndAndExpand" 
+                           LineBreakMode="TailTruncation"
+                           MaxLines="2"
+                           Margin="10, 5, 10, 5" 
+                           FontSize="19" 
+                           TextColor="{StaticResource OnPrimary}">
 
-                        <!-- Add shadoe effect -->
+                        <!-- Add shadow effect -->
                         <Label.Effects>
                             <effects:ShadowEffect Radius="10"
-                                                                  DistanceX="2" 
-                                                                  DistanceY="2" 
-                                                                  Color="Black" />
+                                                  DistanceX="2" 
+                                                  DistanceY="2" 
+                                                  Color="Black" />
                         </Label.Effects>
                     </Label>
                 </Grid>

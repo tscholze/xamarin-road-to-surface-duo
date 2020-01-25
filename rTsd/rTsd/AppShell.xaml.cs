@@ -23,21 +23,25 @@ namespace rTsd
         {
             InitializeComponent();
 
-            var home = new ShellSection { Title = "News", Icon = "icon_blog.png" };
+            var news = new ShellSection { Title = "News", Icon = "icon_blog.png" };
+
+            // Add underlying content page dependet on if it runs on a 
+            // Surface Duo.
             if (hingeService.IsDuo)
             {
-                home.Items.Add(new DuoTwoPanePage());
+                news.Items.Add(new DuoMasterDetailPage());
             }
             else
             {
-                home.Items.Add(new ItemsPage());
+                news.Items.Add(new ItemsPage());
             }
 
             // Add about page to shell navigation
             var about = new ShellSection { Title = "About", Icon = "icon_about.png" };
             about.Items.Add(new AboutPage());
 
-            RootShell.Items.Add(home);
+            // Add all sections to shell.
+            RootShell.Items.Add(news);
             RootShell.Items.Add(about);
         }
     }

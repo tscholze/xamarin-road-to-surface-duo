@@ -1,6 +1,7 @@
 ﻿using rTsd.Models;
 using rTsd.Services;
 using rTsd.Views;
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -91,7 +92,6 @@ namespace rTsd.ViewModels
             set { SetProperty(ref numberOfTweets, value); }
         }
 
-
         /// <summary>
         /// Will trigger a navigation push to the detail page if list's item.
         /// </summary>
@@ -116,6 +116,18 @@ namespace rTsd.ViewModels
         /// Command to the open tweet in system's browser.
         /// </summary>
         public ICommand OpenTwitterWebCommand { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public delegate void ItemSelectedEventHandler(object sender, ItemSelectedEventArgs e);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event ItemSelectedEventHandler ItemSelected;
 
         #endregion
 
@@ -147,19 +159,19 @@ namespace rTsd.ViewModels
         /// Will navigate to the detail page for given post.
         /// </summary>
         /// <param name="post">Post to show in detail.</param>
-        private async void NavigateToDetailPage(Post post)
+        private void NavigateToDetailPage(Post post)
         {
             // Ensure required post is set.
             if (post == null) return;
 
-            // Get detail page with required view model set.
-            var page = new ItemPage(new ItemViewModel(post));
-
-            // Navigate to the detail page.
-            await Application.Current.MainPage.Navigation.PushAsync(page).ConfigureAwait(false);
-
             // Deselect selected post.
             SelectedPost = null;
+
+            // Build event args.
+            var eventArgs = new ItemSelectedEventArgs { ItemViewModel = new ItemViewModel(post) };
+
+            // Raise event.
+            ItemSelected(this, eventArgs);
         }
 
         /// <summary>
@@ -189,5 +201,11 @@ namespace rTsd.ViewModels
         }
 
         #endregion
+    }
+
+
+    public class ItemSelectedEventArgs : EventArgs
+    {
+        public ItemViewModel ItemViewModel { get; set; }
     }
 }

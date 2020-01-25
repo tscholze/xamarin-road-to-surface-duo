@@ -5810,16 +5810,19 @@ namespace rTsd.Droid
 			public const int notify_panel_notification_icon_bg = 2131165306;
 			
 			// aapt resource value: 0x7F07007B
-			public const int share = 2131165307;
+			public const int rtsd_logo_large = 2131165307;
 			
 			// aapt resource value: 0x7F07007C
-			public const int tooltip_frame_dark = 2131165308;
+			public const int share = 2131165308;
 			
 			// aapt resource value: 0x7F07007D
-			public const int tooltip_frame_light = 2131165309;
+			public const int tooltip_frame_dark = 2131165309;
 			
 			// aapt resource value: 0x7F07007E
-			public const int twitter = 2131165310;
+			public const int tooltip_frame_light = 2131165310;
+			
+			// aapt resource value: 0x7F07007F
+			public const int twitter = 2131165311;
 			
 			static Drawable()
 			{

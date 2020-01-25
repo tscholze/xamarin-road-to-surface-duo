@@ -14,6 +14,14 @@ namespace rTsd.ViewModels
     {
         #region Public member
 
+        private bool showPlaceholder = false;
+
+        public bool ShowPlaceholder
+        {
+            get { return showPlaceholder; }
+            private set { SetProperty(ref showPlaceholder, value);  }
+        }
+
         private Post post;
 
         /// <summary>
@@ -60,7 +68,11 @@ namespace rTsd.ViewModels
         public ItemViewModel(Post post)
         {
             // Ensure required information is set.
-            if (post == null) return;
+            if (post == null)
+            {
+                ShowPlaceholder = true;
+                return;
+            }
 
             // Set UI properties.
             Post = post;

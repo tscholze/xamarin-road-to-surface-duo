@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:rTsd.Controls"
+             mc:Ignorable="d"
+             x:Class="rTsd.Views.DetailView">
+    <!-- Reused styles of the page -->
+    <ContentView.Resources>
+        <Style TargetType="Button">
+            <Setter Property="HeightRequest" Value="30" />
+            <Setter Property="WidthRequest" Value="30" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+        </Style>
+    </ContentView.Resources>
+
+    <Grid BackgroundColor="{StaticResource Primary}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <!--#region Content -->
+
+        <StackLayout IsVisible="{Binding ShowPlaceholder, Converter={StaticResource InvertBooleanConverter}}">
+
+            <!-- Top button row -->
+            <Grid Padding="10, 0, 10, 0">
+                <Grid.ColumnDefinitions>
+                    <!-- Left -->
+                    <ColumnDefinition Width="Auto" />
+                    <!-- Spacer -->
+                    <ColumnDefinition Width="*" />
+                    <!-- Right -->
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Browser button -->
+                <Button Grid.Column="0"
+                    ImageSource="earth.png"
+                    Command="{Binding OpenPostWebCommand}"/>
+
+                <!-- Share button -->
+                <Button Grid.Column="2"
+                    ImageSource="share.png"
+                    Command="{Binding ShareCommand}"/>
+            </Grid>
+
+            <!-- Post's content -->
+            <controls:PostHeroView Post="{Binding Post}" />
+
+            <!-- Text -->
+            <WebView Source="{Binding WebViewSource}" 
+                 VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+        <!--#endregion-->
+
+        <!--#region Placeholder -->
+        <Image Source="rtsd_logo_large.png" 
+               HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="CenterAndExpand"
+               IsVisible="{Binding ShowPlaceholder}"/>
+        <!--#endregion -->
+    </Grid>
+
+    
+</ContentView>

@@ -29,9 +29,13 @@ namespace rTsd.Utils
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
+            // Ensure given container is a collection view.
             if (!(container is CollectionView collectionView)) return EvenTemplate;
+
+            // Calculate the row index.
             var index = ((List<Post>)collectionView.ItemsSource).IndexOf(item as Post);
 
+            // If mod 2 (save division by 2) equals 0, get the even, elsewise the uneven template.
             return  index % 2 == 0 ? EvenTemplate : UnevenTemplate;
         }
     }

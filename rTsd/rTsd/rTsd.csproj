@@ -24,6 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\DuoMasterView.xaml.cs">
+      <DependentUpon>DuoMasterView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\DuoMasterDetailPage.xaml.cs">
       <DependentUpon>DuoMasterDetailPage.xaml</DependentUpon>
     </Compile>
@@ -42,13 +45,13 @@
     <EmbeddedResource Update="Controls\TweetsCarouselView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DetailView.xaml">
+    <EmbeddedResource Update="Views\DuoDetailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DuoMasterDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DuoMaster.xaml">
+    <EmbeddedResource Update="Views\DuoMasterView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

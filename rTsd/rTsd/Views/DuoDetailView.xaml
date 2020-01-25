@@ -5,7 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:rTsd.Controls"
              mc:Ignorable="d"
-             x:Class="rTsd.Views.DetailView">
+             x:Class="rTsd.Views.DuoDetailView"
+             BackgroundColor="{StaticResource Primary}">
+
     <!-- Reused styles of the page -->
     <ContentView.Resources>
         <Style TargetType="Button">
@@ -16,14 +18,16 @@
         </Style>
     </ContentView.Resources>
 
-    <Grid BackgroundColor="{StaticResource Primary}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <Grid BackgroundColor="Transparent">
         
-        <!--#region Content -->
+        <!-- Placeholder image if no item is selected to be shown -->
+        <Image Source="rtsd_logo_large.png" 
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand" 
+               IsVisible="{Binding ShowPlaceholder}"/>
 
-        <StackLayout IsVisible="{Binding ShowPlaceholder, Converter={StaticResource InvertBooleanConverter}}">
+        <!-- Content of the item template -->
+        <StackLayout IsVisible="{Binding Path=ShowPlaceholder, Converter={StaticResource InvertBooleanConverter}}">
 
             <!-- Top button row -->
             <Grid Padding="10, 0, 10, 0">
@@ -53,17 +57,7 @@
             <!-- Text -->
             <WebView Source="{Binding WebViewSource}" 
                  VerticalOptions="FillAndExpand"
-                 HorizontalOptions="FillAndExpand"/>
+                 HorizontalOptions="Center"/>
         </StackLayout>
-        <!--#endregion-->
-
-        <!--#region Placeholder -->
-        <Image Source="rtsd_logo_large.png" 
-               HorizontalOptions="CenterAndExpand" 
-               VerticalOptions="CenterAndExpand"
-               IsVisible="{Binding ShowPlaceholder}"/>
-        <!--#endregion -->
     </Grid>
-
-    
 </ContentView>

@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace rTsd.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetailView : ContentView
+    public partial class DuoDetailView : ContentView
     {
-        public DetailView()
+        public DuoDetailView()
         {
             InitializeComponent();
         }

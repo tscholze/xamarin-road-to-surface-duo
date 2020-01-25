@@ -12,7 +12,7 @@
 
     <local:TwoPaneView>
         <views:DuoMaster x:Name="MasterPane" />
-        <views:DetailView x:Name="DetailPane" />
+        <views:DuoDetailView x:Name="DetailPane" />
     </local:TwoPaneView>
     
 </local:DuoPage>

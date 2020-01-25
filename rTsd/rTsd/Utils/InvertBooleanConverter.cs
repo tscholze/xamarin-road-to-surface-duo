@@ -1,18 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Globalization;
+using Xamarin.Forms;
 
 namespace rTsd.Utils
 {
-    class InvertBooleanConverter
+    public class InvertBooleanConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        #region IValueConverter Members
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return !(bool) value;
+            return !(bool)value;
         }
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+
+        public object ConvertBack(object value, Type targetType, object parameter,
+            CultureInfo culture)
         {
-            return !(bool) value;
+            throw new NotSupportedException();
         }
+
+        #endregion
     }
 }

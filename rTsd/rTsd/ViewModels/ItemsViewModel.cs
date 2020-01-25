@@ -31,25 +31,13 @@ namespace rTsd.ViewModels
         /// </summary>
         public IElementService<Tweet> TwitterService => DependencyService.Get<IElementService<Tweet>>();
 
-        private List<Post> items;
         /// <summary>
-        /// Feed items to display.
+        /// YouTube service.
+        /// 
+        /// Injected by the `DependencyService`.
+        /// See `App.cs` for the setup process.
         /// </summary>
-        public List<Post> Items
-        {
-            get { return items; }
-            private set { SetProperty(ref items, value); }
-        }
-
-        private Post selectedPost;
-        /// <summary>
-        /// Selected post in list view.
-        /// </summary>
-        public Post SelectedPost
-        {
-            get { return selectedPost; }
-            set { SetProperty(ref selectedPost, value); }
-        }
+        public IElementService<Video> YoutubeService => DependencyService.Get<IElementService<Video>>();
 
         private List<Tweet> tweets;
 
@@ -62,8 +50,8 @@ namespace rTsd.ViewModels
         public List<Tweet> Tweets
         {
             get { return tweets; }
-            private set 
-            { 
+            private set
+            {
                 SetProperty(ref tweets, value);
                 NumberOfTweets = tweets.Count;
             }
@@ -92,10 +80,59 @@ namespace rTsd.ViewModels
             set { SetProperty(ref numberOfTweets, value); }
         }
 
+        private List<Post> items;
+
         /// <summary>
-        /// Will trigger a navigation push to the detail page if list's item.
+        /// Feed items to display.
         /// </summary>
-        public ICommand NavigateToDetailPageCommand { get; private set; }
+        public List<Post> Items
+        {
+            get { return items; }
+            private set { SetProperty(ref items, value); }
+        }
+
+        private Post selectedPost;
+
+        /// <summary>
+        /// Selected post in list view.
+        /// </summary>
+        public Post SelectedPost
+        {
+            get { return selectedPost; }
+            set { SetProperty(ref selectedPost, value); }
+        }
+
+        private List<Video> videos;
+
+        /// <summary>
+        /// Videos to display.
+        /// </summary>
+        public List<Video> Videos
+        {
+            get { return videos; }
+            private set { SetProperty(ref videos, value); }
+        }
+
+        private Video selectedVideo;
+
+        /// <summary>
+        /// Selected video in list view.
+        /// </summary>
+        public Video SelectedVideo
+        {
+            get { return selectedVideo; }
+            set { SetProperty(ref selectedVideo, value); }
+        }
+
+        /// <summary>
+        /// Will trigger a navigation push to the detail page if list's feed item.
+        /// </summary>
+        public ICommand ItemSelectedCommand { get; private set; }
+
+        /// <summary>
+        /// Will trigger a navigation push to the detail page if list's video.
+        /// </summary>
+        public ICommand VideoSelectedCommand { get; private set; }
 
         /// <summary>
         /// Will trigger the shell's flyout to be presented or hidden.
@@ -103,14 +140,19 @@ namespace rTsd.ViewModels
         public ICommand ShowShellFlyoutCommand { get; private set; }
 
         /// <summary>
+        /// Will trigger a tweets (re-) load.
+        /// </summary>
+        public ICommand LoadTweetsCommand { get; private set; }
+
+        /// <summary>
         /// Will trigger an item (re-) load.
         /// </summary>
         public ICommand LoadItemsCommand { get; private set; }
 
         /// <summary>
-        /// Will trigger a tweets (re-) load.
+        /// Will trigger a videos (re-) load.
         /// </summary>
-        public ICommand LoadTweetsCommand { get; private set; }
+        public ICommand LoadVideosCommand { get; private set; }
 
         /// <summary>
         /// Command to the open tweet in system's browser.
@@ -144,10 +186,10 @@ namespace rTsd.ViewModels
             Items = new List<Post>();
 
             // Setup commands.
-            LoadItemsCommand = new Command(() => LoadArticlesAsync());
             LoadTweetsCommand = new Command(() => LoadTweetsAsync());
-
-            NavigateToDetailPageCommand = new Command<Post>((post) => NavigateToDetailPage(post));
+            LoadItemsCommand = new Command(() => LoadArticlesAsync());
+            LoadVideosCommand = new Command(() => LoadVideosAsync());
+            ItemSelectedCommand = new Command<object>((item) => NavigateToDetailPage(item));
             ShowShellFlyoutCommand = new Command(() => ShowShellFlyout());
         }
 
@@ -159,16 +201,25 @@ namespace rTsd.ViewModels
         /// Will navigate to the detail page for given post.
         /// </summary>
         /// <param name="post">Post to show in detail.</param>
-        private void NavigateToDetailPage(Post post)
+        private void NavigateToDetailPage(object obj)
         {
             // Ensure required post is set.
-            if (post == null) return;
+            if (obj == null) return;
 
-            // Deselect selected post.
-            SelectedPost = null;
+            ItemSelectedEventArgs eventArgs = new ItemSelectedEventArgs();
+            if (obj is Post post)
+            {
+                // Deselect selected post.
+                SelectedPost = null;
 
-            // Build event args.
-            var eventArgs = new ItemSelectedEventArgs { ItemViewModel = new ItemViewModel(post) };
+                // Build event args.
+                eventArgs.ItemViewModel = new ItemViewModel(post);
+            }
+            else if(obj is Video video)
+            {
+                SelectedVideo = null;
+                eventArgs.ItemViewModel = new VideoViewModel(video);
+            }
 
             // Raise event.
             ItemSelected(this, eventArgs);
@@ -183,15 +234,6 @@ namespace rTsd.ViewModels
         }
 
         /// <summary>
-        /// Loads items from the service and updates th UI.
-        /// </summary>
-        private async void LoadArticlesAsync()
-        {
-            // Update binded Items member with service-based items.
-            Items = await FeedService.GetAllAsync().ConfigureAwait(true);
-        }
-
-        /// <summary>
         /// Loads twitter from the service and updates th UI.
         /// </summary>
         private async void LoadTweetsAsync()
@@ -200,12 +242,30 @@ namespace rTsd.ViewModels
             Tweets = await TwitterService.GetAllAsync().ConfigureAwait(true);
         }
 
+        /// <summary>
+        /// Loads items from the service and updates th UI.
+        /// </summary>
+        private async void LoadArticlesAsync()
+        {
+            // Update binded feed item member with service-based items.
+            Items = await FeedService.GetAllAsync().ConfigureAwait(true);
+        }
+
+        /// <summary>
+        /// Loads twitter from the service and updates th UI.
+        /// </summary>
+        private async void LoadVideosAsync()
+        {
+            // Update binded video member with service-based videos.
+            Videos = await YoutubeService.GetAllAsync().ConfigureAwait(true);
+        }
+
         #endregion
     }
 
 
     public class ItemSelectedEventArgs : EventArgs
     {
-        public ItemViewModel ItemViewModel { get; set; }
+        public object ItemViewModel { get; set; }
     }
 }

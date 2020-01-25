@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace rTsd.Views
+namespace rTsd.Views.Components
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DuoMaster : ContentView
+    public partial class VideoView : ContentView
     {
-        public DuoMaster()
+        public VideoView()
         {
             InitializeComponent();
         }

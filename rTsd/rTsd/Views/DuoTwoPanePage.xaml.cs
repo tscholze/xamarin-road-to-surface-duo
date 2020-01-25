@@ -24,6 +24,7 @@ namespace rTsd.Views
             // Request initial data load.
             itemsViewModel.LoadTweetsCommand.Execute(null);
             itemsViewModel.LoadItemsCommand.Execute(null);
+            itemsViewModel.LoadVideosCommand.Execute(null);
         }
 
         #region Private helper
@@ -34,14 +35,14 @@ namespace rTsd.Views
             //  - Is a Duo device
             //  - App is spanned across both screens
             //  - Device is in portrait mode
-            if (FormsWindow.IsSpanned && FormsWindow.IsPortrait)
+            // Elsewise, push it onto the navigation stack.
+            if (!(FormsWindow.IsSpanned && FormsWindow.IsPortrait))
             {
-                DetailPane.BindingContext = e.ItemViewModel;
+                Navigation.PushAsync(new ItemPage(e.ItemViewModel));
                 return;
             }
 
-            // Elsewise, push it onto the navigation stack.
-            Navigation.PushAsync(new ItemPage(e.ItemViewModel));
+            DetailPane.BindingContext = e.ItemViewModel;
         }
 
         #endregion

@@ -32,6 +32,13 @@
                 <Setter Property="LineHeight" Value="1.25" />
             </Style>
 
+            <Style TargetType="Label" x:Key="ColumnTitleLabelStyle">
+                <Setter Property="TextColor" Value="{StaticResource OnPrimary}" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Padding" Value="20, 10, 20, 0" />
+            </Style>
+
             <!-- Controls -->
             <Style TargetType="Button" x:Key="PrimaryButtonStyle">
                 <Setter Property="BackgroundColor" Value="{StaticResource OnPrimary}" />

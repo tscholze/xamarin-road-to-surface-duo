@@ -23,18 +23,9 @@ namespace rTsd
         {
             InitializeComponent();
 
+            // Add news page to shell navigation
             var news = new ShellSection { Title = "News", Icon = "icon_blog.png" };
-
-            // Add underlying content page dependet on if it runs on a 
-            // Surface Duo.
-            if (hingeService.IsDuo)
-            {
-                news.Items.Add(new DuoMasterDetailPage());
-            }
-            else
-            {
-                news.Items.Add(new DuoMasterDetailPage());
-            }
+            news.Items.Add(new DuoMasterDetailPage(new ViewModels.ItemsViewModel(hingeService.IsDuo)));
 
             // Add about page to shell navigation
             var about = new ShellSection { Title = "About", Icon = "icon_about.png" };

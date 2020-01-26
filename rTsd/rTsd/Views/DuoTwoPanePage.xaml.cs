@@ -1,5 +1,6 @@
 ﻿using rTsd.Utils.MicrosoftDuoLibrary;
 using rTsd.ViewModels;
+using System;
 using System.ComponentModel;
 using Xamarin.Forms.Xaml;
 
@@ -17,23 +18,26 @@ namespace rTsd.Views
         /// <summary>
         /// Underlying view model.
         /// </summary>
-        readonly ItemsViewModel itemsViewModel = new ItemsViewModel();
+        readonly ItemsViewModel viewModel;
 
-        public DuoMasterDetailPage()
+        public DuoMasterDetailPage(ItemsViewModel viewModel)
         {
+            // Ensure view model is set
+            this.viewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
+
             InitializeComponent();
 
             // Setup items view model.
-            itemsViewModel.ItemSelected += ItemsViewModel_ItemSelected;
+            this.viewModel.ItemSelected += ItemsViewModel_ItemSelected;
 
             // Setup panes.
-            MasterPane.BindingContext = itemsViewModel;
+            MasterPane.BindingContext = this.viewModel;
             DetailPane.BindingContext = new ItemViewModel(null);
 
             // Request initial data load.
-            itemsViewModel.LoadTweetsCommand.Execute(null);
-            itemsViewModel.LoadItemsCommand.Execute(null);
-            itemsViewModel.LoadVideosCommand.Execute(null);
+            this.viewModel.LoadTweetsCommand.Execute(null);
+            this.viewModel.LoadItemsCommand.Execute(null);
+            this.viewModel.LoadVideosCommand.Execute(null);
         }
 
         #region Private helper

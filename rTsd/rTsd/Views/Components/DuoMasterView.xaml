@@ -35,7 +35,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="{Binding SecondColumnWidth}" />
                 </Grid.ColumnDefinitions>
 
                 <!-- #region Feed content -->

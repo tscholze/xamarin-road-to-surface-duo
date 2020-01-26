@@ -47,7 +47,7 @@ namespace rTsd.ViewModels
         /// Opens link in system's browser.
         /// </summary>
         /// <param name="source">Uri as string that should be opened.</param>
-        protected static async System.Threading.Tasks.Task OpenBrowserToUrlAsync(string source)
+        protected static async void OpenBrowserToUrlAsync(string source)
         {
             // Ensure required information is set.
             if (source == null) return;

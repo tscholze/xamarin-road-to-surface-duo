@@ -39,6 +39,17 @@ namespace rTsd.ViewModels
         /// </summary>
         public static IElementService<Video> YoutubeService => DependencyService.Get<IElementService<Video>>();
 
+        private GridLength secondColumnWidth;
+
+        /// <summary>
+        /// Gets the width of the second (optional) column.
+        /// </summary>
+        public GridLength SecondColumnWidth
+        {
+            get { return secondColumnWidth; }
+            private set { SetProperty(ref secondColumnWidth, value); }
+        }
+
         private List<Tweet> tweets;
 
         /// <summary>
@@ -173,6 +184,12 @@ namespace rTsd.ViewModels
 
         #endregion
 
+        #region Private member
+
+        bool isDuo = false;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -180,10 +197,20 @@ namespace rTsd.ViewModels
         /// 
         /// Will setup required fields.
         /// </summary>
-        public ItemsViewModel()
+        public ItemsViewModel(bool isDuo)
         {
             // Setup default values.
             Items = new List<Post>();
+            this.isDuo = isDuo;
+
+            if(isDuo)
+            {
+                SecondColumnWidth = new GridLength(1, GridUnitType.Star);
+            }
+            else
+            {
+                SecondColumnWidth = new GridLength(0, GridUnitType.Absolute);
+            }
 
             // Setup commands.
             LoadTweetsCommand = new Command(() => LoadTweetsAsync());

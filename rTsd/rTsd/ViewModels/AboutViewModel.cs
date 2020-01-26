@@ -32,8 +32,8 @@ namespace rTsd.ViewModels
         public AboutViewModel()
         {
             // Setup commands.
-            OpenGitHubWebCommand = new Command(async () => await OpenBrowserToUrlAsync("https://www.github.com/tscholze/xamarin-road-to-surface-duo").ConfigureAwait(false));
-            OpenDrWindowsWebCommand = new Command(async () => await OpenBrowserToUrlAsync("https://www.drwindows.de/news/").ConfigureAwait(false));
+            OpenGitHubWebCommand = new Command(() => OpenBrowserToUrlAsync("https://www.github.com/tscholze/xamarin-road-to-surface-duo"));
+            OpenDrWindowsWebCommand = new Command(() => OpenBrowserToUrlAsync("https://www.drwindows.de/news/"));
         }
 
         #endregion

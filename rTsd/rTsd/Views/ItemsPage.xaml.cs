@@ -28,21 +28,21 @@ namespace rTsd.Views
         /// Constructor.
         /// Will set and load required information.
         /// </summary>
-        public ItemsPage()
+        public ItemsPage(ItemsViewModel viewModel)
         {
             // Initialize ui.
             InitializeComponent();
 
-            // Set binding context to the created view model.
-            BindingContext = viewModel = new ItemsViewModel();
+            // Set binding context to the given view model.
+            BindingContext = this.viewModel = viewModel;
 
             // Setup view model.
-            viewModel.ItemSelected += ViewModel_ItemSelected;
+            this.viewModel.ItemSelected += ViewModel_ItemSelected;
 
             // Inital items loading.
-            viewModel.LoadTweetsCommand.Execute(null);
-            viewModel.LoadItemsCommand.Execute(null);
-            viewModel.LoadVideosCommand.Execute(null);
+            this.viewModel.LoadTweetsCommand.Execute(null);
+            this.viewModel.LoadItemsCommand.Execute(null);
+            this.viewModel.LoadVideosCommand.Execute(null);
         }
 
         #endregion

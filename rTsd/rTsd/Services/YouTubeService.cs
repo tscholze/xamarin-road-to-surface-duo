@@ -9,6 +9,15 @@ using System.Xml.Linq;
 
 namespace rTsd.Services
 {
+    /// <summary>
+    /// A <see cref="IElementService{T}"/> that reads and parses YouTube feed 
+    /// information from the web.
+    /// 
+    /// Note:
+    ///     - For a more documented service implementation see <see cref="FeedService"/>.
+    ///     - The services is intended to be consumed by a `DependencyService`.
+    ///     - Interface methods are comment in the interface itself.
+    /// </summary>
     public class YouTubeService : IElementService<Video>
     {
         #region Private constants 

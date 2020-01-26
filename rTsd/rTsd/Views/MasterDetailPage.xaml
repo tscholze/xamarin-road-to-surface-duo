@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:rTsd.Views"
     mc:Ignorable="d"
-    x:Class="rTsd.Views.DuoMasterDetailPage"
+    x:Class="rTsd.Views.MasterDetailPage"
     Shell.NavBarIsVisible="false">
 
     <local:TwoPaneView>

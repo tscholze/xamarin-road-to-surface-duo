@@ -4,6 +4,9 @@ using Xamarin.Forms;
 
 namespace rTsd.ViewModels
 {
+    /// <summary>
+    /// ViewModel of a video item detail page.
+    /// </summary>
     public class VideoViewModel : BaseViewModel
     {
         #region Public member

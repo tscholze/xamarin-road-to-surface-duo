@@ -84,8 +84,11 @@ I'm not a skilled user interface designer nor I have an eye for beauty, but the 
 <center><img src="docs/ui-protoypes.png" height="300" /></center>
 
 ## App screenshots
-All shown screenshots are taken with version 20200125.
 
+**Running on a Microsoft Surface Duo**
+<center><img src="docs/ui-app-duo.png" height="500" /></center>
+
+**Running on a standard Android phone**
 <center><img src="docs/ui-app.png" height="500" /></center>
 
 I used the free, but required an Adobe ID, application [Adobe XD](https://www.adobe.com/de/products/xd.html) to create the protoyp views.

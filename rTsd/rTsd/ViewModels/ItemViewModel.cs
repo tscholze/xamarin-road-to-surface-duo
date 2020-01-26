@@ -8,7 +8,7 @@ using Xamarin.Forms;
 namespace rTsd.ViewModels
 {
     /// <summary>
-    /// ViewModel of the ItemPage.
+    /// ViewModel of a feed item detail page.
     /// </summary>
     public class ItemViewModel : BaseViewModel
     {

@@ -12,6 +12,13 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(HingeService))]
 namespace rTsd.Droid
 {
+	/// <summary>
+	/// Temporary copy and paste of of the offical sample:
+	///		https://github.com/microsoft/surface-duo-sdk-xamarin-samples
+	///		
+	/// Warnings will be not fixed. I have strong hope that this classes
+	/// will be part of an upcoming NuGet packages.
+	/// </summary>
 	public class HingeService : IHingeService, IDisposable
 	{
 		static ScreenHelper helper;

@@ -13,7 +13,7 @@ namespace rTsd.Utils.MicrosoftDuoLibrary
 
 		IReadOnlyDictionary<string, LayoutGuide> LayoutGuides { get; }
 
-		event EventHandler<LayoutGuideChangedArgs> LayoutGuideChanged;
+		event EventHandler<LayoutGuideChangedEventArgs> LayoutGuideChanged;
 	}
 
 	public abstract class LayoutServiceBase : ILayoutService
@@ -23,7 +23,7 @@ namespace rTsd.Utils.MicrosoftDuoLibrary
 			LayoutGuides = LayoutGuidesInternal;
 		}
 
-		public event EventHandler<LayoutGuideChangedArgs> LayoutGuideChanged;
+		public event EventHandler<LayoutGuideChangedEventArgs> LayoutGuideChanged;
 
 		public IReadOnlyDictionary<string, LayoutGuide> LayoutGuides { get; }
 
@@ -34,21 +34,10 @@ namespace rTsd.Utils.MicrosoftDuoLibrary
 		{
 			var guide = new LayoutGuide(name, location);
 			LayoutGuidesInternal[name] = guide;
-			LayoutGuideChanged?.Invoke(this, new LayoutGuideChangedArgs(guide));
+			LayoutGuideChanged?.Invoke(this, new LayoutGuideChangedEventArgs(guide));
 		}
 
 		public abstract Point? GetLocationOnScreen(VisualElement visualElement);
-	}
-
-
-	public class LayoutGuideChangedArgs : EventArgs
-	{
-		public LayoutGuideChangedArgs(LayoutGuide layoutGuide)
-		{
-			LayoutGuide = layoutGuide;
-		}
-
-		public LayoutGuide LayoutGuide { get; }
 	}
 
 	public class LayoutGuide

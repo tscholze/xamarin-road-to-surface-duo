@@ -22,8 +22,8 @@ namespace rTsd.Utils.MicrosoftDuoLibrary
         ContentPage _contentPage;
         FormsWindow _ScreenViewModel;
 
-        public static readonly BindableProperty TallModeConfigurationProperty = BindableProperty.Create("TallModeConfiguration", typeof(TwoPaneViewTallModeConfiguration), typeof(TwoPaneView), defaultValue: TwoPaneViewTallModeConfiguration.SinglePane);
-        public static readonly BindableProperty WideModeConfigurationProperty = BindableProperty.Create("WideModeConfiguration", typeof(TwoPaneViewWideModeConfiguration), typeof(TwoPaneView), defaultValue: TwoPaneViewWideModeConfiguration.LeftRight);
+        public static readonly BindableProperty TallModeConfigurationProperty = BindableProperty.Create(nameof(TallModeConfiguration), typeof(TwoPaneViewTallModeConfiguration), typeof(TwoPaneView), defaultValue: TwoPaneViewTallModeConfiguration.SinglePane);
+        public static readonly BindableProperty WideModeConfigurationProperty = BindableProperty.Create(nameof(WideModeConfiguration), typeof(TwoPaneViewWideModeConfiguration), typeof(TwoPaneView), defaultValue: TwoPaneViewWideModeConfiguration.LeftRight);
 
 
         public TwoPaneViewTallModeConfiguration TallModeConfiguration

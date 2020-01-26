@@ -190,7 +190,7 @@ namespace rTsd.Utils.MicrosoftDuoLibrary
             }
         }
 
-        void OnLayoutGuideChanged(object sender, LayoutGuideChangedArgs e)
+        void OnLayoutGuideChanged(object sender, LayoutGuideChangedEventArgs e)
         {
             if (e.LayoutGuide.Name == "Hinge")
                 Hinge = e.LayoutGuide.Rectangle;

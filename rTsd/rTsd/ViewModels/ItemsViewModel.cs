@@ -21,7 +21,7 @@ namespace rTsd.ViewModels
         /// Injected by the `DependencyService`.
         /// See `App.cs` for the setup process.
         /// </summary>
-        public IElementService<Post> FeedService => DependencyService.Get<IElementService<Post>>();
+        public static IElementService<Post> FeedService => DependencyService.Get<IElementService<Post>>();
 
         /// <summary>
         /// Twitter to RSS middleware service.
@@ -29,7 +29,7 @@ namespace rTsd.ViewModels
         /// Injected by the `DependencyService`.
         /// See `App.cs` for the setup process.
         /// </summary>
-        public IElementService<Tweet> TwitterService => DependencyService.Get<IElementService<Tweet>>();
+        public static IElementService<Tweet> TwitterService => DependencyService.Get<IElementService<Tweet>>();
 
         /// <summary>
         /// YouTube service.
@@ -37,7 +37,7 @@ namespace rTsd.ViewModels
         /// Injected by the `DependencyService`.
         /// See `App.cs` for the setup process.
         /// </summary>
-        public IElementService<Video> YoutubeService => DependencyService.Get<IElementService<Video>>();
+        public static IElementService<Video> YoutubeService => DependencyService.Get<IElementService<Video>>();
 
         private List<Tweet> tweets;
 
@@ -189,6 +189,7 @@ namespace rTsd.ViewModels
             LoadTweetsCommand = new Command(() => LoadTweetsAsync());
             LoadItemsCommand = new Command(() => LoadArticlesAsync());
             LoadVideosCommand = new Command(() => LoadVideosAsync());
+
             ItemSelectedCommand = new Command<object>((item) => NavigateToDetailPage(item));
             ShowShellFlyoutCommand = new Command(() => ShowShellFlyout());
         }

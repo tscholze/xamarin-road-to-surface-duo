@@ -83,7 +83,7 @@ namespace rTsd.ViewModels
             };
 
             // Setup commands
-            OpenPostWebCommand = new Command(() => OpenBrowserToUrl(post.LinkSource));
+            OpenPostWebCommand = new Command(() => OpenBrowserToUrlAsync(post.LinkSource));
             ShareCommand = new Command(() => OpenShareSheetToUrl(post.LinkSource));
         }
 

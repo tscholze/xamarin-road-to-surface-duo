@@ -47,7 +47,7 @@ namespace rTsd.ViewModels
         /// Opens link in system's browser.
         /// </summary>
         /// <param name="source">Uri as string that should be opened.</param>
-        protected async void OpenBrowserToUrl(string source)
+        protected static async System.Threading.Tasks.Task OpenBrowserToUrlAsync(string source)
         {
             // Ensure required information is set.
             if (source == null) return;
@@ -61,7 +61,7 @@ namespace rTsd.ViewModels
         /// Opens link in system's share sheet.
         /// </summary>
         /// <param name="source">Uri as string that should be shared.</param>
-        protected async void OpenShareSheetToUrl(string source)
+        protected static async void OpenShareSheetToUrl(string source)
         {
             // Ensure required information is set.
             if (source == null) return;

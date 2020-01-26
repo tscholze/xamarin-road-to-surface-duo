@@ -47,7 +47,7 @@ namespace rTsd.ViewModels
             };
 
             // Setup commands
-            OpenWebCommand = new Command(() => OpenBrowserToUrl(video.VideoSource));
+            OpenWebCommand = new Command(() => OpenBrowserToUrlAsync(video.VideoSource));
             ShareCommand = new Command(() => OpenShareSheetToUrl(video.VideoSource));
         }
 

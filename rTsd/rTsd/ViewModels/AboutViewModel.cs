@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Input;
-using Xamarin.Essentials;
+﻿using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace rTsd.ViewModels
@@ -34,8 +32,8 @@ namespace rTsd.ViewModels
         public AboutViewModel()
         {
             // Setup commands.
-            OpenGitHubWebCommand = new Command(() => OpenBrowserToUrl("https://www.github.com/tscholze/xamarin-road-to-surface-duo"));
-            OpenDrWindowsWebCommand = new Command(() => OpenBrowserToUrl("https://www.drwindows.de/news/"));
+            OpenGitHubWebCommand = new Command(async () => await OpenBrowserToUrlAsync("https://www.github.com/tscholze/xamarin-road-to-surface-duo").ConfigureAwait(false));
+            OpenDrWindowsWebCommand = new Command(async () => await OpenBrowserToUrlAsync("https://www.drwindows.de/news/").ConfigureAwait(false));
         }
 
         #endregion

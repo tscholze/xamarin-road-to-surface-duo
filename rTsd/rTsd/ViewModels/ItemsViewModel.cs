@@ -214,11 +214,13 @@ namespace rTsd.ViewModels
                 SelectedPost = null;
 
                 // Build event args.
+                eventArgs.ItemId = post.Id;
                 eventArgs.ItemViewModel = new ItemViewModel(post);
             }
             else if(obj is Video video)
             {
                 SelectedVideo = null;
+                eventArgs.ItemId = video.Id;
                 eventArgs.ItemViewModel = new VideoViewModel(video);
             }
 
@@ -267,6 +269,7 @@ namespace rTsd.ViewModels
 
     public class ItemSelectedEventArgs : EventArgs
     {
+        public string ItemId { get; set; }
         public object ItemViewModel { get; set; }
     }
 }

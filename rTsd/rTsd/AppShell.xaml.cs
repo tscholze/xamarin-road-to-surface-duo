@@ -33,7 +33,7 @@ namespace rTsd
             }
             else
             {
-                news.Items.Add(new ItemsPage());
+                news.Items.Add(new DuoMasterDetailPage());
             }
 
             // Add about page to shell navigation

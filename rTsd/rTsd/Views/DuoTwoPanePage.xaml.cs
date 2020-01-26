@@ -8,6 +8,15 @@ namespace rTsd.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DuoMasterDetailPage : DuoPage
     {
+        /// <summary>
+        /// Id of the underlying data item of the currently pushed 
+        /// detail page.
+        /// </summary>
+        string pushedDetailPageId = string.Empty;
+
+        /// <summary>
+        /// Underlying view model.
+        /// </summary>
         readonly ItemsViewModel itemsViewModel = new ItemsViewModel();
 
         public DuoMasterDetailPage()
@@ -31,6 +40,12 @@ namespace rTsd.Views
 
         private void ItemsViewModel_ItemSelected(object sender, ItemSelectedEventArgs e)
         {
+            // Ensure this is a new detail page, if not, do nothing
+            if (pushedDetailPageId == e.ItemId) return;
+
+            // Store item id as currently pushed / selected detail item.
+            pushedDetailPageId = e.ItemId;
+
             // Update left-handeled detail page if:
             //  - Is a Duo device
             //  - App is spanned across both screens

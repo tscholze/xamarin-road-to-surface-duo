@@ -24,7 +24,7 @@ namespace rTsd
         /// <summary>
         /// Constructor.
         /// 
-        /// It wil setup navigation related members.
+        /// It will setup navigation related members.
         /// </summary>
         public AppShell()
         {

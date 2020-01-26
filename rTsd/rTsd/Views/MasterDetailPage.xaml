@@ -11,8 +11,8 @@
     Shell.NavBarIsVisible="false">
 
     <local:TwoPaneView>
-        <views:DuoMaster x:Name="MasterPane" />
-        <views:DuoDetailView x:Name="DetailPane" />
+        <views:ItemsView x:Name="MasterPane" />
+        <views:ItemView x:Name="DetailPane" />
     </local:TwoPaneView>
     
 </local:DuoPage>

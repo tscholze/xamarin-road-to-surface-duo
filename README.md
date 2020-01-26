@@ -39,7 +39,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - [x] Getting into important Xamarin / C# pattern
 - [x] Write first MVP code
 - [x] Implement first Surface Duo related features or layouts
-- [ ] Improve feature and code quality
+- [x] Improve feature and code quality
 - [ ] Write tests
 - [ ] Leverage CI with tests and test deployment
 

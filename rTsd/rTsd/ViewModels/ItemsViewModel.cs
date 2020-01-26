@@ -1,6 +1,5 @@
 ﻿using rTsd.Models;
 using rTsd.Services;
-using rTsd.Views;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -184,12 +183,6 @@ namespace rTsd.ViewModels
 
         #endregion
 
-        #region Private member
-
-        bool isDuo = false;
-
-        #endregion
-
         #region Constructor
 
         /// <summary>
@@ -201,7 +194,6 @@ namespace rTsd.ViewModels
         {
             // Setup default values.
             Items = new List<Post>();
-            this.isDuo = isDuo;
 
             if(isDuo)
             {

@@ -24,14 +24,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Components\DuoMasterView.xaml.cs">
-      <DependentUpon>DuoMasterView.xaml</DependentUpon>
+    <Compile Update="Views\Components\ItemView.xaml.cs">
+      <DependentUpon>ItemView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\DuoTwoPanePage.xaml.cs">
-      <DependentUpon>DuoTwoPanePage.xaml</DependentUpon>
+    <Compile Update="Views\Components\ItemsView.xaml.cs">
+      <DependentUpon>ItemsView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\ItemPage.xaml.cs">
-      <DependentUpon>ItemPage.xaml</DependentUpon>
+    <Compile Update="Views\MasterDetailPage.xaml.cs">
+      <DependentUpon>MasterDetailPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -48,16 +48,13 @@
     <EmbeddedResource Update="Controls\VideosCollectionView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Components\DuoDetailView.xaml">
+    <EmbeddedResource Update="Views\Components\ItemView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Components\VideoView.xaml">
+    <EmbeddedResource Update="Views\MasterDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DuoTwoPanePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Components\DuoMasterView.xaml">
+    <EmbeddedResource Update="Views\Components\ItemsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

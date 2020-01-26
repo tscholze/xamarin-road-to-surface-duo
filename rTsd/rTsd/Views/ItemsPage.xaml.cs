@@ -36,10 +36,22 @@ namespace rTsd.Views
             // Set binding context to the created view model.
             BindingContext = viewModel = new ItemsViewModel();
 
+            // Setup view model.
+            viewModel.ItemSelected += ViewModel_ItemSelected;
+
             // Inital items loading.
             viewModel.LoadTweetsCommand.Execute(null);
             viewModel.LoadItemsCommand.Execute(null);
             viewModel.LoadVideosCommand.Execute(null);
+        }
+
+        #endregion
+
+        #region Event handler
+
+        private void ViewModel_ItemSelected(object sender, ItemSelectedEventArgs e)
+        {
+            Navigation.PushAsync(new ItemPage(e.ItemViewModel));
         }
 
         #endregion

@@ -45,7 +45,7 @@
         </Grid>
         
         <!-- Post's content -->
-        <controls:PostHeroView Post="{Binding Post}" HeightRequest="400" />
+        <controls:PostHeroView Post="{Binding Post}" />
 
         <!-- Text -->
         <WebView Source="{Binding WebViewSource}" 

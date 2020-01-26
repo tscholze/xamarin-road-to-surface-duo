@@ -36,7 +36,7 @@
                                           SelectionMode="Single"
                                           ItemsSource="{Binding Items}"
                                           SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
-                                          SelectionChangedCommand="{Binding NavigateToDetailPageCommand}"
+                                          SelectionChangedCommand="{Binding ItemSelectedCommand}"
                                           SelectionChangedCommandParameter="{Binding Source={x:Reference ItemsCollectionView}, Path=SelectedItem}" />
         </StackLayout>
         <!-- endregion -->

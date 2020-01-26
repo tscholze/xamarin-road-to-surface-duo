@@ -41,7 +41,8 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - [x] Implement first Surface Duo related features or layouts
 - [x] Improve feature and code quality
 - [ ] Write tests
-- [ ] Leverage CI with tests and test deployment
+- [ ] Leverage CI with tests and deployments
+- [ ] Add analytics
 
 ## Publications
 

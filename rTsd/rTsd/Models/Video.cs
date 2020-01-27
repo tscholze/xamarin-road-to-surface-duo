@@ -1,43 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace rTsd.Models
+﻿namespace rTsd.Models
 {
+    /// <summary>
+    /// Container data model of a YouTube video.
+    /// </summary>
     public class Video
     {
-        #region Private constants
-
-        private const string FALLBACK_IMAGE_SOURCE = "https://www.drwindows.de/news/wp-content/uploads/2017/07/drwindows_intern_neu-660x330.jpg";
-
-        #endregion
-
         #region Public member
 
+        /// <summary>
+        /// GUID of the video.
+        /// </summary>
         public string Id { get; set; }
 
+        /// <summary>
+        /// Title of the video.
+        /// </summary>
         public string Title { get; set; }
 
+        /// <summary>
+        /// Description of the video.
+        /// </summary>
         public string Description { get; set; }
 
+        /// <summary>
+        /// Url to the video.
+        /// </summary>
         public string VideoSource { get; set; }
 
+        /// <summary>
+        /// Url to the Tumbnail.
+        /// 
+        /// Caution: This could be leading to an 404.
+        /// </summary>
         public string ThumbnailSource { get; set; }
-
-        public string ImageSource
-        {
-            get
-            {
-                if (ThumbnailSource == null || ThumbnailSource.Length == 0)
-                {
-                    return FALLBACK_IMAGE_SOURCE;
-                }
-                else
-                {
-                    return ThumbnailSource;
-                }
-            }
-        }
 
         #endregion
     }

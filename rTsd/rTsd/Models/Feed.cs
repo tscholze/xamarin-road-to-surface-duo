@@ -3,12 +3,10 @@
 namespace rTsd.Models
 {
     /// <summary>
-    /// Container data model of a feed for posts.
+    /// Container data model of a feed.
     /// </summary>
     public class Feed
     {
-        // TODO: Implement title, last-updated flag
-
         /// <summary>
         /// Items of the feed.
         /// </summary>

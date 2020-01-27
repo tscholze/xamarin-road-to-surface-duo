@@ -42,6 +42,7 @@
                                    CornerRadius="20, 0, 0, 20"
                                    BackgroundColor="{StaticResource Primary}">
                     <Grid>
+                        <!-- Fallback background image -->
                         <Image Source="https://www.drwindows.de/news/wp-content/uploads/2017/07/drwindows_intern_neu-660x330.jpg" Aspect="AspectFill" />
 
                         <!-- Title -->
@@ -61,7 +62,7 @@
                                                       Color="Black" />
                             </Label.Effects>
                         </Label>
-                        <Image Source="{Binding ImageSource}" Aspect="AspectFill" />
+                        <Image Source="{Binding ThumbnailSource}" Aspect="AspectFill" />
                     </Grid>
                 </yummy:PancakeView>
             </Grid>
@@ -73,6 +74,7 @@
                                    CornerRadius="0, 20, 20, 0"
                                    BackgroundColor="{StaticResource Primary}">
                     <Grid>
+                        <!-- Fallback background image -->
                         <Image Source="https://www.drwindows.de/news/wp-content/uploads/2017/07/drwindows_intern_neu-660x330.jpg" Aspect="AspectFill" />
                         
                         <!-- Title -->
@@ -92,7 +94,7 @@
                                                       Color="Black" />
                             </Label.Effects>
                         </Label>
-                        <Image Source="{Binding ImageSource}" Aspect="AspectFill" />
+                        <Image Source="{Binding ThumbnailSource}" Aspect="AspectFill" />
                     </Grid>
 
                 </yummy:PancakeView>

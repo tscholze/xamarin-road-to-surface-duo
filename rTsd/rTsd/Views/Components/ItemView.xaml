@@ -57,7 +57,8 @@
             <!-- Text -->
             <WebView Source="{Binding WebViewSource}" 
                  VerticalOptions="FillAndExpand"
-                 HorizontalOptions="Center"/>
+                 HorizontalOptions="Center"
+                     Margin="40, 0, 40, 0"/>
         </StackLayout>
     </Grid>
 </ContentView>

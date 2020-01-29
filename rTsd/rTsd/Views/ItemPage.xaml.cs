@@ -27,15 +27,18 @@ namespace rTsd.Views
         /// </summary>
         public ItemPage(object viewModel)
         {
-            if(viewModel is ItemViewModel itemViewModel)
+            // Init components with now set BindingContext.
+            InitializeComponent();
+
+            // Set binding context according to its view model.
+            if (viewModel is ItemViewModel itemViewModel)
             {
                 BindingContext = itemViewModel;
-                InitializeComponent();
             }
             else if (viewModel is VideoViewModel videoViewModel)
             {
                 BindingContext = videoViewModel;
-                InitializeComponent();
+                HeroView.IsVisible = false;
             }
             else
             {

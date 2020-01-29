@@ -42,23 +42,23 @@
 
                 <!-- Browser button -->
                 <Button Grid.Column="0"
-                    ImageSource="earth.png"
-                    Command="{Binding OpenPostWebCommand}"/>
+                        ImageSource="earth.png"
+                        Command="{Binding OpenPostWebCommand}"/>
 
                 <!-- Share button -->
                 <Button Grid.Column="2"
-                    ImageSource="share.png"
-                    Command="{Binding ShareCommand}"/>
+                        ImageSource="share.png"
+                        Command="{Binding ShareCommand}"/>
             </Grid>
 
             <!-- Post's content -->
-            <controls:PostHeroView Post="{Binding Post}" />
+            <controls:PostHeroView x:Name="HeroView" 
+                                   Post="{Binding Post}" />
 
             <!-- Text -->
             <WebView Source="{Binding WebViewSource}" 
-                 VerticalOptions="FillAndExpand"
-                 HorizontalOptions="Center"
-                     Margin="40, 0, 40, 0"/>
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="Center"/>
         </StackLayout>
     </Grid>
 </ContentView>

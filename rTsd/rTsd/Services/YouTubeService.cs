@@ -86,7 +86,7 @@ namespace rTsd.Services
                                     Id = item.Element(yt + "videoId").Value,
                                     Title = item.Element(xmlns + "title").Value,
                                     Description = item.Element(media + "group").Element(media + "description").Value,
-                                    VideoSource = item.Element(media + "group").Element(media + "content").Attribute("url").Value,
+                                    VideoSource = item.Element(xmlns + "link").Attribute("href").Value.Replace("watch", "watch_popup"),
                                     ThumbnailSource = item.Element(media + "group").Element(media + "thumbnail").Attribute("url").Value.Replace("hqdefault", "maxresdefault"),
 
                                 })

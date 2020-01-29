@@ -56,7 +56,8 @@
                 <!-- #region YT content -->
 
                 <StackLayout Grid.Column="1">
-                    <Label Text="What's new on Youtube?" Style="{StaticResource ColumnTitleLabelStyle}"/>
+                    <Label Text="What's new on Youtube?"
+                           Style="{StaticResource ColumnTitleLabelStyle}"/>
 
                     <controls:VideosCollectionView x:Name="VideosCollectionView"
                                                    SelectionMode="Single"

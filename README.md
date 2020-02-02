@@ -10,6 +10,8 @@ It will target only Android devices and it's meant to include all other aspecs o
 
 This project is written and owned by a beginner and meant for beginners. It would be perfect if experts could mentor the project - but this is just a mind in the clouds.
 
+If you are looking for the siblings app that's based on the UWP ecosystem to work with the Sutface Neo, please see the GitHub repository [tscholze/uwp-road-to-surface-neo](https://github.com/tscholze/uwp-road-to-surface-neo).
+
 ## Build status
 
 |Service|Status|
@@ -59,7 +61,6 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - Installed Xamarin Visual Studio plugins
 
 ## Assumption
-
 - The Surface Duo will usw two navigation pages, master on the left screen and detail on the right, as the main indicator how to display an app on two screens -> Nope it works a little bit diffrent
 
 ## Other programms I used
@@ -119,7 +120,6 @@ Just me, [Tobi]([https://tscholze.github.io).
 - [Dr. Windows](https://www.drwindows.de) German Microsoft blog
 - [Microsoft Docs](https://docs.microsoft.com/en-us/dual-screen/android/get-duo-sdk?tabs=java) for dual screen devices
 - [Xamarin](https://dotnet.microsoft.com/apps/xamarin) Homepage
-
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

@@ -1,6 +1,0 @@
-﻿This directory is just a copy and past from the offical Xamarin.Forms sample.
-	See: https://github.com/microsoft/surface-duo-sdk-xamarin-samples
-
-Warnings will be not fixed. I have strong hope that this classes
-will be part of an upcoming NuGet packages.
-	

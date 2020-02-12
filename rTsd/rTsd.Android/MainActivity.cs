@@ -19,9 +19,6 @@ namespace rTsd.Droid
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            // Ensure Xamarin.Forms depedency service values are setup early.
-            HingeService.MainActivity = this;
-
             // Get layout resources
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
@@ -35,6 +32,7 @@ namespace rTsd.Droid
             // Xamarin.Forms inits.
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Xamarin.Forms.DualScreen.DualScreenService.Init(this);
 
             // Load app from the Forms sub project.
             LoadApplication(new App());

@@ -1,7 +1,8 @@
-﻿using rTsd.Utils.MicrosoftDuoLibrary;
-using rTsd.ViewModels;
+﻿using rTsd.ViewModels;
 using System;
 using System.ComponentModel;
+using Xamarin.Forms;
+using Xamarin.Forms.DualScreen;
 using Xamarin.Forms.Xaml;
 
 namespace rTsd.Views
@@ -16,9 +17,14 @@ namespace rTsd.Views
     ///     - ItemView
     ///     - ItemsPage (required for non-spanned mode.)
     /// </summary>
-    public partial class MasterDetailPage : DuoPage
+    public partial class MasterDetailPage : ContentPage
     {
         #region Private member
+
+        /// <summary>
+        /// Determines if the app is spanned across both screens.
+        /// </summary>
+        static bool IsSpanned => DualScreenInfo.Current.SpanMode == TwoPaneViewMode.Wide;
 
         /// <summary>
         /// Id of the underlying data item of the currently pushed 
@@ -63,7 +69,39 @@ namespace rTsd.Views
 
         #endregion
 
+        #region Event handler
+
+        /// <summary>
+        /// Called on view will appear.
+        /// </summary>
+        protected override void OnAppearing()
+        {
+            // If app is not spanned, reset detail identifier.
+            if (IsSpanned) return;
+            pushedDetailPageId = null;
+        }
+
+        #endregion
+
         #region Private helper
+
+        private void UpdateContentForViewModel(object itemViewModel)
+        {
+            // Update left-handeled detail page if:
+            //  - App is spanned across both screens
+            //  - Device is in portrait mode
+            // Elsewise, 
+            //  If view model is set
+            //  -> push it onto the navigation stack.
+            if (IsSpanned)
+            {
+                DetailPane.BindingContext = itemViewModel;
+                return;
+            }
+
+            if (itemViewModel == null) return;
+            Navigation.PushAsync(new ItemPage(itemViewModel));
+        }
 
         /// <summary>
         /// Will be raised if an item has been selected.
@@ -78,39 +116,7 @@ namespace rTsd.Views
             // Store item id as currently pushed / selected detail item.
             pushedDetailPageId = e.ItemId;
 
-            // Update left-handeled detail page if:
-            //  - Is a Duo device
-            //  - App is spanned across both screens
-            //  - Device is in portrait mode
-            // Elsewise, push it onto the navigation stack.
-            if (!(FormsWindow.IsSpanned && FormsWindow.IsPortrait))
-            {
-                Navigation.PushAsync(new ItemPage(e.ItemViewModel));
-                return;
-            }
-
-            DetailPane.BindingContext = e.ItemViewModel;
-        }
-
-        #endregion
-
-        #region Event handler
-
-        /// <summary>
-        /// Will be called if the app window changed. 
-        /// 
-        /// Example:
-        ///     - Non spanned to spanned.
-        ///     - Rotation.
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Event args.</param>
-        void OnFormsWindowPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(FormsWindow.IsSpanned) || e.PropertyName == nameof(FormsWindow.IsPortrait))
-            {
-                // TODO: Implement feature that the detail screen does update itself after window changed.
-            }
+            UpdateContentForViewModel(e.ItemViewModel);
         }
 
         #endregion

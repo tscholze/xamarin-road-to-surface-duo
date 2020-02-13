@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.DualScreen;
 
 namespace rTsd.ViewModels
 {
@@ -187,15 +188,14 @@ namespace rTsd.ViewModels
 
         /// <summary>
         /// Constructor.
-        /// 
-        /// Will setup required fields.
         /// </summary>
-        public ItemsViewModel(bool isDuo)
+        public ItemsViewModel()
         {
             // Setup default values.
             Items = new List<Post>();
 
-            if(isDuo)
+            // Check if app runs on a Duo.
+            if(DualScreenInfo.Current.HingeBounds != null)
             {
                 SecondColumnWidth = new GridLength(1, GridUnitType.Star);
             }

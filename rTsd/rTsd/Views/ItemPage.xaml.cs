@@ -34,6 +34,7 @@ namespace rTsd.Views
             if (viewModel is ItemViewModel itemViewModel)
             {
                 BindingContext = itemViewModel;
+                HeroView.IsVisible = true;
             }
             else if (viewModel is VideoViewModel videoViewModel)
             {

@@ -10,12 +10,15 @@ namespace rTsd.ViewModels
     /// <summary>
     /// ViewModel of a feed item detail page.
     /// </summary>
-    public class ItemViewModel : BaseViewModel
+    public class ItemViewModel : BaseViewModel, IDetailPageViewModel
     {
         #region Public member
 
         private bool showPlaceholder = false;
 
+        /// <summary>
+        /// Determines if the placeholder view should be shown.
+        /// </summary>
         public bool ShowPlaceholder
         {
             get { return showPlaceholder; }
@@ -50,12 +53,21 @@ namespace rTsd.ViewModels
         /// <summary>
         /// Command to the post in system's browser.
         /// </summary>
-        public ICommand OpenPostWebCommand { get; }
+        public ICommand OpenWebCommand { get; }
 
         /// <summary>
         /// Command to open the system's share sheet.
         /// </summary>
         public ICommand ShareCommand { get; }
+
+        #endregion
+
+        #region DetailPageViewModel
+
+        public bool ShowHeroView
+        {
+            get { return false; }
+        }
 
         #endregion
 
@@ -83,7 +95,7 @@ namespace rTsd.ViewModels
             };
 
             // Setup commands
-            OpenPostWebCommand = new Command(() => OpenBrowserToUrlAsync(post.LinkSource));
+            OpenWebCommand = new Command(() => OpenBrowserToUrlAsync(post.LinkSource));
             ShareCommand = new Command(() => OpenShareSheetToUrl(post.LinkSource));
         }
 

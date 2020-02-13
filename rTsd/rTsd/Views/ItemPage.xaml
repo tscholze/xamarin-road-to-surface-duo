@@ -46,7 +46,8 @@
 
         <!-- Post's content -->
         <controls:PostHeroView x:Name="HeroView" 
-                               Post="{Binding Post}" />
+                               Post="{Binding Post}"
+                               HeightRequest="160"/>
 
         <!-- Text -->
         <WebView Source="{Binding WebViewSource}" 

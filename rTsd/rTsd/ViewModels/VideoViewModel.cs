@@ -7,7 +7,7 @@ namespace rTsd.ViewModels
     /// <summary>
     /// ViewModel of a video item detail page.
     /// </summary>
-    public class VideoViewModel : BaseViewModel
+    public class VideoViewModel : BaseViewModel, IDetailPageViewModel
     {
         #region Public member
 
@@ -22,14 +22,17 @@ namespace rTsd.ViewModels
             set { SetProperty(ref webViewSource, value); }
         }
 
-        /// <summary>
-        /// Command to the video in system's browser.
-        /// </summary>
+        #endregion
+
+        #region IDetailPageViewModel
+
+        public bool ShowHeroView
+        {
+            get { return false; }
+        }
+
         public ICommand OpenWebCommand { get; }
 
-        /// <summary>
-        /// Command to open the system's share sheet.
-        /// </summary>
         public ICommand ShareCommand { get; }
 
         #endregion

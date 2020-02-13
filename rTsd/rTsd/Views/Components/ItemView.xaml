@@ -43,7 +43,7 @@
                 <!-- Browser button -->
                 <Button Grid.Column="0"
                         ImageSource="earth.png"
-                        Command="{Binding OpenPostWebCommand}"/>
+                        Command="{Binding OpenWebCommand}"/>
 
                 <!-- Share button -->
                 <Button Grid.Column="2"
@@ -52,8 +52,9 @@
             </Grid>
 
             <!-- Post's content -->
-            <controls:PostHeroView x:Name="HeroView" 
-                                   Post="{Binding Post}" />
+            <controls:PostHeroView IsVisible="{Binding ShowHeroView}"
+                                   Post="{Binding Post}"
+                                   HeightRequest="160" />
 
             <!-- Text -->
             <WebView Source="{Binding WebViewSource}" 

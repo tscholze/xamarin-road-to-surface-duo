@@ -21,7 +21,10 @@ namespace rTsd.Views
     {
         #region Private member
 
-        bool IsSpanned => DualScreenInfo.Current.IsLandscape == false;
+        /// <summary>
+        /// Determines if the app is spanned across both screens.
+        /// </summary>
+        static bool IsSpanned => DualScreenInfo.Current.SpanMode == TwoPaneViewMode.Wide;
 
         /// <summary>
         /// Id of the underlying data item of the currently pushed 
@@ -66,43 +69,37 @@ namespace rTsd.Views
 
         #endregion
 
+        #region Event handler
+
+        /// <summary>
+        /// Called on view will appear.
+        /// </summary>
         protected override void OnAppearing()
         {
-           // DualScreenInfo.Current.PropertyChanged += OnFormsWindowPropertyChanged;
-           // UpdateContentForViewModel(null);
+            // If app is not spanned, reset detail identifier.
+            if (IsSpanned) return;
+            pushedDetailPageId = null;
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            DualScreenInfo.Current.PropertyChanged -= OnFormsWindowPropertyChanged;
-        }
-
-        void OnFormsWindowPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(DualScreenInfo.Current.SpanMode) || e.PropertyName == nameof(DualScreenInfo.Current.IsLandscape))
-            {
-                UpdateContentForViewModel(null);
-            }
-        }
+        #endregion
 
         #region Private helper
 
         private void UpdateContentForViewModel(object itemViewModel)
         {
             // Update left-handeled detail page if:
-            //  - Is a Duo device
             //  - App is spanned across both screens
             //  - Device is in portrait mode
-            // Elsewise, push it onto the navigation stack.
-            if (DualScreenInfo.Current.HingeBounds.IsEmpty == false && IsSpanned)
+            // Elsewise, 
+            //  If view model is set
+            //  -> push it onto the navigation stack.
+            if (IsSpanned)
             {
                 DetailPane.BindingContext = itemViewModel;
                 return;
             }
 
             if (itemViewModel == null) return;
-
             Navigation.PushAsync(new ItemPage(itemViewModel));
         }
 

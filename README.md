@@ -42,8 +42,10 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - [x] Write first MVP code
 - [x] Implement first Surface Duo related features or layouts
 - [x] Improve feature and code quality
+- [x] Run it on a Surface Duo emulator
 - [ ] Write tests
 - [ ] Leverage CI with tests and deployments
+- [ ] Run it on an actual Surface Duo device
 - [ ] Add analytics
 
 ## Publications

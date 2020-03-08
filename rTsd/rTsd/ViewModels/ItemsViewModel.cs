@@ -1,6 +1,6 @@
 ﻿using rTsd.Models;
 using rTsd.Services;
-using System;
+using rTsd.Utils;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -226,7 +226,7 @@ namespace rTsd.ViewModels
             // Ensure required post is set.
             if (obj == null) return;
 
-            ItemSelectedEventArgs eventArgs = new ItemSelectedEventArgs();
+            ItemSelectedEventArgs eventArgs = new ItemSelectedEventArgs();      
             if (obj is Post post)
             {
                 // Deselect selected post.
@@ -283,12 +283,5 @@ namespace rTsd.ViewModels
         }
 
         #endregion
-    }
-
-
-    public class ItemSelectedEventArgs : EventArgs
-    {
-        public string ItemId { get; set; }
-        public object ItemViewModel { get; set; }
     }
 }

@@ -195,7 +195,7 @@ namespace rTsd.ViewModels
             Items = new List<Post>();
 
             // Check if app runs on a Duo.
-            if(DualScreenInfo.Current.HingeBounds != null)
+            if(DualScreenInfo.Current.HingeBounds.Width != 0)
             {
                 SecondColumnWidth = new GridLength(1, GridUnitType.Star);
             }

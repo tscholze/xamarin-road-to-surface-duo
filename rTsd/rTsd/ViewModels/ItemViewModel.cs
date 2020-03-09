@@ -66,7 +66,7 @@ namespace rTsd.ViewModels
 
         public bool ShowHeroView
         {
-            get { return false; }
+            get { return true; }
         }
 
         #endregion

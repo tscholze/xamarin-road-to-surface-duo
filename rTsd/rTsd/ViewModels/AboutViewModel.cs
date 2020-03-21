@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace rTsd.ViewModels
@@ -9,6 +10,20 @@ namespace rTsd.ViewModels
     public class AboutViewModel : BaseViewModel
     {
         #region Public member
+
+        private bool isTwitterFeatureEnabled;
+        /// <summary>
+        /// Determines if the user has the Twitter feature enabled.
+        /// </summary>
+        public bool IsTwitterFeatureEnabled
+        {
+            get { return isTwitterFeatureEnabled; }
+            set 
+            {
+                Preferences.Set(ENABLE_TWITTER_FEED_PREF_KEY, value);
+                SetProperty(ref isTwitterFeatureEnabled, value); 
+            }
+        }
 
         /// <summary>
         /// Command to open the GitHub repostiory with the system's browser.
@@ -31,6 +46,9 @@ namespace rTsd.ViewModels
         /// </summary>
         public AboutViewModel()
         {
+            // Set checkbox value, if not set, use fale.
+            IsTwitterFeatureEnabled = Preferences.Get(ENABLE_TWITTER_FEED_PREF_KEY, false);
+
             // Setup commands.
             OpenGitHubWebCommand = new Command(() => OpenBrowserToUrlAsync("https://www.github.com/tscholze/xamarin-road-to-surface-duo"));
             OpenDrWindowsWebCommand = new Command(() => OpenBrowserToUrlAsync("https://www.drwindows.de/news/"));

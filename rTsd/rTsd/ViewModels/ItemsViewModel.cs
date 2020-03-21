@@ -1,8 +1,10 @@
 ﻿using rTsd.Models;
 using rTsd.Services;
 using rTsd.Utils;
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.DualScreen;
 
@@ -136,6 +138,23 @@ namespace rTsd.ViewModels
         }
 
         /// <summary>
+        /// Determines if the Twitter user preference is already set.
+        /// </summary>
+        public bool IsTwitterPreferenceSet
+        {
+            get { return Preferences.ContainsKey(ENABLE_TWITTER_FEED_PREF_KEY); }
+        }
+
+        /// <summary>
+        /// Sets the Twitter user preference.
+        /// </summary>
+        /// <param name="result"></param>
+        public void SetTwitterPreference(bool result)
+        {
+            Preferences.Set(ENABLE_TWITTER_FEED_PREF_KEY, result);
+        }
+
+        /// <summary>
         /// Will trigger a navigation push to the detail page if list's feed item.
         /// </summary>
         public ICommand ItemSelectedCommand { get; private set; }
@@ -195,7 +214,7 @@ namespace rTsd.ViewModels
             Items = new List<Post>();
 
             // Check if app runs on a Duo.
-            if(DualScreenInfo.Current.HingeBounds.Width != 0)
+            if(DualScreenInfo.Current.IsDuo())
             {
                 SecondColumnWidth = new GridLength(1, GridUnitType.Star);
             }
@@ -260,8 +279,19 @@ namespace rTsd.ViewModels
         /// </summary>
         private async void LoadTweetsAsync()
         {
-            // Update binded Tweets member with service-based tweets.
-            Tweets = await TwitterService.GetAllAsync().ConfigureAwait(true);
+            // Check if user enabled the feature.
+            var isEnabled = Preferences.Get(ENABLE_TWITTER_FEED_PREF_KEY, false);
+
+            // If not, print helpful text.
+            if(isEnabled)
+            {
+                // Update binded Tweets member with service-based tweets.
+                Tweets = await TwitterService.GetAllAsync().ConfigureAwait(true);
+            }
+            else
+            {
+                Tweets = new List<Tweet> { CreateFeatureInfoTweet() };
+            }
         }
 
         /// <summary>
@@ -280,6 +310,22 @@ namespace rTsd.ViewModels
         {
             // Update binded video member with service-based videos.
             Videos = await YoutubeService.GetAllAsync().ConfigureAwait(true);
+        }
+
+        /// <summary>
+        /// Creates a Tweet object that includes helpful information
+        /// related to the feature.
+        /// </summary>
+        /// <returns>Tweet with info text.</returns>
+        private static Tweet CreateFeatureInfoTweet()
+        {
+            return new Tweet
+            {
+                Id = "0",
+                Title = "Das Feature ist im Moment deaktiviert.",
+                LinkSource = "https://drwindows.de",
+                PublishedOn = DateTime.Now
+            };
         }
 
         #endregion

@@ -61,11 +61,6 @@ namespace rTsd.Views
             // Setup panes.
             MasterPane.BindingContext = this.viewModel;
             DetailPane.BindingContext = new ItemViewModel(null);
-
-            // Request initial data load.
-            this.viewModel.LoadTweetsCommand.Execute(null);
-            this.viewModel.LoadItemsCommand.Execute(null);
-            this.viewModel.LoadVideosCommand.Execute(null);
         }
 
         #endregion
@@ -80,11 +75,32 @@ namespace rTsd.Views
             // If app is not spanned, reset detail identifier.
             if (IsSpanned) return;
             pushedDetailPageId = null;
+
+
+            LoadActivatedServicesAsync();
         }
 
         #endregion
 
         #region Private helper
+
+        private async void LoadActivatedServicesAsync()
+        {
+            // Check for user's feature flags
+            if (!viewModel.IsTwitterPreferenceSet)
+            {
+                var result = await DisplayAlert("Twitter Feed aktivieren?",
+                    "Zur Anzeige des Twitter Feeds wird der Dienst twitrss.me benutzt. Bitte aktiviere das Feature nur wenn du damit einverstanden bist", 
+                    "Aktivieren", 
+                    "Deaktiviert lassen").ConfigureAwait(false);
+                viewModel.SetTwitterPreference(result);
+            }
+
+            // Request initial data load.
+            viewModel.LoadTweetsCommand.Execute(null);
+            viewModel.LoadItemsCommand.Execute(null);
+            viewModel.LoadVideosCommand.Execute(null);
+        }
 
         private void UpdateContentForViewModel(object itemViewModel)
         {

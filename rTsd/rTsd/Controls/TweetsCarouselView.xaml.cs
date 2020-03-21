@@ -73,6 +73,12 @@ namespace rTsd.Controls
             // Ensure all required information are set.
             if (ItemsSource == null || NumberOfTweets == 0) return true;
 
+            if (NumberOfTweets == 1)
+            {
+                Position = 0;
+                return true;
+            }
+
             // Handle initial case and select the first one.
             if (CurrentItem == null)
             {

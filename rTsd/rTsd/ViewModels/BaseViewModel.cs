@@ -16,6 +16,16 @@ namespace rTsd.ViewModels
     /// </summary>
     public class BaseViewModel : INotifyPropertyChanged
     {
+        #region Private constants
+
+        /// <summary>
+        /// Preference key for user's setting to enable
+        /// the Twitter feed.
+        /// </summary>
+        internal  const string ENABLE_TWITTER_FEED_PREF_KEY = "enable_twitter_feed";
+
+        #endregion
+
         #region Public member
 
         bool isBusy = false;

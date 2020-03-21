@@ -83,6 +83,9 @@
     <EmbeddedResource Include="Assets\AboutAssets.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <None Include="..\..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>

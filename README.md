@@ -43,6 +43,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - [x] Implement first Surface Duo related features or layouts
 - [x] Improve feature and code quality
 - [x] Run it on a Surface Duo emulator
+- [x] Add user opt-in for non Dr. Windows server requests
 - [ ] Write tests
 - [ ] Leverage CI with tests and deployments
 - [ ] Run it on an actual Surface Duo device

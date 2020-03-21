@@ -53,6 +53,8 @@ namespace rTsd.Controls
 
         #endregion
 
+        #region Event handler
+
         /// <summary>
         /// Event handler that will be raised of the user taps on a tweet cell.
         /// </summary>
@@ -106,5 +108,7 @@ namespace rTsd.Controls
 
             view.NumberOfTweets = numberOfTweets;
         }
+
+        #endregion
     }
 }

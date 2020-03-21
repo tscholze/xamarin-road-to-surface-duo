@@ -44,7 +44,7 @@ namespace rTsd.ViewModels
         /// 
         /// Will setup required fields.
         /// </summary>
-        public AboutViewModel()
+        public AboutViewModel() : base()
         {
             // Set checkbox value, if not set, use fale.
             IsTwitterFeatureEnabled = Preferences.Get(ENABLE_TWITTER_FEED_PREF_KEY, false);

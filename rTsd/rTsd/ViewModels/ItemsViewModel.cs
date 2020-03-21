@@ -165,11 +165,6 @@ namespace rTsd.ViewModels
         public ICommand VideoSelectedCommand { get; private set; }
 
         /// <summary>
-        /// Will trigger the shell's flyout to be presented or hidden.
-        /// </summary>
-        public ICommand ShowShellFlyoutCommand { get; private set; }
-
-        /// <summary>
         /// Will trigger a tweets (re-) load.
         /// </summary>
         public ICommand LoadTweetsCommand { get; private set; }
@@ -208,7 +203,7 @@ namespace rTsd.ViewModels
         /// <summary>
         /// Constructor.
         /// </summary>
-        public ItemsViewModel()
+        public ItemsViewModel(): base()
         {
             // Setup default values.
             Items = new List<Post>();
@@ -229,7 +224,6 @@ namespace rTsd.ViewModels
             LoadVideosCommand = new Command(() => LoadVideosAsync());
 
             ItemSelectedCommand = new Command<object>((item) => NavigateToDetailPage(item));
-            ShowShellFlyoutCommand = new Command(() => ShowShellFlyout());
         }
 
         #endregion
@@ -264,14 +258,6 @@ namespace rTsd.ViewModels
 
             // Raise event.
             ItemSelected(this, eventArgs);
-        }
-
-        /// <summary>
-        /// Will show or hide the Flyout.
-        /// </summary>
-        private void ShowShellFlyout()
-        {
-            Shell.Current.FlyoutIsPresented = !Shell.Current.FlyoutIsPresented;
         }
 
         /// <summary>

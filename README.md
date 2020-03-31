@@ -10,7 +10,7 @@ It will target only Android devices and it's meant to include all other aspecs o
 
 This project is written and owned by a beginner and meant for beginners. It would be perfect if experts could mentor the project - but this is just a mind in the clouds.
 
-If you are looking for the siblings app that's based on the UWP ecosystem to work with the Sutface Neo, please see the GitHub repository [tscholze/uwp-road-to-surface-neo](https://github.com/tscholze/uwp-road-to-surface-neo).
+If you are looking for the siblings app that's based on the UWP ecosystem to work with the Surface Neo, please see the GitHub repository [tscholze/uwp-road-to-surface-neo](https://github.com/tscholze/uwp-road-to-surface-neo). This project is currently on hold due to some emulator requirements that I cannot fulfill at the ment.
 
 ## Build status
 

@@ -11,7 +11,6 @@
             
             <!-- Converter -->
             <converter:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
-            <converter:BoolToLoadingViewOpacityValueConverter x:Key="BoolToLoadingViewOpacityValueConverter" />
 
             <!-- Colors -->
             <Color x:Key="OnPrimary">#FAFAFA</Color>

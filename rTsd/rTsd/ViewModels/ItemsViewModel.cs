@@ -1,9 +1,9 @@
 ﻿using rTsd.Models;
+using rTsd.Resources.Resx;
 using rTsd.Services;
 using rTsd.Utils;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -280,7 +280,7 @@ namespace rTsd.ViewModels
             return new Tweet
             {
                 Id = "0",
-                Title = "Das Feature ist im Moment deaktiviert.",
+                Title = AppResources.TwitterDeactivatedMessage,
                 LinkSource = "https://drwindows.de",
                 PublishedOn = DateTime.Now
             };

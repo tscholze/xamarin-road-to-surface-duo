@@ -89,10 +89,10 @@ namespace rTsd.Views
             // Check for user's feature flags
             if (!viewModel.IsTwitterPreferenceSet)
             {
-                var result = await DisplayAlert(AppResources.twitterAlertTitle, 
-                    AppResources.twitterAlertMessage,
-                    AppResources.twitterAlertOkButton,
-                    AppResources.twitterAlertCancelButton)
+                var result = await DisplayAlert(AppResources.TwitterAlertTitle, 
+                    AppResources.TwitterAlertMessage,
+                    AppResources.TwitterAlertOkButton,
+                    AppResources.TwitterAlertCancelButton)
                     .ConfigureAwait(false);
                 viewModel.SetTwitterPreference(result);
             }

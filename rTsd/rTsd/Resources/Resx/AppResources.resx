@@ -117,16 +117,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="twitterAlertCancelButton" xml:space="preserve">
+  <data name="AboutDescription" xml:space="preserve">
+    <value>Dieses Xamarin.Forms Android Projekt ist gedacht, etliche der einmaligen Features des kommenden Microsoft Surface Duos an einem praktischen Beispiel aufzuzeigen.
+
+Als Datengrundlage für die #rTsd-App dienen die freizugänglichen RSS-Feeds von, eines der größten deutschsprachigen Windows Portale mit angeschlossener Community, drwindows.de.
+
+Ebenso ist dieses Dr. Windows  Community Projekt auch da für gedacht den Spaß an der modernen Softwareentwicklung im Microsoft Ökosystem aufzuzeigen und den ein oder anderen für diese spannende Freizeitbeschäftigung zu begeistern.</value>
+  </data>
+  <data name="AboutDrWindowsButton" xml:space="preserve">
+    <value>Dr. Windows öffnen</value>
+  </data>
+  <data name="AboutFeatureSwitchTwitter" xml:space="preserve">
+    <value>Enable Twitter feature which uses the twitrss.me service?</value>
+  </data>
+  <data name="AboutGitHubButton" xml:space="preserve">
+    <value>GitHub öffnen</value>
+  </data>
+  <data name="AboutTitle" xml:space="preserve">
+    <value>Road to Surface Duo mit Android und Xamarin.Forms.</value>
+  </data>
+  <data name="FlyoutHeaderDescription" xml:space="preserve">
+    <value>Dieses Xamarin.Forms Android Projekt ist gedacht, etliche der einmaligen Features des kommenden Microsoft Surface Duos an einem praktischen Beispiel aufzuzeigen.
+</value>
+  </data>
+  <data name="FlyoutHeaderTitle" xml:space="preserve">
+    <value>Road to Surface Duo mit Xamarin.Forms.</value>
+  </data>
+  <data name="ItemsLatestNewsTitle" xml:space="preserve">
+    <value>Aus der Sprechstunde</value>
+  </data>
+  <data name="ItemsVideosTitle" xml:space="preserve">
+    <value>Neuste Videos</value>
+  </data>
+  <data name="NavigationHeaderSubtitle" xml:space="preserve">
+    <value>#rTsd - Road to Surface Duo - Ein Community Projekt von drwindows.de</value>
+  </data>
+  <data name="TwitterAlertCancelButton" xml:space="preserve">
     <value>Deaktiviert lassen</value>
   </data>
-  <data name="twitterAlertMessage" xml:space="preserve">
+  <data name="TwitterAlertMessage" xml:space="preserve">
     <value>Zur Anzeige des Twitter Feeds wird der Dienst twitrss.me benutzt. Bitte aktiviere das Feature nur wenn du damit einverstanden bist.</value>
   </data>
-  <data name="twitterAlertOkButton" xml:space="preserve">
+  <data name="TwitterAlertOkButton" xml:space="preserve">
     <value>Aktivieren</value>
   </data>
-  <data name="twitterAlertTitle" xml:space="preserve">
+  <data name="TwitterAlertTitle" xml:space="preserve">
     <value>Twitter Feed aktivieren?</value>
+  </data>
+  <data name="TwitterDeactivatedMessage" xml:space="preserve">
+    <value>Das Feature ist im Moment deaktiviert. Schalte es in den Einstellunge an.</value>
   </data>
 </root>

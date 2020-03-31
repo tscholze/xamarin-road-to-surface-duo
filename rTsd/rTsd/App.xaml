@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:rTsd.Resources.Resx"
              xmlns:converter="clr-namespace:rTsd.Utils"
              mc:Ignorable="d"
              x:Class="rTsd.App">
@@ -74,7 +75,7 @@
                         <Label TextColor="{StaticResource Accent}" 
                                Margin="0, 10, 0, 3"
                                FontSize="10"
-                               Text="#rTsd - Road to Surface Duo Xamarin Sample - A community project"
+                               Text="{x:Static resources:AppResources.NavigationHeaderSubtitle}"
                                HorizontalOptions="Center"
                                HorizontalTextAlignment="Center" />
 

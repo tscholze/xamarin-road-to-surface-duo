@@ -61,38 +61,142 @@ namespace rTsd.Resources.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dieses Xamarin.Forms Android Projekt ist gedacht, etliche der einmaligen Features des kommenden Microsoft Surface Duos an einem praktischen Beispiel aufzuzeigen.
+        ///
+        ///Als Datengrundlage für die #rTsd-App dienen die freizugänglichen RSS-Feeds von, eines der größten deutschsprachigen Windows Portale mit angeschlossener Community, drwindows.de.
+        ///
+        ///Ebenso ist dieses Dr. Windows  Community Projekt auch da für gedacht den Spaß an der modernen Softwareentwicklung im Microsoft Ökosystem aufzuzeigen und den ein oder a [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string AboutDescription {
+            get {
+                return ResourceManager.GetString("AboutDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dr. Windows öffnen.
+        /// </summary>
+        internal static string AboutDrWindowsButton {
+            get {
+                return ResourceManager.GetString("AboutDrWindowsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Twitter feature which uses the twitrss.me service?.
+        /// </summary>
+        internal static string AboutFeatureSwitchTwitter {
+            get {
+                return ResourceManager.GetString("AboutFeatureSwitchTwitter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GitHub öffnen.
+        /// </summary>
+        internal static string AboutGitHubButton {
+            get {
+                return ResourceManager.GetString("AboutGitHubButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Road to Surface Duo mit Android und Xamarin.Forms..
+        /// </summary>
+        internal static string AboutTitle {
+            get {
+                return ResourceManager.GetString("AboutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dieses Xamarin.Forms Android Projekt ist gedacht, etliche der einmaligen Features des kommenden Microsoft Surface Duos an einem praktischen Beispiel aufzuzeigen.
+        ///.
+        /// </summary>
+        internal static string FlyoutHeaderDescription {
+            get {
+                return ResourceManager.GetString("FlyoutHeaderDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Road to Surface Duo mit Xamarin.Forms..
+        /// </summary>
+        internal static string FlyoutHeaderTitle {
+            get {
+                return ResourceManager.GetString("FlyoutHeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aus der Sprechstunde.
+        /// </summary>
+        internal static string ItemsLatestNewsTitle {
+            get {
+                return ResourceManager.GetString("ItemsLatestNewsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neuste Videos.
+        /// </summary>
+        internal static string ItemsVideosTitle {
+            get {
+                return ResourceManager.GetString("ItemsVideosTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #rTsd - Road to Surface Duo - Ein Community Projekt von drwindows.de.
+        /// </summary>
+        internal static string NavigationHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("NavigationHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deaktiviert lassen.
         /// </summary>
-        internal static string twitterAlertCancelButton {
+        internal static string TwitterAlertCancelButton {
             get {
-                return ResourceManager.GetString("twitterAlertCancelButton", resourceCulture);
+                return ResourceManager.GetString("TwitterAlertCancelButton", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Zur Anzeige des Twitter Feeds wird der Dienst twitrss.me benutzt. Bitte aktiviere das Feature nur wenn du damit einverstanden bist..
         /// </summary>
-        internal static string twitterAlertMessage {
+        internal static string TwitterAlertMessage {
             get {
-                return ResourceManager.GetString("twitterAlertMessage", resourceCulture);
+                return ResourceManager.GetString("TwitterAlertMessage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Aktivieren.
         /// </summary>
-        internal static string twitterAlertOkButton {
+        internal static string TwitterAlertOkButton {
             get {
-                return ResourceManager.GetString("twitterAlertOkButton", resourceCulture);
+                return ResourceManager.GetString("TwitterAlertOkButton", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Twitter Feed aktivieren?.
         /// </summary>
-        internal static string twitterAlertTitle {
+        internal static string TwitterAlertTitle {
             get {
-                return ResourceManager.GetString("twitterAlertTitle", resourceCulture);
+                return ResourceManager.GetString("TwitterAlertTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Das Feature ist im Moment deaktiviert. Schalte es in den Einstellunge an..
+        /// </summary>
+        internal static string TwitterDeactivatedMessage {
+            get {
+                return ResourceManager.GetString("TwitterDeactivatedMessage", resourceCulture);
             }
         }
     }

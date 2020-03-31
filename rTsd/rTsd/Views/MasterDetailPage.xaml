@@ -1,24 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    xmlns:local="clr-namespace:rTsd.Utils.MicrosoftDuoLibrary"
     xmlns:dualScreen="clr-namespace:Xamarin.Forms.DualScreen;assembly=Xamarin.Forms.DualScreen"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:rTsd.Views"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     mc:Ignorable="d"
     x:Class="rTsd.Views.MasterDetailPage"
     Shell.NavBarIsVisible="false">
 
-    <dualScreen:TwoPaneView x:Name="DualScreenView"  
+    <Grid>
+        <!--#region Content -->
+        <dualScreen:TwoPaneView x:Name="DualScreenView"  
                             MinWideModeWidth="4000" 
                             MinTallModeHeight="4000">
-        <dualScreen:TwoPaneView.Pane1>
-            <views:ItemsView x:Name="MasterPane" />
-        </dualScreen:TwoPaneView.Pane1>
-        <dualScreen:TwoPaneView.Pane2>
-            <views:ItemView x:Name="DetailPane" />
-        </dualScreen:TwoPaneView.Pane2>
-    </dualScreen:TwoPaneView>
+            <dualScreen:TwoPaneView.Pane1>
+                <views:ItemsView x:Name="MasterPane" />
+            </dualScreen:TwoPaneView.Pane1>
+            <dualScreen:TwoPaneView.Pane2>
+                <views:ItemView x:Name="DetailPane" />
+            </dualScreen:TwoPaneView.Pane2>
+        </dualScreen:TwoPaneView>
+        <!--#endregion-->
+
+        <!--#region Loading View -->
+        <yummy:PancakeView IsVisible="{Binding IsBusy}"
+                           Opacity="0.5"
+                           CornerRadius="4" 
+                           Padding="20"
+                           BackgroundColor="#F2F2F2" 
+                           BorderColor="{StaticResource Primary}" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Center">
+            <StackLayout >
+                <!-- Animated spinner -->
+                <ActivityIndicator Color="{StaticResource PrimaryReduced}" 
+                                   IsRunning="{Binding IsBusy}" />
+                <!-- Text -->
+                <Label Text="Loading ..."  />
+            </StackLayout>
+        </yummy:PancakeView>
+        <!--#endregion-->
+    </Grid>
 </ContentPage>

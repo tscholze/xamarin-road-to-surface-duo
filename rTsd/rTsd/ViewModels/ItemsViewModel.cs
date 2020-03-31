@@ -228,6 +228,21 @@ namespace rTsd.ViewModels
 
         #endregion
 
+        #region Public helper methods
+
+        public void LoadData()
+        {
+            IsBusy = true;
+
+            LoadTweetsAsync();
+            LoadArticlesAsync();
+            LoadVideosAsync();
+
+            IsBusy = false;
+        }
+
+        #endregion
+
         #region Private helper methods
 
         /// <summary>

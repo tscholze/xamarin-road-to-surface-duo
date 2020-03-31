@@ -5,7 +5,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Cache;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace rTsd.Services
@@ -77,41 +76,30 @@ namespace rTsd.Services
         #endregion
 
         #region IElementService
-
-        public async Task<List<Tweet>> GetAllAsync(bool forceReload)
+        public List<Tweet> GetAll(bool forceReload)
         {
-            var task = Task.Run(() =>
-            {
-                if (forceReload == false && chachedTweets.Count > 0) return chachedTweets;
+            if (forceReload == false && chachedTweets.Count > 0) return chachedTweets;
 
-                WebClient client = new WebClient { CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore) };
+            WebClient client = new WebClient { CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore) };
 
-                var tweets = XDocument
-                                .Parse(client.DownloadString(FEED_ENDPOINT))
-                                .Root
-                                .Element("channel")
-                                .Elements("item")
-                                .Select(item => new Tweet
-                                {
-                                    Id = item.Element("guid").Value.Replace("https://twitter.com/DrWindows_de/status/", string.Empty),
-                                    Title = SanitazeTitle(item.Element("title").Value),
-                                    LinkSource = item.Element("link").Value
-                                })
-                                .ToList()
-                                .GetRange(0, MAX_NUMBER_OF_TWEETS);
+            var tweets = XDocument
+                            .Parse(client.DownloadString(FEED_ENDPOINT))
+                            .Root
+                            .Element("channel")
+                            .Elements("item")
+                            .Select(item => new Tweet
+                            {
+                                Id = item.Element("guid").Value.Replace("https://twitter.com/DrWindows_de/status/", string.Empty),
+                                Title = SanitazeTitle(item.Element("title").Value),
+                                LinkSource = item.Element("link").Value
+                            })
+                            .ToList()
+                            .GetRange(0, MAX_NUMBER_OF_TWEETS);
 
-                client.Dispose();
+            client.Dispose();
 
-                chachedTweets = tweets;
-                return tweets;
-            });
-
-            return await task.ConfigureAwait(false);
-        }
-
-        Tweet IElementService<Tweet>.GetById(string id)
-        {
-            throw new NotImplementedException();
+            chachedTweets = tweets;
+            return tweets;
         }
 
         #endregion

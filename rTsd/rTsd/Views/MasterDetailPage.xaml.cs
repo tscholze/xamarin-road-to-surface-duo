@@ -97,9 +97,7 @@ namespace rTsd.Views
             }
 
             // Request initial data load.
-            viewModel.LoadTweetsCommand.Execute(null);
-            viewModel.LoadItemsCommand.Execute(null);
-            viewModel.LoadVideosCommand.Execute(null);
+            viewModel.LoadData();
         }
 
         private void UpdateContentForViewModel(object itemViewModel)

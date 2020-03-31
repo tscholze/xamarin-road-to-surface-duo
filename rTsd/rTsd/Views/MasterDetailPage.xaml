@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    xmlns:local="clr-namespace:rTsd.Utils.MicrosoftDuoLibrary"
     xmlns:dualScreen="clr-namespace:Xamarin.Forms.DualScreen;assembly=Xamarin.Forms.DualScreen"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -11,14 +10,16 @@
     x:Class="rTsd.Views.MasterDetailPage"
     Shell.NavBarIsVisible="false">
 
-    <dualScreen:TwoPaneView x:Name="DualScreenView"  
+    <Grid>
+        <dualScreen:TwoPaneView x:Name="DualScreenView"  
                             MinWideModeWidth="4000" 
                             MinTallModeHeight="4000">
-        <dualScreen:TwoPaneView.Pane1>
-            <views:ItemsView x:Name="MasterPane" />
-        </dualScreen:TwoPaneView.Pane1>
-        <dualScreen:TwoPaneView.Pane2>
-            <views:ItemView x:Name="DetailPane" />
-        </dualScreen:TwoPaneView.Pane2>
-    </dualScreen:TwoPaneView>
+            <dualScreen:TwoPaneView.Pane1>
+                <views:ItemsView x:Name="MasterPane" />
+            </dualScreen:TwoPaneView.Pane1>
+            <dualScreen:TwoPaneView.Pane2>
+                <views:ItemView x:Name="DetailPane" />
+            </dualScreen:TwoPaneView.Pane2>
+        </dualScreen:TwoPaneView>
+    </Grid>
 </ContentPage>

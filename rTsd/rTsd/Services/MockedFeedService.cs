@@ -1,7 +1,5 @@
 ﻿using rTsd.Models;
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace rTsd.Services
 {
@@ -22,38 +20,27 @@ namespace rTsd.Services
 
         #region IElementService implementation
 
-        public async Task<List<Post>> GetAllAsync(bool forceReload = false)
+        public List<Post> GetAll(bool forceReload = false)
         {
-            var task = Task.Run(() => {
-                // TODO: Check if linked list or array list fits better.
-                // TODO: May want to use linq.
-                var posts = new List<Post>();
+            var posts = new List<Post>();
 
-                // Mock non forced reload with empty list.
-                if(forceReload == false)
-                {
-                    return posts;
-                }
-
-                for (int i = 0; i < MAX_MOCKED_ENTRIES_COUNT; i++)
-                {
-                    posts.Add(new Post
-                    {
-                        Id = $"{i}",
-                        Title = $"Title #{i}",
-                        Content = "Lorem ipsum nupssie das ist ein toller Abstract Text. Bitte liest ihn alle!"
-                    });
-                }
-
+            // Mock non forced reload with empty list.
+            if (forceReload == false)
+            {
                 return posts;
-            });
+            }
 
-            return await task.ConfigureAwait(false);
-        }
+            for (int i = 0; i < MAX_MOCKED_ENTRIES_COUNT; i++)
+            {
+                posts.Add(new Post
+                {
+                    Id = $"{i}",
+                    Title = $"Title #{i}",
+                    Content = "Lorem ipsum nupssie das ist ein toller Abstract Text. Bitte liest ihn alle!"
+                });
+            }
 
-        public Post GetById(string id)
-        {
-            throw new NotImplementedException();
+            return posts;
         }
 
         #endregion

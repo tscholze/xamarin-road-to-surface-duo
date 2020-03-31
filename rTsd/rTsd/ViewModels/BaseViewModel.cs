@@ -33,7 +33,12 @@ namespace rTsd.ViewModels
         public bool IsBusy
         {
             get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            set
+            {
+                System.Diagnostics.Debug.WriteLine(value.ToString());
+                isBusy = value;
+                OnPropertyChanged();
+            }
         }
 
         string title = string.Empty;

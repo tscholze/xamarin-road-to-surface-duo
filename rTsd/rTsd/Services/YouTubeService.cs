@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Cache;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace rTsd.Services
@@ -66,37 +65,33 @@ namespace rTsd.Services
 
         #region IElementService
 
-        public async Task<List<Video>> GetAllAsync(bool forceReload = false)
+        public List<Video> GetAll(bool forceReload = false)
         {
-            var task = Task.Run(() =>
-            {
-                if (forceReload == false && cachedVideos.Count > 0) return cachedVideos;
+            if (forceReload == false && cachedVideos.Count > 0) return cachedVideos;
 
-                WebClient client = new WebClient { CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore) };
-                XNamespace xmlns = "http://www.w3.org/2005/Atom";
-                XNamespace yt = "http://www.youtube.com/xml/schemas/2015";
-                XNamespace media = "http://search.yahoo.com/mrss/";
+            WebClient client = new WebClient { CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore) };
+            XNamespace xmlns = "http://www.w3.org/2005/Atom";
+            XNamespace yt = "http://www.youtube.com/xml/schemas/2015";
+            XNamespace media = "http://search.yahoo.com/mrss/";
 
-                var videos = XDocument
-                                .Parse(client.DownloadString(FEED_ENDPOINT))
-                                .Root
-                                .Elements(xmlns + "entry")
-                                .Select(item => new Video
-                                {
-                                    Id = item.Element(yt + "videoId").Value,
-                                    Title = item.Element(xmlns + "title").Value,
-                                    Description = item.Element(media + "group").Element(media + "description").Value,
-                                    VideoSource = item.Element(xmlns + "link").Attribute("href").Value.Replace("watch", "watch_popup"),
-                                    ThumbnailSource = item.Element(media + "group").Element(media + "thumbnail").Attribute("url").Value.Replace("hqdefault", "maxresdefault"),
+            var videos = XDocument
+                            .Parse(client.DownloadString(FEED_ENDPOINT))
+                            .Root
+                            .Elements(xmlns + "entry")
+                            .Select(item => new Video
+                            {
+                                Id = item.Element(yt + "videoId").Value,
+                                Title = item.Element(xmlns + "title").Value,
+                                Description = item.Element(media + "group").Element(media + "description").Value,
+                                VideoSource = item.Element(xmlns + "link").Attribute("href").Value.Replace("watch", "watch_popup"),
+                                ThumbnailSource = item.Element(media + "group").Element(media + "thumbnail").Attribute("url").Value.Replace("hqdefault", "maxresdefault"),
 
-                                })
-                                .ToList();
+                            })
+                            .ToList();
 
-                cachedVideos = videos;
-                return videos;
-            });
-
-            return await task.ConfigureAwait(false);
+            client.Dispose();
+            cachedVideos = videos;
+            return videos;
         }
 
         public Video GetById(string id)

@@ -3,6 +3,7 @@ using rTsd.Services;
 using rTsd.Utils;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -165,21 +166,6 @@ namespace rTsd.ViewModels
         public ICommand VideoSelectedCommand { get; private set; }
 
         /// <summary>
-        /// Will trigger a tweets (re-) load.
-        /// </summary>
-        public ICommand LoadTweetsCommand { get; private set; }
-
-        /// <summary>
-        /// Will trigger an item (re-) load.
-        /// </summary>
-        public ICommand LoadItemsCommand { get; private set; }
-
-        /// <summary>
-        /// Will trigger a videos (re-) load.
-        /// </summary>
-        public ICommand LoadVideosCommand { get; private set; }
-
-        /// <summary>
         /// Command to the open tweet in system's browser.
         /// </summary>
         public ICommand OpenTwitterWebCommand { get; }
@@ -219,10 +205,6 @@ namespace rTsd.ViewModels
             }
 
             // Setup commands.
-            LoadTweetsCommand = new Command(() => LoadTweetsAsync());
-            LoadItemsCommand = new Command(() => LoadArticlesAsync());
-            LoadVideosCommand = new Command(() => LoadVideosAsync());
-
             ItemSelectedCommand = new Command<object>((item) => NavigateToDetailPage(item));
         }
 
@@ -234,9 +216,22 @@ namespace rTsd.ViewModels
         {
             IsBusy = true;
 
-            LoadTweetsAsync();
-            LoadArticlesAsync();
-            LoadVideosAsync();
+            // Load data with services
+            Items = FeedService.GetAll();
+            Videos = YoutubeService.GetAll();
+
+            // Check if user enabled the Twitter feature.
+            if (Preferences.Get(ENABLE_TWITTER_FEED_PREF_KEY, false))
+            {
+                // Update binded Tweets member with service-based tweets.
+                Tweets = TwitterService.GetAll();
+            }
+            else
+            {
+                // Else return dummy tweet entry with helpful text that the
+                // feature is disabled by the user.
+                Tweets = new List<Tweet> { CreateFeatureInfoTweet() };
+            }
 
             IsBusy = false;
         }
@@ -273,44 +268,6 @@ namespace rTsd.ViewModels
 
             // Raise event.
             ItemSelected(this, eventArgs);
-        }
-
-        /// <summary>
-        /// Loads twitter from the service and updates th UI.
-        /// </summary>
-        private async void LoadTweetsAsync()
-        {
-            // Check if user enabled the feature.
-            var isEnabled = Preferences.Get(ENABLE_TWITTER_FEED_PREF_KEY, false);
-
-            // If not, print helpful text.
-            if(isEnabled)
-            {
-                // Update binded Tweets member with service-based tweets.
-                Tweets = await TwitterService.GetAllAsync().ConfigureAwait(true);
-            }
-            else
-            {
-                Tweets = new List<Tweet> { CreateFeatureInfoTweet() };
-            }
-        }
-
-        /// <summary>
-        /// Loads items from the service and updates th UI.
-        /// </summary>
-        private async void LoadArticlesAsync()
-        {
-            // Update binded feed item member with service-based items.
-            Items = await FeedService.GetAllAsync().ConfigureAwait(true);
-        }
-
-        /// <summary>
-        /// Loads twitter from the service and updates th UI.
-        /// </summary>
-        private async void LoadVideosAsync()
-        {
-            // Update binded video member with service-based videos.
-            Videos = await YoutubeService.GetAllAsync().ConfigureAwait(true);
         }
 
         /// <summary>

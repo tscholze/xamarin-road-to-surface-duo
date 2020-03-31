@@ -10,16 +10,9 @@ namespace rTsd.Services
     public interface IElementService<T>
     {
         /// <summary>
-        /// Gets all elements async.
+        /// Gets all elements.
         /// </summary>
         /// <returns>Get all feed items</returns>
-        Task<List<T>> GetAllAsync(bool forceReload = false);
-
-        /// <summary>
-        /// Gets a single element found by it's id.
-        /// </summary>
-        /// <param name="id">Id to look for.</param>
-        /// <returns>Found element</returns>
-        T GetById(string id);
+        List<T> GetAll(bool forceReload = false);
     }
 }

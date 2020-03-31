@@ -14,9 +14,10 @@ namespace rTsd.Utils
     ///     - Make it generic to avoid the Post cast.
     /// 
     /// Based on:
-    ///     https://blog.verslu.is/stackoverflow-answers/alternate-row-color-listview/
+    ///     - https://blog.verslu.is/stackoverflow-answers/alternate-row-color-listview/
+    ///     - https://stackoverflow.com/questions/51422465/alternating-item-backgroundcolor-in-xamarin-forms-listview
     /// </summary>
-    internal class AlternateCollectionViewDataTemplateSelector : DataTemplateSelector
+    public class AlternateCollectionViewDataTemplateSelector : DataTemplateSelector
     {
         /// <summary>
         /// Data template for even indeces.

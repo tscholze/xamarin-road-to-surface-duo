@@ -4,11 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="rTsd.Views.ItemsView"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:controls="clr-namespace:rTsd.Controls"
+             xmlns:resources="clr-namespace:rTsd.Resources.Resx"
              Shell.NavBarIsVisible="false"
              ControlTemplate="{StaticResource BasePageControlTemplate}"
+             x:Class="rTsd.Views.ItemsView"
              x:Name="Container">
 
     <yummy:PancakeView>
@@ -42,7 +43,7 @@
                     <!-- #region Feed content -->
 
                     <StackLayout Grid.Column="0">
-                        <Label Text="Latest news" 
+                        <Label Text="{x:Static resources:AppResources.ItemsLatestNewsTitle}" 
                            Style="{StaticResource ColumnTitleLabelStyle}"/>
 
                         <controls:PostsCollectionView x:Name="FeedCollectionView"
@@ -57,7 +58,7 @@
                     <!-- #region YT content -->
 
                     <StackLayout Grid.Column="1">
-                        <Label Text="What's new on Youtube?"
+                        <Label Text="{x:Static resources:AppResources.ItemsVideosTitle}" 
                            Style="{StaticResource ColumnTitleLabelStyle}"/>
 
                         <controls:VideosCollectionView x:Name="VideosCollectionView"

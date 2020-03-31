@@ -1,7 +1,7 @@
-﻿using rTsd.Utils;
+﻿using rTsd.Resources.Resx;
+using rTsd.Utils;
 using rTsd.ViewModels;
 using System;
-using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.DualScreen;
 using Xamarin.Forms.Xaml;
@@ -89,10 +89,11 @@ namespace rTsd.Views
             // Check for user's feature flags
             if (!viewModel.IsTwitterPreferenceSet)
             {
-                var result = await DisplayAlert("Twitter Feed aktivieren?",
-                    "Zur Anzeige des Twitter Feeds wird der Dienst twitrss.me benutzt. Bitte aktiviere das Feature nur wenn du damit einverstanden bist", 
-                    "Aktivieren", 
-                    "Deaktiviert lassen").ConfigureAwait(false);
+                var result = await DisplayAlert(AppResources.TwitterAlertTitle, 
+                    AppResources.TwitterAlertMessage,
+                    AppResources.TwitterAlertOkButton,
+                    AppResources.TwitterAlertCancelButton)
+                    .ConfigureAwait(false);
                 viewModel.SetTwitterPreference(result);
             }
 

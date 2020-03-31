@@ -128,7 +128,7 @@ Ebenso ist dieses Dr. Windows  Community Projekt auch da für gedacht den Spaß 
     <value>Dr. Windows öffnen</value>
   </data>
   <data name="AboutFeatureSwitchTwitter" xml:space="preserve">
-    <value>Enable Twitter feature which uses the twitrss.me service?</value>
+    <value>Soll dasTwitter feature aktiviert werden? Es nutzt den twitrss.me Service.</value>
   </data>
   <data name="AboutGitHubButton" xml:space="preserve">
     <value>GitHub öffnen</value>

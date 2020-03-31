@@ -83,7 +83,7 @@ namespace rTsd.Resources.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable Twitter feature which uses the twitrss.me service?.
+        ///   Looks up a localized string similar to Soll dasTwitter feature aktiviert werden? Es nutzt den twitrss.me Service..
         /// </summary>
         internal static string AboutFeatureSwitchTwitter {
             get {

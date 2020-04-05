@@ -183,7 +183,7 @@ namespace rTsd.Resources.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zur Anzeige des Twitter Feeds wird der Dienst twitrss.me benutzt. Bitte aktiviere das Feature nur wenn du damit einverstanden bist..
+        ///   Looks up a localized string similar to Zur Anzeige des Twitter Tickers wird der Dienst twitrss.me benutzt. Bitte aktiviere das Feature nur wenn du damit einverstanden bist..
         /// </summary>
         internal static string TwitterAlertMessage {
             get {
@@ -201,7 +201,7 @@ namespace rTsd.Resources.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Twitter Feed aktivieren?.
+        ///   Looks up a localized string similar to Ticker aktivieren?.
         /// </summary>
         internal static string TwitterAlertTitle {
             get {

@@ -162,13 +162,13 @@ Ebenso ist dieses Dr. Windows  Community Projekt auch da für gedacht den Spaß 
     <value>Deaktiviert lassen</value>
   </data>
   <data name="TwitterAlertMessage" xml:space="preserve">
-    <value>Zur Anzeige des Twitter Feeds wird der Dienst twitrss.me benutzt. Bitte aktiviere das Feature nur wenn du damit einverstanden bist.</value>
+    <value>Zur Anzeige des Twitter Tickers wird der Dienst twitrss.me benutzt. Bitte aktiviere das Feature nur wenn du damit einverstanden bist.</value>
   </data>
   <data name="TwitterAlertOkButton" xml:space="preserve">
     <value>Aktivieren</value>
   </data>
   <data name="TwitterAlertTitle" xml:space="preserve">
-    <value>Twitter Feed aktivieren?</value>
+    <value>Ticker aktivieren?</value>
   </data>
   <data name="TwitterDeactivatedMessage" xml:space="preserve">
     <value>Das Feature ist im Moment deaktiviert. Schalte es in den Einstellunge an.</value>

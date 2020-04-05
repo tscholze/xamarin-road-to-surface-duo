@@ -69,7 +69,7 @@ namespace rTsd.Controls
         /// <summary>
         /// Raised on every tweet scroll timer tick.
         /// </summary>
-        /// <returns>If timer should be cancled.</returns>
+        /// <returns>True timer should run again.</returns>
         private bool OnTweetScrollTimerTicked()
         {
             // Ensure all required information are set.

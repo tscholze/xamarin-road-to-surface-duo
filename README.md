@@ -121,6 +121,11 @@ Please use the "default" workflow of contributing to this project.
 1. Please keep in touch with your PR to answer upcoming questions
 1. If your PR got merged, check if you are listed in the "Authors" section of the readme
 
+## Special thanks to
+- [Martin Geuss](https://twitter.com/martingeuss) (Dr. Windows) for letting me publish an article series on one of the largest German speaking Microsoft communities and portals [Dr. Windows](https://drwindows.de)
+- [Sven-Michael Stübe](https://twitter.com/stuebe2k14) (Zuehlke) for helping me with is awesome knowledge of Xamarin
+- [Tim Messerschmidt](https://twitter.com/seraandroid) (Google), for motivating me to give Android and the Google ecosystem another chance
+
 ## Authors
 Just me, [Tobi]([https://tscholze.github.io).
 

@@ -1,4 +1,5 @@
 ﻿
+using rTsd.Resources.Resx;
 using rTsd.Views;
 using Xamarin.Forms;
 
@@ -25,11 +26,11 @@ namespace rTsd
             InitializeComponent();
 
             // Add news page to shell navigation
-            var news = new ShellSection { Title = "News", Icon = "icon_blog.png" };
+            var news = new ShellSection { Title = AppResources.NavigationNewsTitle, Icon = "icon_blog.png" };
             news.Items.Add(new Views.MasterDetailPage(new ViewModels.ItemsViewModel()));
 
             // Add about page to shell navigation
-            var about = new ShellSection { Title = "About", Icon = "icon_about.png" };
+            var about = new ShellSection { Title = AppResources.NavigationAboutTitle, Icon = "icon_about.png" };
             about.Items.Add(new AboutPage());
 
             // Add all sections to shell.

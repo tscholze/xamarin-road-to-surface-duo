@@ -147,11 +147,29 @@ namespace rTsd.Resources.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Über diese App.
+        /// </summary>
+        internal static string NavigationAboutTitle {
+            get {
+                return ResourceManager.GetString("NavigationAboutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to #rTsd - Road to Surface Duo - Ein Community Projekt von drwindows.de.
         /// </summary>
         internal static string NavigationHeaderSubtitle {
             get {
                 return ResourceManager.GetString("NavigationHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News.
+        /// </summary>
+        internal static string NavigationNewsTitle {
+            get {
+                return ResourceManager.GetString("NavigationNewsTitle", resourceCulture);
             }
         }
         

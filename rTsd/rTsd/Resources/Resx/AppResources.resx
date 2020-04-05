@@ -149,8 +149,14 @@ Ebenso ist dieses Dr. Windows  Community Projekt auch da für gedacht den Spaß 
   <data name="ItemsVideosTitle" xml:space="preserve">
     <value>Neuste Videos</value>
   </data>
+  <data name="NavigationAboutTitle" xml:space="preserve">
+    <value>Über diese App</value>
+  </data>
   <data name="NavigationHeaderSubtitle" xml:space="preserve">
     <value>#rTsd - Road to Surface Duo - Ein Community Projekt von drwindows.de</value>
+  </data>
+  <data name="NavigationNewsTitle" xml:space="preserve">
+    <value>News</value>
   </data>
   <data name="TwitterAlertCancelButton" xml:space="preserve">
     <value>Deaktiviert lassen</value>

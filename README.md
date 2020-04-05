@@ -61,6 +61,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 4](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-4)
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 5](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-5)
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 6](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-6-sdk-und-emulator)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 7](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-7-auf-dem-weg-zum-play-store)
 
 ## Prerequirements
 - Windows 10 / macOS 

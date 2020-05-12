@@ -20,6 +20,12 @@ If you are looking for the siblings app that's based on the UWP ecosystem to wor
 |Azure DevOps|[![Build Status](https://dev.azure.com/tscholze/RoadToSurfaceDuo%20Android/_apis/build/status/tscholze.xamarin-road-to-surface-duo?branchName=master)](https://dev.azure.com/tscholze/RoadToSurfaceDuo%20Android/_build/latest?definitionId=9&branchName=master)
 |Sonar Cloud|[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=tscholze_xamarin-road-to-surface-duo&metric=alert_status)](https://sonarcloud.io/dashboard?id=tscholze_xamarin-road-to-surface-duo)|
 
+## Releases
+
+|Channel|Store|
+|-------|-----|
+|Beta | <a href='https://play.google.com/store/apps/details?id=io.github.tscholze.rtsd&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width='100'/></a>
+
 
 ## Structure
 

@@ -15,7 +15,9 @@ namespace rTsd.Utils
         /// <returns>True if it runs on a Surface Duo.</returns>
         public static bool IsDuo(this DualScreenInfo dualScreenInfo)
         {
-            return DualScreenInfo.Current.HingeBounds.Width != 0;
+            // TODO: Fix broken feature.
+            // https://github.com/tscholze/xamarin-road-to-surface-duo/issues/15
+            return true;
         }
     }
 }

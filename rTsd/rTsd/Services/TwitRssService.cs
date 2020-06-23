@@ -1,4 +1,5 @@
 ﻿using rTsd.Models;
+using rTsd.Resources.Resx;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,23 +81,44 @@ namespace rTsd.Services
         {
             if (forceReload == false && chachedTweets.Count > 0) return chachedTweets;
 
-            WebClient client = new WebClient { CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore) };
+            var tweets = new List<Tweet>();
 
-            var tweets = XDocument
-                            .Parse(client.DownloadString(FEED_ENDPOINT))
-                            .Root
-                            .Element("channel")
-                            .Elements("item")
-                            .Select(item => new Tweet
-                            {
-                                Id = item.Element("guid").Value.Replace("https://twitter.com/DrWindows_de/status/", string.Empty),
-                                Title = SanitazeTitle(item.Element("title").Value),
-                                LinkSource = item.Element("link").Value
-                            })
-                            .ToList()
-                            .GetRange(0, MAX_NUMBER_OF_TWEETS);
+            using (WebClient client = new WebClient { CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore) })
+            {
+                try
+                {
+                    tweets = XDocument
+                           .Parse(client.DownloadString(FEED_ENDPOINT))
+                           .Root
+                           .Element("channel")
+                           .Elements("item")
+                           .Select(item => new Tweet
+                           {
+                               Id = item.Element("guid").Value.Replace("https://twitter.com/DrWindows_de/status/", string.Empty),
+                               Title = SanitazeTitle(item.Element("title").Value),
+                               LinkSource = item.Element("link").Value
+                           })
+                           .ToList()
+                           .GetRange(0, MAX_NUMBER_OF_TWEETS);
+                }
+                catch (WebException e)
+                {
+                    // Log error.
+                    System.Diagnostics.Debug.WriteLine($"A error occured using TwitRss: {e.Message}");
 
-            client.Dispose();
+                    // Set info tweet.
+                    tweets = new List<Tweet>
+                    {
+                        new Tweet
+                        {
+                            Id = "0",
+                            Title = AppResources.TwitterErrorMessage,
+                            LinkSource = "https://drwindows.de",
+                            PublishedOn = DateTime.Now
+                        }
+                    };
+                }
+            }
 
             chachedTweets = tweets;
             return tweets;

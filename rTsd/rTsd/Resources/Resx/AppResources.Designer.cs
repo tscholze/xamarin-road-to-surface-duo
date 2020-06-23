@@ -217,5 +217,14 @@ namespace rTsd.Resources.Resx {
                 return ResourceManager.GetString("TwitterDeactivatedMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ein Fehler auf fremden Servern ist aufgetreten. Sorry..
+        /// </summary>
+        internal static string TwitterErrorMessage {
+            get {
+                return ResourceManager.GetString("TwitterErrorMessage", resourceCulture);
+            }
+        }
     }
 }

@@ -173,4 +173,7 @@ Ebenso ist dieses Dr. Windows  Community Projekt auch da für gedacht den Spaß 
   <data name="TwitterDeactivatedMessage" xml:space="preserve">
     <value>Das Feature ist im Moment deaktiviert. Schalte es in den Einstellunge an.</value>
   </data>
+  <data name="TwitterErrorMessage" xml:space="preserve">
+    <value>Ein Fehler auf fremden Servern ist aufgetreten. Sorry.</value>
+  </data>
 </root>

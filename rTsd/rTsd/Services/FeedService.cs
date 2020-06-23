@@ -80,52 +80,59 @@ namespace rTsd.Services
             }
 
             // Setup web client.
-            WebClient client = new WebClient
+            // Ignore chaching.
+            // Always load data from the server instead from the cache.
+            var posts = new List<Post>();
+            using (WebClient client = new WebClient { CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore) })
             {
-                // Ignore chaching.
-                // Always load data from the server instead from the cache.
-                CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore)
-            };
+                try
+                {
+                    // Download rss file.
+                    var rssString = client.DownloadString(FEED_ENDPOINT);
 
-            // Download rss file.
-            var rssString = client.DownloadString(FEED_ENDPOINT);
+                    // Setup xml document parser.
+                    XDocument doc = XDocument.Parse(rssString);
+                    XNamespace content = "http://purl.org/rss/1.0/modules/content/";
 
-            // Setup xml document parser.
-            XDocument doc = XDocument.Parse(rssString);
-            XNamespace content = "http://purl.org/rss/1.0/modules/content/";
+                    // Example data structure
+                    //
+                    //<xml>
+                    //  <channel>
+                    //      <item>
+                    //          <title>Entry #1</title>
+                    //      </item>
+                    //      <item>
+                    //          n times ...
+                    //      </item>
+                    //  </channel>
 
-            // Example data structure
-            //
-            //<xml>
-            //  <channel>
-            //      <item>
-            //          <title>Entry #1</title>
-            //      </item>
-            //      <item>
-            //          n times ...
-            //      </item>
-            //  </channel>
+                    // Get channels from the document.
+                    var channel = doc.Root.Element("channel");
 
-            // Get channels from the document.
-            var channel = doc.Root.Element("channel");
+                    // Get all `item` entries from the channel.
+                    var items = channel.Elements("item");
 
-            // Get all `item` entries from the channel.
-            var items = channel.Elements("item");
+                    // Convert found item xml entries into post objects.
+                    // By mapping element tags to object members.
+                    // E.g. item.guid -> object.id
+                    posts = items.Select(item => new Post
+                    {
+                        Id = item.Element("guid").Value.Replace("https://www.drwindows.de/news/?p=", string.Empty),
+                        Title = item.Element("title").Value,
+                        LinkSource = item.Element("link").Value,
+                        Content = item.Element(content + "encoded").Value,
+                        ImageSource = GetImageSourceOutOfContent(item.Element("description").Value)
+                    }).ToList();
+                }
+                catch (WebException e)
+                {
+                    // Log error.
+                    System.Diagnostics.Debug.WriteLine($"A error occured using RssService: {e.Message}");
 
-            // Convert found item xml entries into post objects.
-            // By mapping element tags to object members.
-            // E.g. item.guid -> object.id
-            var posts = items.Select(item => new Post
-            {
-                Id = item.Element("guid").Value.Replace("https://www.drwindows.de/news/?p=", string.Empty),
-                Title = item.Element("title").Value,
-                LinkSource = item.Element("link").Value,
-                Content = item.Element(content + "encoded").Value,
-                ImageSource = GetImageSourceOutOfContent(item.Element("description").Value)
-            }).ToList();
-
-            // Dispose web client.
-            client.Dispose();
+                    // The prior set post member will not be
+                    // updated and is still empty but not nil.
+                }
+            }
 
             // Store locally
             cachedPosts = posts;

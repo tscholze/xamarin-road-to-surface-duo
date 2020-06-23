@@ -4,6 +4,10 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Xamarin.Forms.Platform.Android;
+using Xamarin.Forms.DualScreen;
+using Microsoft.Device.Display;
+using Xamarin.Forms;
+using Android.Content;
 
 namespace rTsd.Droid
 {
@@ -16,6 +20,7 @@ namespace rTsd.Droid
     )]
     public class MainActivity : FormsAppCompatActivity
     {
+
         #region App life cycle
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -28,12 +33,12 @@ namespace rTsd.Droid
             base.OnCreate(savedInstanceState);
 
             // Enable experimental Xamarin.Forms features.
-            Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
+            Forms.SetFlags("CollectionView_Experimental");
 
             // Xamarin.Forms inits.
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            Xamarin.Forms.DualScreen.DualScreenService.Init(this);
+            Forms.Init(this, savedInstanceState);
+            DualScreenService.Init(this);
 
             // Load app from the Forms sub project.
             LoadApplication(new App());

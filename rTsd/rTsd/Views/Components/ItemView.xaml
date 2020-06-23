@@ -34,8 +34,10 @@
         <!-- Placeholder image if no item is selected to be shown -->
         <Image
             Source="rtsd_logo_large.png"
-            VerticalOptions="CenterAndExpand"
-            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="Center"
+            HeightRequest="300"
+            WidthRequest="300"
+            HorizontalOptions="Center"
             IsVisible="{Binding ShowPlaceholder}" />
 
         <!-- Content of the item template -->

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:dualScreen="clr-namespace:Xamarin.Forms.DualScreen;assembly=Xamarin.Forms.DualScreen"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -20,46 +21,54 @@
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
 
-    <!-- Content -->
-    <ScrollView BackgroundColor="{StaticResource OnPrimary}">
-        <StackLayout Orientation="Vertical" 
+    <Grid>
+        <dualScreen:TwoPaneView x:Name="DualScreenView"  
+                            MinWideModeWidth="4000" 
+                            MinTallModeHeight="4000">
+            <dualScreen:TwoPaneView.Pane1>
+                <!-- Content -->
+                <ScrollView BackgroundColor="{StaticResource OnPrimary}">
+                    <StackLayout Orientation="Vertical" 
                      Padding="20" 
                      Spacing="5" >
-            <!-- Hero area (Image)-->
-            <Image Source="logo1.jpg" 
+                        <!-- Hero area (Image)-->
+                        <Image Source="logo1.jpg" 
                    Aspect="AspectFit"
                    HeightRequest="180"/>
 
 
-            <!-- Labels -->
-            <Label Style="{StaticResource PrimaryLargeLabelStyle}" 
+                        <!-- Labels -->
+                        <Label Style="{StaticResource PrimaryLargeLabelStyle}" 
                    Text="#rTsd"  />
 
-            <Label Text="{x:Static resources:AppResources.AboutTitle}" 
+                        <Label Text="{x:Static resources:AppResources.AboutTitle}" 
                    FontSize="Caption" />
 
-            <Label Style="{StaticResource PrimaryBodyLabelStyle}"
+                        <Label Style="{StaticResource PrimaryBodyLabelStyle}"
                    Text="{x:Static resources:AppResources.AboutDescription}" />
 
-            <!-- Buttons -->
-            <Button Style="{StaticResource PrimaryButtonStyle}"
+                        <!-- Buttons -->
+                        <Button Style="{StaticResource PrimaryButtonStyle}"
                     Margin="0,10,0,0" 
                     Text="{x:Static resources:AppResources.AboutDrWindowsButton}"
                     Command="{Binding OpenDrWindowsWebCommand}" />
 
-            <Button Style="{StaticResource PrimaryButtonStyle}"
+                        <Button Style="{StaticResource PrimaryButtonStyle}"
                     Margin="0,10,0,0" 
                     Text="{x:Static resources:AppResources.AboutGitHubButton}"
                     Command="{Binding OpenGitHubWebCommand}" />
 
-            <!-- Feature checkboxes -->
-            <StackLayout Orientation="Horizontal">
-                <CheckBox Margin="0,10,0,0"
+                        <!-- Feature checkboxes -->
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox Margin="0,10,0,0"
                           IsChecked="{Binding IsTwitterFeatureEnabled}" />
-                <Label Margin="0,15,0,0"
+                            <Label Margin="0,15,0,0"
                        Text="{x:Static resources:AppResources.AboutFeatureSwitchTwitter}" />
-            </StackLayout>
-        </StackLayout>
-    </ScrollView>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
 
+            </dualScreen:TwoPaneView.Pane1>
+        </dualScreen:TwoPaneView>
+    </Grid>
 </ContentPage>

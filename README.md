@@ -58,6 +58,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 
 ## Publications
 
+- Microsoft: [The Dual-Screen Developer Experience: Interview with Tobias Scholze](https://devblogs.microsoft.com/surface-duo/the-dual-screen-developer-experience-interview-with-tobias-scholze/)
 - Personal Blog: [[Projekt] #rTsd – Road to Surface Duo](https://tscholze.uber.space/2019/11/30/projekt-rtsd-road-to-surface-duo/)
 - Personal Podcast: [LLD5 - Road To Surface Duo](https://soundcloud.com/user-886564691/lld5-road-to-surface-duo)
 - Personal Podcast: [LLD8 - Ganz allein im Surface Duo Forum](https://soundcloud.com/user-886564691/lld8-ganz-allein-im-surface)
@@ -69,6 +70,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 6](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-6-sdk-und-emulator)
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 7](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-7-auf-dem-weg-zum-play-store)
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 8](https://www.drwindows.de/news/erste-beta-version-unserer-rtsd-app-ist-nun-zum-testen-bereit-entwicklertagebuch-teil-8)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 9](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-9-abwarten)
 
 ## Prerequirements
 - Windows 10 / macOS 

@@ -62,6 +62,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - Personal Blog: [[Projekt] #rTsd – Road to Surface Duo](https://tscholze.uber.space/2019/11/30/projekt-rtsd-road-to-surface-duo/)
 - Personal Podcast: [LLD5 - Road To Surface Duo](https://soundcloud.com/user-886564691/lld5-road-to-surface-duo)
 - Personal Podcast: [LLD8 - Ganz allein im Surface Duo Forum](https://soundcloud.com/user-886564691/lld8-ganz-allein-im-surface)
+- Dr. Windows: [Surface Duo: Unser Tobias im Interview auf dem Microsoft-Blog](https://www.drwindows.de/news/surface-duo-unser-tobias-im-interview-auf-dem-microsoft-blog)
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 1](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-1)
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 2](https://www.drwindows.de/news/road-to-surface-duo-das-entwicklertagebuch-teil-2)
 - Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 3](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-3)

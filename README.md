@@ -53,7 +53,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - [x] Add localization (resx)
 - [ ] Write tests
 - [ ] Leverage CI with tests and deployments
-- [ ] Run it on an actual Surface Duo device
+- [x] Run it on an actual Surface Duo device
 - [ ] Add analytics
 
 ## Publications

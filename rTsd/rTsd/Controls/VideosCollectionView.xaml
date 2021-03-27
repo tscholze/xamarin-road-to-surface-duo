@@ -1,34 +1,32 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<CollectionView xmlns="http://xamarin.com/schemas/2014/forms" 
-                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                xmlns:utils="clr-namespace:rTsd.Utils"
-                xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                xmlns:effects="clr-namespace:rTsd.Effects"
-                mc:Ignorable="d"
-                x:Class="rTsd.Controls.VideosCollectionView">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<CollectionView
+    x:Class="rTsd.Controls.VideosCollectionView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:effects="clr-namespace:rTsd.Effects"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:utils="clr-namespace:rTsd.Utils"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    mc:Ignorable="d">
 
-    <!--#region Resources -->
+    <!--#region Resources-->
     <CollectionView.Resources>
-        <Style TargetType="yummy:PancakeView" x:Key="TearPacakeViewStyle">
+        <Style x:Key="TearPacakeViewStyle" TargetType="yummy:PancakeView">
             <Setter Property="HeightRequest" Value="120" />
             <Setter Property="CornerRadius" Value="20, 0, 0, 20" />
             <Setter Property="Margin" Value="20, 10, 20, 10" />
-            <Setter Property="BorderColor" Value="{StaticResource Primary}" />
-            <Setter Property="BorderThickness" Value="1" />
         </Style>
 
-        <!-- ItemTemplateContainerGridStyle -->
-        <Style TargetType="Grid" x:Key="ItemTemplateContainerGridStyle">
+        <!--  ItemTemplateContainerGridStyle  -->
+        <Style x:Key="ItemTemplateContainerGridStyle" TargetType="Grid">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">
                         <VisualState x:Name="Normal" />
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
-                                <Setter Property="BackgroundColor"
-                                        Value="{StaticResource Accent}" />
+                                <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -38,31 +36,36 @@
 
         <DataTemplate x:Key="EventDataTemplate">
             <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
-                <yummy:PancakeView Style="{StaticResource TearPacakeViewStyle}"
-                                   CornerRadius="20, 0, 0, 20"
-                                   BackgroundColor="{StaticResource Primary}">
+                <yummy:PancakeView
+                    BackgroundColor="{StaticResource Primary}"
+                    Border="{yummy:BorderMarkup Color={StaticResource Primary},
+                                                Thickness='1'}"
+                    CornerRadius="20, 0, 0, 20"
+                    Style="{StaticResource TearPacakeViewStyle}">
                     <Grid>
-                        <!-- Fallback background image -->
-                        <Image Source="https://www.drwindows.de/news/wp-content/uploads/2017/07/drwindows_intern_neu-660x330.jpg" Aspect="AspectFill" />
+                        <!--  Fallback background image  -->
+                        <Image Aspect="AspectFill" Source="https://www.drwindows.de/news/wp-content/uploads/2017/07/drwindows_intern_neu-660x330.jpg" />
 
-                        <!-- Title -->
-                        <Label Text="{Binding Title}"
-                               VerticalOptions="EndAndExpand" 
-                               LineBreakMode="TailTruncation"
-                               MaxLines="2"
-                               Margin="10, 5, 10, 5" 
-                               FontSize="19" 
-                               TextColor="{StaticResource OnPrimary}">
+                        <!--  Title  -->
+                        <Label
+                            Margin="10,5,10,5"
+                            FontSize="19"
+                            LineBreakMode="TailTruncation"
+                            MaxLines="2"
+                            Text="{Binding Title}"
+                            TextColor="{StaticResource OnPrimary}"
+                            VerticalOptions="EndAndExpand">
 
-                            <!-- Add shadow effect -->
+                            <!--  Add shadow effect  -->
                             <Label.Effects>
-                                <effects:ShadowEffect Radius="10"
-                                                      DistanceX="2" 
-                                                      DistanceY="2" 
-                                                      Color="Black" />
+                                <effects:ShadowEffect
+                                    DistanceX="2"
+                                    DistanceY="2"
+                                    Radius="10"
+                                    Color="Black" />
                             </Label.Effects>
                         </Label>
-                        <Image Source="{Binding ThumbnailSource}" Aspect="AspectFill" />
+                        <Image Aspect="AspectFill" Source="{Binding ThumbnailSource}" />
                     </Grid>
                 </yummy:PancakeView>
             </Grid>
@@ -70,31 +73,34 @@
 
         <DataTemplate x:Key="UneventDataTemplate">
             <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
-                <yummy:PancakeView Style="{StaticResource TearPacakeViewStyle}"
-                                   CornerRadius="0, 20, 20, 0"
-                                   BackgroundColor="{StaticResource Primary}">
+                <yummy:PancakeView
+                    BackgroundColor="{StaticResource Primary}"
+                    CornerRadius="0, 20, 20, 0"
+                    Style="{StaticResource TearPacakeViewStyle}">
                     <Grid>
-                        <!-- Fallback background image -->
-                        <Image Source="https://www.drwindows.de/news/wp-content/uploads/2017/07/drwindows_intern_neu-660x330.jpg" Aspect="AspectFill" />
-                        
-                        <!-- Title -->
-                        <Label Text="{Binding Title}"
-                               VerticalOptions="EndAndExpand" 
-                               LineBreakMode="TailTruncation"
-                               MaxLines="2"
-                               Margin="10, 5, 10, 5" 
-                               FontSize="19" 
-                               TextColor="{StaticResource OnPrimary}">
+                        <!--  Fallback background image  -->
+                        <Image Aspect="AspectFill" Source="https://www.drwindows.de/news/wp-content/uploads/2017/07/drwindows_intern_neu-660x330.jpg" />
 
-                            <!-- Add shadow effect -->
+                        <!--  Title  -->
+                        <Label
+                            Margin="10,5,10,5"
+                            FontSize="19"
+                            LineBreakMode="TailTruncation"
+                            MaxLines="2"
+                            Text="{Binding Title}"
+                            TextColor="{StaticResource OnPrimary}"
+                            VerticalOptions="EndAndExpand">
+
+                            <!--  Add shadow effect  -->
                             <Label.Effects>
-                                <effects:ShadowEffect Radius="10"
-                                                      DistanceX="2" 
-                                                      DistanceY="2" 
-                                                      Color="Black" />
+                                <effects:ShadowEffect
+                                    DistanceX="2"
+                                    DistanceY="2"
+                                    Radius="10"
+                                    Color="Black" />
                             </Label.Effects>
                         </Label>
-                        <Image Source="{Binding ThumbnailSource}" Aspect="AspectFill" />
+                        <Image Aspect="AspectFill" Source="{Binding ThumbnailSource}" />
                     </Grid>
 
                 </yummy:PancakeView>
@@ -102,9 +108,8 @@
         </DataTemplate>
     </CollectionView.Resources>
 
-    <!-- Template -->
+    <!--  Template  -->
     <CollectionView.ItemTemplate>
-        <utils:AlternateCollectionViewDataTemplateSelector EvenTemplate="{StaticResource EventDataTemplate}"
-                                                           UnevenTemplate="{StaticResource UneventDataTemplate}" />
+        <utils:AlternateCollectionViewDataTemplateSelector EvenTemplate="{StaticResource EventDataTemplate}" UnevenTemplate="{StaticResource UneventDataTemplate}" />
     </CollectionView.ItemTemplate>
 </CollectionView>

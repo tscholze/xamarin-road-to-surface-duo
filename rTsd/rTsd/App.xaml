@@ -1,47 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:resources="clr-namespace:rTsd.Resources.Resx"
-             xmlns:converter="clr-namespace:rTsd.Utils"
-             mc:Ignorable="d"
-             x:Class="rTsd.App">
+<Application
+    x:Class="rTsd.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converter="clr-namespace:rTsd.Utils"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resources="clr-namespace:rTsd.Resources.Resx"
+    mc:Ignorable="d">
     <Application.Resources>
         <ResourceDictionary>
-            
-            <!-- Converter -->
-            <converter:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
 
-            <!-- Colors -->
+            <!--  Converter  -->
+            <converter:InvertBooleanConverter x:Key="InvertBooleanConverter" />
+
+            <!--  Colors  -->
             <Color x:Key="OnPrimary">#FAFAFA</Color>
             <Color x:Key="Primary">#213868</Color>
             <Color x:Key="PrimaryReduced">#627294</Color>
             <Color x:Key="Accent">#8992A4</Color>
             <Color x:Key="AccentDark">#1C2E53</Color>
 
-            <!-- Texts -->
-            <Style TargetType="Label" x:Key="PrimaryLargeLabelStyle">
+            <!--  Texts  -->
+            <Style x:Key="PrimaryLargeLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 
-            <Style TargetType="Label" x:Key="PrimaryBodyLabelStyle">
+            <Style x:Key="PrimaryBodyLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                 <Setter Property="FontSize" Value="12" />
                 <Setter Property="LineHeight" Value="1.25" />
             </Style>
 
-            <Style TargetType="Label" x:Key="ColumnTitleLabelStyle">
+            <Style x:Key="ColumnTitleLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource OnPrimary}" />
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="Padding" Value="20, 10, 20, 0" />
             </Style>
 
-            <!-- Controls -->
-            <Style TargetType="Button" x:Key="PrimaryButtonStyle">
+            <!--  Controls  -->
+            <Style x:Key="PrimaryButtonStyle" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource OnPrimary}" />
                 <Setter Property="BorderColor" Value="{StaticResource Primary}" />
                 <Setter Property="BorderWidth" Value="1" />
@@ -49,47 +50,48 @@
                 <Setter Property="FontSize" Value="12" />
             </Style>
 
-            <!-- Shell -->
+            <!--  Shell  -->
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
                 <Setter Property="Shell.ForegroundColor" Value="{StaticResource OnPrimary}" />
-                <Setter Property="Shell.TitleColor" Value="{StaticResource OnPrimary}"/>
+                <Setter Property="Shell.TitleColor" Value="{StaticResource OnPrimary}" />
                 <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
-                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}"/>
-                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource OnPrimary}"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource OnPrimary}"/>
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource OnPrimary}" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource OnPrimary}" />
             </Style>
 
-            <!-- Templates -->
+            <!--  Templates  -->
             <ControlTemplate x:Key="BasePageControlTemplate">
                 <StackLayout BackgroundColor="{StaticResource Primary}">
-                    <StackLayout >
+                    <StackLayout>
 
-                        <!-- GestureRecognizers -->
+                        <!--  GestureRecognizers  -->
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{TemplateBinding BindingContext.ShowShellFlyoutCommand}" />
                         </StackLayout.GestureRecognizers>
 
-                        <!-- Title -->
-                        <Label TextColor="{StaticResource Accent}" 
-                               Margin="0, 10, 0, 3"
-                               FontSize="10"
-                               Text="{x:Static resources:AppResources.NavigationHeaderSubtitle}"
-                               HorizontalOptions="Center"
-                               HorizontalTextAlignment="Center" />
+                        <!--  Title  -->
+                        <Label
+                            Margin="0,10,0,3"
+                            FontSize="10"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="{x:Static resources:AppResources.NavigationHeaderSubtitle}"
+                            TextColor="{StaticResource Accent}" />
 
-                        <!-- Logo -->
-                        <Image Source="drwindows_logo.png"
-                               HeightRequest="60" 
-                               HorizontalOptions="Center"/>
+                        <!--  Logo  -->
+                        <Image
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Source="drwindows_logo.png" />
 
-                        <!-- Bottom border-->
-                        <BoxView HeightRequest="1" 
-                                 BackgroundColor="{StaticResource AccentDark}" />
+                        <!--  Bottom border  -->
+                        <BoxView BackgroundColor="{StaticResource AccentDark}" HeightRequest="1" />
                     </StackLayout>
 
-                    <!-- Embedd content -->
+                    <!--  Embedd content  -->
                     <ContentPresenter HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                 </StackLayout>
             </ControlTemplate>

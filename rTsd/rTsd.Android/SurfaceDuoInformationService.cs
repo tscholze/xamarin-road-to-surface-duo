@@ -31,6 +31,5 @@ namespace rTsd.Droid
         }
 
         #endregion
-
     }
 }

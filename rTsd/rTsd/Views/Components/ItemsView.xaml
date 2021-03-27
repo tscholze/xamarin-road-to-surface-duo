@@ -1,95 +1,98 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:controls="clr-namespace:rTsd.Controls"
-             xmlns:resources="clr-namespace:rTsd.Resources.Resx"
-             Shell.NavBarIsVisible="false"
-             ControlTemplate="{StaticResource BasePageControlTemplate}"
-             x:Class="rTsd.Views.ItemsView"
-             x:Name="Container">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="rTsd.Views.ItemsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:rTsd.Controls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resources="clr-namespace:rTsd.Resources.Resx"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Name="Container"
+    ControlTemplate="{StaticResource BasePageControlTemplate}"
+    Shell.NavBarIsVisible="false"
+    mc:Ignorable="d">
 
     <yummy:PancakeView>
 
-        <!-- #region Configurate PancakeView -->
+        <!--#region Configurate PancakeView-->
         <yummy:PancakeView.BackgroundGradientStops>
             <yummy:GradientStopCollection>
-                <yummy:GradientStop Color="{StaticResource Primary}" Offset="0" />
-                <yummy:GradientStop Color="{StaticResource PrimaryReduced}" Offset="0.75" />
-                <yummy:GradientStop Color="{StaticResource Accent}" Offset="1" />
+                <yummy:GradientStop Offset="0" Color="{StaticResource Primary}" />
+                <yummy:GradientStop Offset="0.75" Color="{StaticResource PrimaryReduced}" />
+                <yummy:GradientStop Offset="1" Color="{StaticResource Accent}" />
             </yummy:GradientStopCollection>
         </yummy:PancakeView.BackgroundGradientStops>
-        <!-- endregion -->
+        <!--  endregion  -->
 
         <Grid>
             <StackLayout VerticalOptions="FillAndExpand">
 
-                <!-- #region Twitter -->
-                <controls:TweetsCarouselView x:Name="TweetsCarouselView"
-                                         NumberOfTweets="{Binding NumberOfTweets}"
-                                         ItemsSource="{Binding Tweets}" />
-                <!-- #endregion -->
+                <!--#region Twitter-->
+                <controls:TweetsCarouselView
+                    x:Name="TweetsCarouselView"
+                    ItemsSource="{Binding Tweets}"
+                    NumberOfTweets="{Binding NumberOfTweets}" />
+                <!--#endregion-->
 
-                <!-- #region Content columns -->
+                <!--#region Content columns-->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="{Binding SecondColumnWidth}" />
                     </Grid.ColumnDefinitions>
 
-                    <!-- #region Feed content -->
+                    <!--#region Feed content-->
 
                     <StackLayout Grid.Column="0">
-                        <Label Text="{x:Static resources:AppResources.ItemsLatestNewsTitle}" 
-                           Style="{StaticResource ColumnTitleLabelStyle}"/>
+                        <Label Style="{StaticResource ColumnTitleLabelStyle}" Text="{x:Static resources:AppResources.ItemsLatestNewsTitle}" />
 
-                        <controls:PostsCollectionView x:Name="FeedCollectionView"
-                                                  SelectionMode="Single"
-                                                  ItemsSource="{Binding Items}"
-                                                  SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
-                                                  SelectionChangedCommand="{Binding ItemSelectedCommand}"
-                                                  SelectionChangedCommandParameter="{Binding Source={x:Reference FeedCollectionView}, Path=SelectedItem}" />
+                        <controls:PostsCollectionView
+                            x:Name="FeedCollectionView"
+                            ItemsSource="{Binding Items}"
+                            SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding ItemSelectedCommand}"
+                            SelectionChangedCommandParameter="{Binding Source={x:Reference FeedCollectionView}, Path=SelectedItem}"
+                            SelectionMode="Single" />
                     </StackLayout>
-                    <!-- endregion -->
+                    <!--  endregion  -->
 
-                    <!-- #region YT content -->
+                    <!--#region YT content-->
 
                     <StackLayout Grid.Column="1">
-                        <Label Text="{x:Static resources:AppResources.ItemsVideosTitle}" 
-                           Style="{StaticResource ColumnTitleLabelStyle}"/>
+                        <Label Style="{StaticResource ColumnTitleLabelStyle}" Text="{x:Static resources:AppResources.ItemsVideosTitle}" />
 
-                        <controls:VideosCollectionView x:Name="VideosCollectionView"
-                                                   SelectionMode="Single"
-                                                   ItemsSource="{Binding Videos}"
-                                                   SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
-                                                   SelectionChangedCommand="{Binding ItemSelectedCommand}"
-                                                   SelectionChangedCommandParameter="{Binding Source={x:Reference VideosCollectionView}, Path=SelectedItem}" />
+                        <controls:VideosCollectionView
+                            x:Name="VideosCollectionView"
+                            ItemsSource="{Binding Videos}"
+                            SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding ItemSelectedCommand}"
+                            SelectionChangedCommandParameter="{Binding Source={x:Reference VideosCollectionView}, Path=SelectedItem}"
+                            SelectionMode="Single" />
                     </StackLayout>
-                    <!-- endregion -->
+                    <!--  endregion  -->
 
                 </Grid>
                 <!--#endregion-->
 
             </StackLayout>
 
-            <!--#region Loading View -->
-            <yummy:PancakeView IsVisible="{Binding IsBusy}"
-                           Opacity="0.5"
-                           CornerRadius="4" 
-                           Padding="20"
-                           BackgroundColor="#F2F2F2" 
-                           BorderColor="{StaticResource Primary}" 
-                           VerticalOptions="Center" 
-                           HorizontalOptions="Center">
-                <StackLayout >
-                    <!-- Animated spinner -->
-                    <ActivityIndicator Color="{StaticResource PrimaryReduced}" 
-                                     IsRunning="{Binding IsBusy}" />
-                    <!-- Text -->
-                    <Label Text="Loading ..."  />
+            <!--#region Loading View-->
+            <yummy:PancakeView
+                Padding="20"
+                BackgroundColor="#F2F2F2"
+                Border="{yummy:BorderMarkup Color={StaticResource Primary},
+                                            Thickness='1'}"
+                CornerRadius="4"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsBusy}"
+                Opacity="0.5"
+                VerticalOptions="Center">
+                <StackLayout>
+                    <!--  Animated spinner  -->
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" Color="{StaticResource PrimaryReduced}" />
+                    <!--  Text  -->
+                    <Label Text="Loading ..." />
                 </StackLayout>
             </yummy:PancakeView>
             <!--#endregion-->

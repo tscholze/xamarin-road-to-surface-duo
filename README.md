@@ -53,22 +53,27 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - [x] Add localization (resx)
 - [ ] Write tests
 - [ ] Leverage CI with tests and deployments
-- [ ] Run it on an actual Surface Duo device
+- [x] Run it on an actual Surface Duo device
 - [ ] Add analytics
 
 ## Publications
 
+- Microsoft: [The Dual-Screen Developer Experience: Interview with Tobias Scholze](https://devblogs.microsoft.com/surface-duo/the-dual-screen-developer-experience-interview-with-tobias-scholze/)
 - Personal Blog: [[Projekt] #rTsd – Road to Surface Duo](https://tscholze.uber.space/2019/11/30/projekt-rtsd-road-to-surface-duo/)
 - Personal Podcast: [LLD5 - Road To Surface Duo](https://soundcloud.com/user-886564691/lld5-road-to-surface-duo)
 - Personal Podcast: [LLD8 - Ganz allein im Surface Duo Forum](https://soundcloud.com/user-886564691/lld8-ganz-allein-im-surface)
-- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 1](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-1)
-- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 2](https://www.drwindows.de/news/road-to-surface-duo-das-entwicklertagebuch-teil-2)
-- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 3](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-3)
-- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 4](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-4)
-- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 5](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-5)
-- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 6](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-6-sdk-und-emulator)
-- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 7](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-7-auf-dem-weg-zum-play-store)
-- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 8](https://www.drwindows.de/news/erste-beta-version-unserer-rtsd-app-ist-nun-zum-testen-bereit-entwicklertagebuch-teil-8)
+- Dr. Windows: [Surface Duo: Unser Tobias im Interview auf dem Microsoft-Blog](https://www.drwindows.de/news/surface-duo-unser-tobias-im-interview-auf-dem-microsoft-blog)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 01](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-1)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 02](https://www.drwindows.de/news/road-to-surface-duo-das-entwicklertagebuch-teil-2)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 03](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-3)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 04](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-4)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 05](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-5)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 06](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-6-sdk-und-emulator)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 07](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-7-auf-dem-weg-zum-play-store)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 08](https://www.drwindows.de/news/erste-beta-version-unserer-rtsd-app-ist-nun-zum-testen-bereit-entwicklertagebuch-teil-8)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 09](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-9-abwarten)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 10](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-10-die-krux-kein-testgeraet-zu-haben)
+- Dr. Windows: [#rTsd – Road to Surface Duo, das Entwicklertagebuch: Teil 11](https://www.drwindows.de/news/rtsd-road-to-surface-duo-das-entwicklertagebuch-teil-11-das-feuer-brennt-wieder)
 
 ## Prerequirements
 - Windows 10 / macOS 

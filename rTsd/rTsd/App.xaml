@@ -6,7 +6,7 @@
     xmlns:converter="clr-namespace:rTsd.Utils"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:resources="clr-namespace:rTsd.Resources.Resx"
+    xmlns:resources="clr-namespace:rTsd.Resources.Resx" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     mc:Ignorable="d">
     <Application.Resources>
         <ResourceDictionary>
@@ -64,36 +64,50 @@
 
             <!--  Templates  -->
             <ControlTemplate x:Key="BasePageControlTemplate">
-                <StackLayout BackgroundColor="{StaticResource Primary}">
+                <yummy:PancakeView>
+
+                    <!--#region Configurate PancakeView-->
+                    <yummy:PancakeView.BackgroundGradientStops>
+                        <yummy:GradientStopCollection>
+                            <yummy:GradientStop Offset="0" Color="{StaticResource Primary}" />
+                            <yummy:GradientStop Offset="0.75" Color="{StaticResource PrimaryReduced}" />
+                            <yummy:GradientStop Offset="1" Color="{StaticResource Accent}" />
+                        </yummy:GradientStopCollection>
+                    </yummy:PancakeView.BackgroundGradientStops>
+                    <!--  endregion  -->
                     <StackLayout>
+                        <StackLayout BackgroundColor="{StaticResource Primary}">
 
-                        <!--  GestureRecognizers  -->
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{TemplateBinding BindingContext.ShowShellFlyoutCommand}" />
-                        </StackLayout.GestureRecognizers>
+                            <!--  GestureRecognizers  -->
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.ShowShellFlyoutCommand}" />
+                            </StackLayout.GestureRecognizers>
 
-                        <!--  Title  -->
-                        <Label
-                            Margin="0,10,0,3"
+                            <!--  Title  -->
+                            <Label
                             FontSize="10"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
                             Text="{x:Static resources:AppResources.NavigationHeaderSubtitle}"
                             TextColor="{StaticResource Accent}" />
 
-                        <!--  Logo  -->
-                        <Image
+                            <!--  Logo  -->
+                            <Image
                             HeightRequest="60"
                             HorizontalOptions="Center"
                             Source="drwindows_logo.png" />
 
-                        <!--  Bottom border  -->
-                        <BoxView BackgroundColor="{StaticResource AccentDark}" HeightRequest="1" />
-                    </StackLayout>
+                            <!--  Bottom border  -->
+                            <BoxView
+                            BackgroundColor="{StaticResource AccentDark}"
+                            HeightRequest="1"  />
+                        </StackLayout>
 
-                    <!--  Embedd content  -->
-                    <ContentPresenter HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
-                </StackLayout>
+                        <!--  Embedd content  -->
+
+                        <ContentPresenter HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    </StackLayout>
+                </yummy:PancakeView>
             </ControlTemplate>
         </ResourceDictionary>
     </Application.Resources>

@@ -11,9 +11,10 @@
     x:Name="Container"
     ControlTemplate="{StaticResource BasePageControlTemplate}"
     Shell.NavBarIsVisible="false"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Margin="0" Padding="0">
 
-    <yummy:PancakeView>
+    <yummy:PancakeView Margin="0" Padding="0">
 
         <!--#region Configurate PancakeView-->
         <yummy:PancakeView.BackgroundGradientStops>

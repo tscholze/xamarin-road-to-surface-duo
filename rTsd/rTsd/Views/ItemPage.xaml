@@ -49,16 +49,30 @@
             </Grid.ColumnDefinitions>
 
             <!-- Browser button -->
-            <Button
+            <Image
                 Grid.Column="0"
-                ImageSource="earth.png"
-                Command="{Binding OpenPostWebCommand}" />
+                Source="earth.png"
+                WidthRequest="30"
+                HeightRequest="30">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding OpenWebCommand}" 
+                        NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
 
             <!-- Share button -->
-            <Button
+            <Image
                 Grid.Column="2"
-                ImageSource="share.png"
-                Command="{Binding ShareCommand}" />
+                Source="share.png"
+                WidthRequest="30"
+                HeightRequest="30">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding ShareCommand}" 
+                        NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
         </Grid>
 
         <!-- Post's content -->

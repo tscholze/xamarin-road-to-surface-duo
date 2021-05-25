@@ -92,7 +92,11 @@
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
     <AndroidResource Include="Resources\mipmap-anydpi-v26\icon_round.xml" />
-    <AndroidResource Include="Resources\drawable\earth.svg">
+    <AndroidResource Include="Resources\drawable\earth.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\share.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
@@ -120,12 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\edge.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\earth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\share.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\twitter.png" />

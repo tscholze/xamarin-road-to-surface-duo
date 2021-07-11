@@ -14,72 +14,59 @@
     mc:Ignorable="d"
     Margin="0" Padding="0">
 
-    <yummy:PancakeView Margin="0" Padding="0">
-
-        <!--#region Configurate PancakeView-->
-        <yummy:PancakeView.BackgroundGradientStops>
-            <yummy:GradientStopCollection>
-                <yummy:GradientStop Offset="0" Color="{StaticResource Primary}" />
-                <yummy:GradientStop Offset="0.75" Color="{StaticResource PrimaryReduced}" />
-                <yummy:GradientStop Offset="1" Color="{StaticResource Accent}" />
-            </yummy:GradientStopCollection>
-        </yummy:PancakeView.BackgroundGradientStops>
-        <!--  endregion  -->
-
-        <Grid>
-            <StackLayout VerticalOptions="FillAndExpand">
-
-                <!--#region Twitter-->
-                <controls:TweetsCarouselView
+    <Grid>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <!--#region Twitter-->
+            <controls:TweetsCarouselView
                     x:Name="TweetsCarouselView"
                     ItemsSource="{Binding Tweets}"
                     NumberOfTweets="{Binding NumberOfTweets}" />
-                <!--#endregion-->
+            <!--#endregion-->
 
-                <!--#region Content columns-->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="{Binding SecondColumnWidth}" />
-                    </Grid.ColumnDefinitions>
+            <!--#region Content columns-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="{Binding SecondColumnWidth}" />
+                </Grid.ColumnDefinitions>
 
-                    <!--#region Feed content-->
+                <!--#region Feed content-->
 
-                    <StackLayout Grid.Column="0">
-                        <Label Style="{StaticResource ColumnTitleLabelStyle}" Text="{x:Static resources:AppResources.ItemsLatestNewsTitle}" />
+                <StackLayout Grid.Column="0">
+                    <Label Style="{StaticResource ColumnTitleLabelStyle}" Text="{x:Static resources:AppResources.ItemsLatestNewsTitle}" />
 
-                        <controls:PostsCollectionView
+                    <controls:PostsCollectionView
                             x:Name="FeedCollectionView"
                             ItemsSource="{Binding Items}"
                             SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
                             SelectionChangedCommand="{Binding ItemSelectedCommand}"
                             SelectionChangedCommandParameter="{Binding Source={x:Reference FeedCollectionView}, Path=SelectedItem}"
                             SelectionMode="Single" />
-                    </StackLayout>
-                    <!--  endregion  -->
+                </StackLayout>
+                <!--  endregion  -->
 
-                    <!--#region YT content-->
+                <!--#region YT content-->
 
-                    <StackLayout Grid.Column="1">
-                        <Label Style="{StaticResource ColumnTitleLabelStyle}" Text="{x:Static resources:AppResources.ItemsVideosTitle}" />
+                <StackLayout Grid.Column="1">
+                    <Label Style="{StaticResource ColumnTitleLabelStyle}" Text="{x:Static resources:AppResources.ItemsVideosTitle}" />
 
-                        <controls:VideosCollectionView
+                    <controls:VideosCollectionView
                             x:Name="VideosCollectionView"
                             ItemsSource="{Binding Videos}"
                             SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
                             SelectionChangedCommand="{Binding ItemSelectedCommand}"
                             SelectionChangedCommandParameter="{Binding Source={x:Reference VideosCollectionView}, Path=SelectedItem}"
                             SelectionMode="Single" />
-                    </StackLayout>
-                    <!--  endregion  -->
+                </StackLayout>
+                <!--  endregion  -->
 
-                </Grid>
-                <!--#endregion-->
+            </Grid>
+            <!--#endregion-->
 
-            </StackLayout>
+        </StackLayout>
 
-            <!--#region Loading View-->
-            <yummy:PancakeView
+        <!--#region Loading View-->
+        <yummy:PancakeView
                 Padding="20"
                 BackgroundColor="#F2F2F2"
                 Border="{yummy:BorderMarkup Color={StaticResource Primary},
@@ -89,14 +76,17 @@
                 IsVisible="{Binding IsBusy}"
                 Opacity="0.5"
                 VerticalOptions="Center">
-                <StackLayout>
-                    <!--  Animated spinner  -->
-                    <ActivityIndicator IsRunning="{Binding IsBusy}" Color="{StaticResource PrimaryReduced}" />
-                    <!--  Text  -->
-                    <Label Text="Loading ..." />
-                </StackLayout>
-            </yummy:PancakeView>
-            <!--#endregion-->
-        </Grid>
-    </yummy:PancakeView>
+            <StackLayout>
+
+                <!--  Animated spinner  -->
+                <ActivityIndicator
+                        IsRunning="{Binding IsBusy}"
+                        Color="{StaticResource PrimaryReduced}" />
+                <!--  Text  -->
+
+                <Label Text="Loading ..." />
+            </StackLayout>
+        </yummy:PancakeView>
+        <!--#endregion-->
+    </Grid>
 </ContentView>

@@ -64,50 +64,40 @@
 
             <!--  Templates  -->
             <ControlTemplate x:Key="BasePageControlTemplate">
-                <yummy:PancakeView>
-
-                    <!--#region Configurate PancakeView-->
-                    <yummy:PancakeView.BackgroundGradientStops>
-                        <yummy:GradientStopCollection>
-                            <yummy:GradientStop Offset="0" Color="{StaticResource Primary}" />
-                            <yummy:GradientStop Offset="0.75" Color="{StaticResource PrimaryReduced}" />
-                            <yummy:GradientStop Offset="1" Color="{StaticResource Accent}" />
-                        </yummy:GradientStopCollection>
-                    </yummy:PancakeView.BackgroundGradientStops>
-                    <!--  endregion  -->
+                <!--  endregion  -->
+                <StackLayout BackgroundColor="{StaticResource Primary}">
                     <StackLayout>
-                        <StackLayout BackgroundColor="{StaticResource Primary}">
 
-                            <!--  GestureRecognizers  -->
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.ShowShellFlyoutCommand}" />
-                            </StackLayout.GestureRecognizers>
+                        <!--  GestureRecognizers  -->
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{TemplateBinding BindingContext.ShowShellFlyoutCommand}" />
+                        </StackLayout.GestureRecognizers>
 
-                            <!--  Title  -->
-                            <Label
+                        <!--  Title  -->
+                        <Label
                             FontSize="10"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
                             Text="{x:Static resources:AppResources.NavigationHeaderSubtitle}"
                             TextColor="{StaticResource Accent}" />
 
-                            <!--  Logo  -->
-                            <Image
+                        <!--  Logo  -->
+                        <Image
                             HeightRequest="60"
                             HorizontalOptions="Center"
                             Source="drwindows_logo.png" />
 
-                            <!--  Bottom border  -->
-                            <BoxView
+                        <!--  Bottom border  -->
+                        <BoxView
                             BackgroundColor="{StaticResource AccentDark}"
                             HeightRequest="1"  />
-                        </StackLayout>
-
-                        <!--  Embedd content  -->
-
-                        <ContentPresenter HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                     </StackLayout>
-                </yummy:PancakeView>
+
+                    <!--  Embedd content  -->
+                    <ContentPresenter
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand" />
+                </StackLayout>
             </ControlTemplate>
         </ResourceDictionary>
     </Application.Resources>

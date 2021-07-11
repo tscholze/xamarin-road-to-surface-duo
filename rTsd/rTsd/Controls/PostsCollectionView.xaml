@@ -37,10 +37,16 @@
         <DataTemplate x:Key="EventDataTemplate">
             <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
                 <yummy:PancakeView
-                    Border="{yummy:BorderMarkup Color={StaticResource Primary},
-                                                Thickness='1'}"
+                    Border="{yummy:BorderMarkup Color={StaticResource Primary}, Thickness='1'}"
                     CornerRadius="20, 0, 0, 20"
                     Style="{StaticResource TearPacakeViewStyle}">
+
+                    <yummy:PancakeView.Shadow>
+                            <yummy:DropShadow
+                                Color="#FFFFFF"
+                                BlurRadius="2"
+                                Offset="1,1" />
+                    </yummy:PancakeView.Shadow>
                     <controls:PostHeroView Post="{Binding .}" />
                 </yummy:PancakeView>
             </Grid>
@@ -48,7 +54,16 @@
 
         <DataTemplate x:Key="UneventDataTemplate">
             <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
-                <yummy:PancakeView CornerRadius="0, 20, 20, 0" Style="{StaticResource TearPacakeViewStyle}">
+                <yummy:PancakeView
+                    CornerRadius="0, 20, 20, 0"
+                    Style="{StaticResource TearPacakeViewStyle}">
+
+                    <yummy:PancakeView.Shadow>
+                            <yummy:DropShadow
+                                Color="#FFFFFF"
+                                BlurRadius="2"
+                                Offset="1,1" />                    </yummy:PancakeView.Shadow>
+
                     <controls:PostHeroView Post="{Binding .}" />
                 </yummy:PancakeView>
             </Grid>

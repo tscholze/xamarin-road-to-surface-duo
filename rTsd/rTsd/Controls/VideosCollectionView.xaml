@@ -37,12 +37,20 @@
         <!-- EventDataTemplate -->
         <DataTemplate x:Key="EventDataTemplate">
             <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
+                <!-- Tear View -->
                 <yummy:PancakeView
                     BackgroundColor="{StaticResource Primary}"
-                    Border="{yummy:BorderMarkup Color={StaticResource Primary},
-                                                Thickness='1'}"
+                    Border="{yummy:BorderMarkup Color={StaticResource Primary}, Thickness='1'}"
                     CornerRadius="20, 0, 0, 20"
                     Style="{StaticResource TearPacakeViewStyle}">
+                    
+                      <yummy:PancakeView.Shadow>
+                            <yummy:DropShadow
+                                Color="#FFFFFF"
+                                BlurRadius="2"
+                                Offset="1,1" />
+                      </yummy:PancakeView.Shadow>
+
                     <Grid>
                         <!--  Fallback background image  -->
                         <Image
@@ -52,8 +60,7 @@
                         <!-- Cover image -->
                         <Image
                             Aspect="AspectFill"
-                            Source="{Binding ThumbnailSource}"
-                            Opacity="0" />
+                            Source="{Binding ThumbnailSource}" />
 
                         <!--  Title  -->
                         <Label
@@ -86,16 +93,24 @@
                     BackgroundColor="{StaticResource Primary}"
                     CornerRadius="0, 20, 20, 0"
                     Style="{StaticResource TearPacakeViewStyle}">
+
+                      <yummy:PancakeView.Shadow>
+                            <yummy:DropShadow
+                                Color="#FFFFFF"
+                                BlurRadius="2"
+                                Offset="1,1" />
+                      </yummy:PancakeView.Shadow>
+
                     <Grid>
                         <!--  Fallback background image  -->
                         <Image
                             Aspect="AspectFill"
-                               Source="https://www.drwindows.de/news/wp-content/uploads/2017/07/drwindows_intern_neu-660x330.jpg" />
+                            Source="https://www.drwindows.de/news/wp-content/uploads/2017/07/drwindows_intern_neu-660x330.jpg" />
 
                         <!-- Cover image -->
                         <Image
                             Aspect="AspectFill"
-                               Source="{Binding ThumbnailSource}"/>
+                            Source="{Binding ThumbnailSource}"/>
 
                         <!--  Title  -->
                         <Label

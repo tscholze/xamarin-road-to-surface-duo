@@ -97,7 +97,7 @@
             Margins fixes a space between the post hero view and the webview
             where I have no idea why.
             -->
-            <WebView Margin="0, -6, 0, 0" 
+            <WebView Margin="20, -6, 20, 0" 
                 x:Name="EmbeddedWebView"
                 Source="{Binding WebViewSource}"
                 VerticalOptions="FillAndExpand"

@@ -42,7 +42,8 @@
 
         <!-- Content of the item template -->
         <StackLayout
-            IsVisible="{Binding Path=ShowPlaceholder, Converter={StaticResource InvertBooleanConverter}}">
+            IsVisible="{Binding Path=ShowPlaceholder,
+            Converter={StaticResource InvertBooleanConverter}}">
 
             <!-- Top button row -->
             <Grid

@@ -11,15 +11,21 @@
     Shell.NavBarIsVisible="false">
 
     <Grid>
+        <!-- Dual Screen -->
         <dualScreen:TwoPaneView x:Name="DualScreenView"  
                             MinWideModeWidth="4000" 
                             MinTallModeHeight="4000">
+
+            <!-- Primary screen (always visible)-->
             <dualScreen:TwoPaneView.Pane1>
                 <views:ItemsView x:Name="MasterPane" />
             </dualScreen:TwoPaneView.Pane1>
+
+            <!-- Secondary screen (possible visible)-->
             <dualScreen:TwoPaneView.Pane2>
                 <views:ItemView x:Name="DetailPane" />
             </dualScreen:TwoPaneView.Pane2>
+
         </dualScreen:TwoPaneView>
     </Grid>
 </ContentPage>

@@ -34,6 +34,7 @@
             </Setter>
         </Style>
 
+        <!-- EventDataTemplate -->
         <DataTemplate x:Key="EventDataTemplate">
             <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
                 <yummy:PancakeView
@@ -44,7 +45,15 @@
                     Style="{StaticResource TearPacakeViewStyle}">
                     <Grid>
                         <!--  Fallback background image  -->
-                        <Image Aspect="AspectFill" Source="https://www.drwindows.de/news/wp-content/uploads/2017/07/drwindows_intern_neu-660x330.jpg" />
+                        <Image
+                            Aspect="AspectFill"
+                            Source="https://www.drwindows.de/news/wp-content/uploads/2017/07/drwindows_intern_neu-660x330.jpg" />
+
+                        <!-- Cover image -->
+                        <Image
+                            Aspect="AspectFill"
+                            Source="{Binding ThumbnailSource}"
+                            Opacity="0" />
 
                         <!--  Title  -->
                         <Label
@@ -65,12 +74,12 @@
                                     Color="Black" />
                             </Label.Effects>
                         </Label>
-                        <Image Aspect="AspectFill" Source="{Binding ThumbnailSource}" />
                     </Grid>
                 </yummy:PancakeView>
             </Grid>
         </DataTemplate>
 
+        <!-- UneventDataTemplate -->
         <DataTemplate x:Key="UneventDataTemplate">
             <Grid Style="{StaticResource ItemTemplateContainerGridStyle}">
                 <yummy:PancakeView
@@ -79,7 +88,14 @@
                     Style="{StaticResource TearPacakeViewStyle}">
                     <Grid>
                         <!--  Fallback background image  -->
-                        <Image Aspect="AspectFill" Source="https://www.drwindows.de/news/wp-content/uploads/2017/07/drwindows_intern_neu-660x330.jpg" />
+                        <Image
+                            Aspect="AspectFill"
+                               Source="https://www.drwindows.de/news/wp-content/uploads/2017/07/drwindows_intern_neu-660x330.jpg" />
+
+                        <!-- Cover image -->
+                        <Image
+                            Aspect="AspectFill"
+                               Source="{Binding ThumbnailSource}"/>
 
                         <!--  Title  -->
                         <Label
@@ -100,7 +116,6 @@
                                     Color="Black" />
                             </Label.Effects>
                         </Label>
-                        <Image Aspect="AspectFill" Source="{Binding ThumbnailSource}" />
                     </Grid>
 
                 </yummy:PancakeView>
@@ -110,6 +125,8 @@
 
     <!--  Template  -->
     <CollectionView.ItemTemplate>
-        <utils:AlternateCollectionViewDataTemplateSelector EvenTemplate="{StaticResource EventDataTemplate}" UnevenTemplate="{StaticResource UneventDataTemplate}" />
+        <utils:AlternateCollectionViewDataTemplateSelector
+            EvenTemplate="{StaticResource EventDataTemplate}"
+            UnevenTemplate="{StaticResource UneventDataTemplate}" />
     </CollectionView.ItemTemplate>
 </CollectionView>

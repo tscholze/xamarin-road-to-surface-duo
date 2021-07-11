@@ -37,4 +37,8 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {22289A55-6F61-45E2-AC2B-67EABFDB41AD}
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		description = Surface Duo sample app using the feed and YouTube feed from drwindows.de
+		version = 0.4
+	EndGlobalSection
 EndGlobal

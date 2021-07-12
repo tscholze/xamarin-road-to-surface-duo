@@ -46,7 +46,7 @@ Android wrapper and platform-specifc implementations like custom rendereres, eff
 - [x] Add user opt-in for non Dr. Windows server requests
 - [x] Add localization (resx)
 - [ ] Write tests
-- [ ] Leverage CI with tests and deployments
+- [x] Leverage CI with tests and deployments
 - [x] Run it on an actual Surface Duo device
 - [ ] Add analytics
 
@@ -112,6 +112,7 @@ I used the free, but required an Adobe ID, application [Adobe XD](https://www.ad
 ## Decisions made 
 - Using the `Page.Navigation(...)` feature instead of the new url-based `Shell.GoToAsync(...)`
 - Using the native asset management instead of the embedded images one. The not successful feature implementation can be found via: `deadend/embedded-images`
+- No more gradients - updated UI of the app to use solid colors instead of blue-ish gradients
 
 ## Keep in mind
 This app is purely build for having fun! All features have room for improvements or could be done more elegant.
